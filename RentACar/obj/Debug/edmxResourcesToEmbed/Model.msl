@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="Gradovi">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Grad)">
+        <MappingFragment StoreEntitySet="Gradovi">
+          <ScalarProperty Name="PostanskiBroj" ColumnName="PostanskiBroj" />
+          <ScalarProperty Name="Drzava" ColumnName="Drzava" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Filijale">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Filijala)">
+        <MappingFragment StoreEntitySet="Filijale">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="BrojTelefona" ColumnName="BrojTelefona" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="GradPostanskiBroj" ColumnName="GradPostanskiBroj" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vozila">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Vozilo)">
+        <MappingFragment StoreEntitySet="Vozila">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Marka" ColumnName="Marka" />
+          <ScalarProperty Name="FilijalaId" ColumnName="FilijalaId" />
+          <ScalarProperty Name="Tip_vozila" ColumnName="Tip_vozila" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ocene">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Ocena)">
+        <MappingFragment StoreEntitySet="Ocene">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="VoziloId" ColumnName="VoziloId" />
+          <ScalarProperty Name="Vrednost" ColumnName="Vrednost" />
+          <ScalarProperty Name="KlijentJmbg" ColumnName="KlijentJmbg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servisi">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Servis)">
+        <MappingFragment StoreEntitySet="Servisi">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+          <ScalarProperty Name="Komentar" ColumnName="Komentar" />
+          <ScalarProperty Name="Datum" ColumnName="Datum" />
+          <ScalarProperty Name="VoziloId" ColumnName="VoziloId" />
+          <ScalarProperty Name="ServiserJmbg" ColumnName="ServiserJmbg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klijenti">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Klijent)">
+        <MappingFragment StoreEntitySet="Klijenti">
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rezervacije">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Rezervacija)">
+        <MappingFragment StoreEntitySet="Rezervacije">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Datum_rezervacije" ColumnName="Datum_rezervacije" />
+          <ScalarProperty Name="Datum_preuzimanja" ColumnName="Datum_preuzimanja" />
+          <ScalarProperty Name="Datum_vracanja" ColumnName="Datum_vracanja" />
+          <ScalarProperty Name="VoziloId" ColumnName="VoziloId" />
+          <ScalarProperty Name="KlijentJmbg" ColumnName="KlijentJmbg" />
+          <ScalarProperty Name="OsiguranjeId" ColumnName="OsiguranjeId" />
+          <ScalarProperty Name="AgentJmbg" ColumnName="AgentJmbg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Osiguranja">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Osiguranje)">
+        <MappingFragment StoreEntitySet="Osiguranja">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Broj_polise" ColumnName="Broj_polise" />
+          <ScalarProperty Name="Tip_osiguranja" ColumnName="Tip_osiguranja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zaposleni">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Zaposleni)">
+        <MappingFragment StoreEntitySet="Zaposleni">
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="Broj_ugovora" ColumnName="Broj_ugovora" />
+          <ScalarProperty Name="FilijalaId" ColumnName="FilijalaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Serviser)">
+        <MappingFragment StoreEntitySet="Zaposleni_Serviser">
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+          <ScalarProperty Name="Broj_licence" ColumnName="Broj_licence" />
+          <ScalarProperty Name="Tip_Struke" ColumnName="Tip_Struke" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Agent)">
+        <MappingFragment StoreEntitySet="Zaposleni_Agent">
+          <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+          <ScalarProperty Name="Broj_sertifikata" ColumnName="Broj_sertifikata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

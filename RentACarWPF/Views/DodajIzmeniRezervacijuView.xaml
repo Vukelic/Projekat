@@ -1,0 +1,99 @@
+﻿<Window x:Class="RentACarWPF.Views.DodajIzmeniRezervacijuView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RentACarWPF.Views"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        Title="DodajNovuRezervaciju" Height="620" Width="805">
+    <Grid Background="Beige" Height="587" VerticalAlignment="Top" Margin="0,0,0,-168">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="{Binding TitleContent}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+       
+        <TextBlock Text="Id: " Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
+        <TextBlock Text="Klijent: " Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Margin="10,36,20,36" Width="120"></TextBlock>
+        <TextBlock Text="Vozilo: " Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Margin="10,36,20,36" Width="120"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Height="90"><Run Text="Datum "/><LineBreak/><Run Text="preuzimanja: "/></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Height="90" Margin="0,5,0,6" Width="130"><Run Text="Datum "/><LineBreak/><Run Text="vracanja: "/></TextBlock>
+        <TextBlock Text="Osiguranje:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
+        <TextBlock Text="Agent:" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
+
+        <TextBox Width="200" Text="{Binding R.Id}"  IsEnabled="{Binding TextBoxEnabled}" Height="50" Grid.Row="1" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22"></TextBox>
+        <TextBlock Text="{Binding R.ValidationErrors[Id]}" Foreground="Red" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
+        <TextBlock Text="{Binding IdPostoji}" Foreground="Red" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
+
+        <ComboBox Width="200"  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Osiguranja}" SelectedItem="{Binding SelektovanoOsiguranje}" DisplayMemberPath="Broj_polise" Height="50" Grid.Row="2" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22"></ComboBox>
+        <TextBlock Text="{Binding OsiguranjeError}" Foreground="Red" Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
+        
+        <ComboBox Width="200"  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Klijenti}" SelectedItem="{Binding SelektovanKlijent}" Height="50" Grid.Row="1" Margin="10 0 0 0" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Ime"/>
+                                <Binding Path="Prezime"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Text="{Binding KlijentError}" Foreground="Red" Grid.Row="1" Grid.Column="3" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
+        
+        <ComboBox Width="200"  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Vozila}" SelectedItem="{Binding SelektovanoVozilo}" Height="50" Grid.Row="3" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Marka"/>
+                                <Binding Path="Model"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Text="{Binding VoziloError}" Foreground="Red" Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
+        
+        <ComboBox Width="200"  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Agenti}" SelectedItem="{Binding SelektovanAgent}" Height="50" Grid.Row="2" Margin="10 0 0 0" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Ime"/>
+                                <Binding Path="Prezime"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Text="{Binding AgentError}" Foreground="Red" Grid.Row="2" Grid.Column="3" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
+        
+        <DatePicker  Grid.Row="3" Grid.Column="3" Height="25" SelectedDate="{Binding R.Datum_preuzimanja}" Margin="10"></DatePicker>
+        <TextBlock Text="{Binding R.ValidationErrors[Datum_preuzimanja]}" Foreground="Red" Grid.Row="3" Grid.Column="3" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
+        
+        <DatePicker  Grid.Row="4" Grid.Column="3"  Height="25" SelectedDate="{Binding R.Datum_vracanja}" Margin="10"></DatePicker>
+        <TextBlock Text="{Binding R.ValidationErrors[Datum_vracanja]}" Foreground="Red" Grid.Row="4" Grid.Column="3" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
+          
+        <Button Cursor="Hand" Content="{Binding ButtonContent}" Command="{Binding DodajIzmeniRezervacijuCommand}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Width="150" Height="60"></Button>
+        <TextBlock Text="{Binding Uspesno}" Foreground="Green" Grid.Row="4" Grid.ColumnSpan="4" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"></TextBlock>
+    </Grid>
+</Window>

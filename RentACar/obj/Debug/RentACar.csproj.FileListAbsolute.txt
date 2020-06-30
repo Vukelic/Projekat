@@ -1,0 +1,12 @@
+C:\Users\Andrej\Desktop\BP2Projekat\RentACar\bin\Debug\RentACar.dll.config
+C:\Users\Andrej\Desktop\BP2Projekat\RentACar\bin\Debug\RentACar.dll
+C:\Users\Andrej\Desktop\BP2Projekat\RentACar\bin\Debug\RentACar.pdb
+C:\Users\Andrej\Desktop\BP2Projekat\RentACar\bin\Debug\EntityFramework.dll
+C:\Users\Andrej\Desktop\BP2Projekat\RentACar\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Andrej\Desktop\BP2Projekat\RentACar\bin\Debug\EntityFramework.xml
+C:\Users\Andrej\Desktop\BP2Projekat\RentACar\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Andrej\Desktop\BP2Projekat\RentACar\obj\Debug\RentACar.csprojAssemblyReference.cache
+C:\Users\Andrej\Desktop\BP2Projekat\RentACar\obj\Debug\RentACar.csproj.CoreCompileInputs.cache
+C:\Users\Andrej\Desktop\BP2Projekat\RentACar\obj\Debug\RentACar.csproj.CopyComplete
+C:\Users\Andrej\Desktop\BP2Projekat\RentACar\obj\Debug\RentACar.dll
+C:\Users\Andrej\Desktop\BP2Projekat\RentACar\obj\Debug\RentACar.pdb

@@ -1,0 +1,39 @@
+?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7526cdc9a64c43179cf299e82f95d10d" Name="Diagram1" ZoomLevel="100" >
+        <EntityTypeShape EntityType="ModelRentACar.Grad" Width="1.5" PointX="2" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelRentACar.Filijala" Width="1.5" PointX="2" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelRentACar.Vozilo" Width="1.5" PointX="2" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelRentACar.Ocena" Width="1.5" PointX="2" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelRentACar.Servis" Width="1.5" PointX="5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelRentACar.Klijent" Width="1.5" PointX="6.125" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelRentACar.Rezervacija" Width="1.875" PointX="10" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelRentACar.Osiguranje" Width="1.5" PointX="9.125" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelRentACar.Zaposleni" Width="1.5" PointX="9.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelRentACar.Serviser" Width="1.5" PointX="7.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelRentACar.Agent" Width="1.5" PointX="10.625" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="ModelRentACar.FilijalaVozilo" />
+        <AssociationConnector Association="ModelRentACar.VoziloOcena" />
+        <AssociationConnector Association="ModelRentACar.RezervacijaOsiguranje" />
+        <AssociationConnector Association="ModelRentACar.VoziloServis" />
+        <AssociationConnector Association="ModelRentACar.VoziloRezervacija" />
+        <InheritanceConnector EntityType="ModelRentACar.Agent" />
+        <InheritanceConnector EntityType="ModelRentACar.Serviser" ManuallyRouted="true" >
+          <ConnectorPoint PointX="9.875" PointY="2.537985026041667" />
+          <ConnectorPoint PointX="9.875" PointY="2.7604167804949769" />
+          <ConnectorPoint PointX="8.5" PointY="2.7604167804949769" />
+          <ConnectorPoint PointX="8.5" PointY="3.25" />
+        </InheritanceConnector>
+        <AssociationConnector Association="ModelRentACar.GradFilijala" />
+        <AssociationConnector Association="ModelRentACar.OcenaKlijent" />
+        <AssociationConnector Association="ModelRentACar.KlijentRezervacija" />
+        <AssociationConnector Association="ModelRentACar.AgentRezervacija" />
+        <AssociationConnector Association="ModelRentACar.ServisServiser" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

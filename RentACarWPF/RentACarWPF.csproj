@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D6A9A88-D048-48FB-9F6C-608CB194FB3F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RentACarWPF</RootNamespace>
+    <AssemblyName>RentACarWPF</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Helpers\BindableBase.cs" />
+    <Compile Include="Helpers\MyICommand.cs" />
+    <Compile Include="Helpers\ValidationBase.cs" />
+    <Compile Include="Helpers\ValidationErrors.cs" />
+    <Compile Include="Models\AppAgent.cs" />
+    <Compile Include="Models\AppFilijala.cs" />
+    <Compile Include="Models\AppGrad.cs" />
+    <Compile Include="Models\AppKlijent.cs" />
+    <Compile Include="Models\AppOcena.cs" />
+    <Compile Include="Models\AppOsiguranje.cs" />
+    <Compile Include="Models\AppRezervacija.cs" />
+    <Compile Include="Models\AppServis.cs" />
+    <Compile Include="Models\AppServiser.cs" />
+    <Compile Include="Models\AppVozilo.cs" />
+    <Compile Include="Models\AppZaposleni.cs" />
+    <Compile Include="Models\Enums\TipOsiguranja.cs" />
+    <Compile Include="Models\Enums\TipStruke.cs" />
+    <Compile Include="Models\Enums\TipVozila.cs" />
+    <Compile Include="ViewModels\AgentiViewModel.cs" />
+    <Compile Include="ViewModels\DodajIzmeniAgentaViewModel.cs" />
+    <Compile Include="ViewModels\DodajizmeniFilijaluViewModel.cs" />
+    <Compile Include="ViewModels\DodajIzmeniKlijentaViewModel.cs" />
+    <Compile Include="ViewModels\DodajIzmeniGradViewModel.cs" />
+    <Compile Include="ViewModels\DodajIzmeniOcenuViewModel.cs" />
+    <Compile Include="ViewModels\DodajIzmeniOsiguranjeViewModel.cs" />
+    <Compile Include="ViewModels\DodajIzmeniRezervacijuViewModel.cs" />
+    <Compile Include="ViewModels\DodajIzmeniServiseraViewModel.cs" />
+    <Compile Include="ViewModels\DodajIzmeniServisViewModel.cs" />
+    <Compile Include="ViewModels\DodajIzmeniVoziloViewModel.cs" />
+    <Compile Include="ViewModels\FilijaleViewModel.cs" />
+    <Compile Include="ViewModels\FunkcijeViewModel.cs" />
+    <Compile Include="ViewModels\KlijentiViewModel.cs" />
+    <Compile Include="ViewModels\GradoviViewModel.cs" />
+    <Compile Include="ViewModels\OceneViewModel.cs" />
+    <Compile Include="ViewModels\OsiguranjaViewModel.cs" />
+    <Compile Include="ViewModels\RezervacijeViewModel.cs" />
+    <Compile Include="ViewModels\ServiseriViewModel.cs" />
+    <Compile Include="ViewModels\ServisiViewModel.cs" />
+    <Compile Include="ViewModels\StartViewModel.cs" />
+    <Compile Include="ViewModels\VozilaViewModel.cs" />
+    <Compile Include="ViewModels\ZaposleniViewModel.cs" />
+    <Compile Include="Views\AgentiView.xaml.cs">
+      <DependentUpon>AgentiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DodajIzmeniAgentaView.xaml.cs">
+      <DependentUpon>DodajIzmeniAgentaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DodajIzmeniKlijentaView.xaml.cs">
+      <DependentUpon>DodajIzmeniKlijentaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DodajIzmeniOsiguranjeView.xaml.cs">
+      <DependentUpon>DodajIzmeniOsiguranjeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DodajIzmeniServiseraView.xaml.cs">
+      <DependentUpon>DodajIzmeniServiseraView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DodajIzmeniServisView.xaml.cs">
+      <DependentUpon>DodajIzmeniServisView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DodajIzmeniVoziloView.xaml.cs">
+      <DependentUpon>DodajIzmeniVoziloView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DodajIzmeniFilijaluView.xaml.cs">
+      <DependentUpon>DodajIzmeniFilijaluView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DodajIzmeniGradView.xaml.cs">
+      <DependentUpon>DodajIzmeniGradView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DodajIzmeniOcenuView.xaml.cs">
+      <DependentUpon>DodajIzmeniOcenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DodajIzmeniRezervacijuView.xaml.cs">
+      <DependentUpon>DodajIzmeniRezervacijuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FilijaleView.xaml.cs">
+      <DependentUpon>FilijaleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FunkcijeView.xaml.cs">
+      <DependentUpon>FunkcijeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KlijentiView.xaml.cs">
+      <DependentUpon>KlijentiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GradoviView.xaml.cs">
+      <DependentUpon>GradoviView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OceneView.xaml.cs">
+      <DependentUpon>OceneView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OsiguranjaView.xaml.cs">
+      <DependentUpon>OsiguranjaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RezervacijeView.xaml.cs">
+      <DependentUpon>RezervacijeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServiseriView.xaml.cs">
+      <DependentUpon>ServiseriView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServisiView.xaml.cs">
+      <DependentUpon>ServisiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StartView.xaml.cs">
+      <DependentUpon>StartView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VozilaView.xaml.cs">
+      <DependentUpon>VozilaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\ZaposleniView.xaml.cs">
+      <DependentUpon>ZaposleniView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\AgentiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DodajIzmeniAgentaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DodajIzmeniKlijentaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DodajIzmeniOsiguranjeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DodajIzmeniServiseraView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DodajIzmeniServisView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DodajIzmeniVoziloView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DodajIzmeniFilijaluView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DodajIzmeniGradView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DodajIzmeniOcenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DodajIzmeniRezervacijuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FilijaleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FunkcijeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KlijentiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GradoviView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OceneView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OsiguranjaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RezervacijeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ServiseriView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ServisiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StartView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VozilaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ZaposleniView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RentACar\RentACar.csproj">
+      <Project>{67A09FE0-5E96-4BE7-AE9F-CADAA403DAE5}</Project>
+      <Name>RentACar</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\carlogo.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

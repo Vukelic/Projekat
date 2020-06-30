@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="173c8eac162942079c538c38c1eed36e" Name="Diagram1" ZoomLevel="83" >
+        <EntityTypeShape EntityType="Model.Grad" Width="1.5" PointX="1.25" PointY="39.5" />
+        <EntityTypeShape EntityType="Model.Filijala" Width="1.5" PointX="0.5" PointY="43.375" />
+        <EntityTypeShape EntityType="Model.Vozilo" Width="1.5" PointX="1.25" PointY="46.5" />
+        <EntityTypeShape EntityType="Model.Ocena" Width="1.5" PointX="6.375" PointY="49.25" />
+        <EntityTypeShape EntityType="Model.Servis" Width="1.5" PointX="4.875" PointY="45.625" />
+        <EntityTypeShape EntityType="Model.Klijent" Width="1.5" PointX="9.5" PointY="48.875" />
+        <EntityTypeShape EntityType="Model.Rezervacija" Width="1.5" PointX="12.125" PointY="47.875" />
+        <EntityTypeShape EntityType="Model.Osiguranje" Width="1.5" PointX="11.375" PointY="52.375" />
+        <EntityTypeShape EntityType="Model.Zaposleni" Width="1.5" PointX="11.125" PointY="40.125" />
+        <EntityTypeShape EntityType="Model.Serviser" Width="1.5" PointX="9.625" PointY="43.875" />
+        <EntityTypeShape EntityType="Model.Agent" Width="1.5" PointX="13.75" PointY="43.875" />
+        <AssociationConnector Association="Model.GradFilijala" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="Model.FilijalaVozilo" />
+        <AssociationConnector Association="Model.VoziloOcena" />
+        <AssociationConnector Association="Model.VoziloServis" />
+        <AssociationConnector Association="Model.VoziloRezervacija" />
+        <AssociationConnector Association="Model.KlijentOcena" />
+        <AssociationConnector Association="Model.KlijentRezervacija" />
+        <AssociationConnector Association="Model.FilijalaZaposleni" ManuallyRouted="false" >
+        </AssociationConnector>
+        <InheritanceConnector EntityType="Model.Agent" />
+        <InheritanceConnector EntityType="Model.Serviser" />
+        <AssociationConnector Association="Model.ServisServiser" />
+        <AssociationConnector Association="Model.OsiguranjeRezervacija" />
+        <AssociationConnector Association="Model.AgentRezervacija" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
