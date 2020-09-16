@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentACarWPF.Views"
-        mc:Ignorable="d" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
-        Title="DodajNovuOcenu" Height="627" Width="454">
+        mc:Ignorable="d"
+        Title="DodajNovuOcenu" Height="627" Width="456.393"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/RentACarWPF;component/Images/logo.jpg">
     <Grid Background="Beige" Height="597" VerticalAlignment="Top" Margin="0,0,0,-1">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
@@ -19,18 +19,19 @@
             <ColumnDefinition Width="150"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="{Binding TitleContent}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
-      
-        <TextBlock Text="Id: " Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
-        <TextBlock Text="Klijent: " Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
-        <TextBlock Text="Vozilo:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
-        <TextBlock Text="Ocena:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
-      
-        <TextBox Width="200" Text="{Binding O.Id}" IsEnabled="{Binding TextBoxEnabled}" Height="50" Grid.Row="1" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22"></TextBox>
+        <Image Margin="0,2,10,0"  Source="/Images/all_background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.RowSpan="6" />
+        <TextBlock  FontFamily="Segoe Print MS"  Text="{Binding TitleContent}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"></TextBlock>
+
+        <TextBlock  FontFamily="Segoe Print MS" FontWeight="Bold"  Text="Id: " Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
+        <TextBlock  FontFamily="Segoe Print MS" FontWeight="Bold"  Text="Klijent: " Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
+        <TextBlock  FontFamily="Segoe Print MS" FontWeight="Bold"  Text="Vozilo:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
+        <TextBlock  FontFamily="Segoe Print MS" FontWeight="Bold"  Text="Ocena:" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
+
+        <TextBox  FontFamily="Segoe Print MS" FontWeight="Bold"  Width="200" Text="{Binding O.Id}" IsEnabled="{Binding TextBoxEnabled}" Height="50" Grid.Row="1" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22"></TextBox>
         <TextBlock Text="{Binding O.ValidationErrors[Id]}" Foreground="Red" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
         <TextBlock Text="{Binding IdPostoji}" Foreground="Red" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
-        
-        <ComboBox Width="200"  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Klijenti}" SelectedItem="{Binding SelektovanKlijent}" Height="50" Grid.Row="2" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22">
+
+        <ComboBox  FontFamily="Segoe Print MS" FontWeight="Bold"  Width="200"  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Klijenti}" SelectedItem="{Binding SelektovanKlijent}" Height="50" Grid.Row="2" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -45,8 +46,8 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBlock Text="{Binding KlijentError}" Foreground="Red" Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
-       
-        <ComboBox Width="200"  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Vozila}" SelectedItem="{Binding SelektovanoVozilo}" Height="50" Grid.Row="3" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22">
+
+        <ComboBox  FontFamily="Segoe Print MS" FontWeight="Bold"  Width="200"  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Vozila}" SelectedItem="{Binding SelektovanoVozilo}" Height="50" Grid.Row="3" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -61,11 +62,11 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBlock Text="{Binding VoziloError}" Foreground="Red" Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
-      
-        <TextBox Width="200" Text="{Binding O.Vrednost}" Height="50" Grid.Row="4" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22"></TextBox>
+
+        <TextBox  FontFamily="Segoe Print MS" FontWeight="Bold"  Width="200" Text="{Binding O.Vrednost}" Height="50" Grid.Row="4" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22"></TextBox>
         <TextBlock Text="{Binding O.ValidationErrors[Vrednost]}" Foreground="Red" Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
-      
-        <Button Cursor="Hand" Content="{Binding ButtonContent}" Command="{Binding DodajIzmeniOcenuCommand}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Width="150" Height="60"></Button>
+
+        <Button FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Cursor="Hand" Content="{Binding ButtonContent}" Command="{Binding DodajIzmeniOcenuCommand}" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Width="150" Height="60" Margin="9.6,27,139.6,13"/>
         <TextBlock Text="{Binding Uspesno}" Foreground="Green" Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"></TextBlock>
     </Grid>
 </Window>

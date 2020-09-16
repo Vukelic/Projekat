@@ -5,10 +5,10 @@ namespace RentACarWPF.Views
 {
     public partial class StartView : Window
     {
-        public StartView()
+        public StartView(string korisnickoIme)
         {
             InitializeComponent();
-            DataContext = new StartViewModel() { Window = this };
+            DataContext = new StartViewModel (korisnickoIme) { Window = this };
         }
     }
 }

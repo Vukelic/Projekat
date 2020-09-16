@@ -34,5 +34,6 @@ namespace RentACar
         public virtual DbSet<Rezervacija> Rezervacije { get; set; }
         public virtual DbSet<Osiguranje> Osiguranja { get; set; }
         public virtual DbSet<Zaposleni> Zaposleni { get; set; }
+        public virtual DbSet<Korisnik> Korisniks { get; set; }
     }
 }

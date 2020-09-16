@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentACarWPF.Views"
-        mc:Ignorable="d" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
-        Title="PregledOsiguranja" Height="550" Width="523">
-    <Grid Background="Aquamarine" Margin="0,0,0,-55">
+        mc:Ignorable="d"
+        Title="PregledOsiguranja" Height="550" Width="523" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/RentACarWPF;component/Images/logo.jpg">
+    <Grid Margin="0,0,0,-55">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="80"></RowDefinition>
@@ -18,14 +18,15 @@
             <ColumnDefinition Width="250"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="PREGLED OSIGURANJA" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"></TextBlock>
-        <Button Grid.Row="1" Grid.Column="0" Margin="10" Content="Dodaj" FontSize="30" FontWeight="Bold" Cursor="Hand"
+        <Image Margin="0,2,0.2,-0.2"  Source="/Images/all_background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" Grid.RowSpan="4" />
+        <TextBlock FontFamily="Segoe Print MS"  Text="PREGLED OSIGURANJA" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"></TextBlock>
+        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="0" Margin="10" Content="Dodaj" FontSize="30" FontWeight="Bold" Cursor="Hand"
                  Command="{Binding DodajOsiguranjeCommand}"></Button>
-        <Button Grid.Row="1" Grid.Column="1" Margin="10" Content="Izmeni" FontSize="30" FontWeight="Bold" Cursor="Hand"
+        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="1" Margin="10" Content="Izmeni" FontSize="30" FontWeight="Bold" Cursor="Hand"
                  Command="{Binding IzmeniOsiguranjeCommand}"></Button>
-        <Button Grid.Row="2" Grid.Column="0" Margin="10" Content="Obrisi" FontSize="30" FontWeight="Bold" Cursor="Hand"
+        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="2" Grid.Column="0" Margin="10" Content="Obrisi" FontSize="30" FontWeight="Bold" Cursor="Hand"
                  Command="{Binding ObrisiOsiguranjeCommand}"></Button>
-        <Button Grid.Row="2" Grid.Column="1" Margin="10" Content="Osvezi" FontSize="30" FontWeight="Bold" Cursor="Hand"
+        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="2" Grid.Column="1" Margin="10" Content="Osvezi" FontSize="30" FontWeight="Bold" Cursor="Hand"
                  Command="{Binding OsveziCommand}"></Button>
         <DataGrid Grid.Row="3" Height="300" Grid.ColumnSpan="3" Margin="15" 
                   Foreground="Black" BorderBrush="Transparent" IsReadOnly="True" 
@@ -35,7 +36,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Tip osiguranja" Width="120" Binding="{Binding Tip_osiguranja}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Broj polise" Width="120" Binding="{Binding Broj_polise}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Broj polise" Width="*" Binding="{Binding Broj_polise}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

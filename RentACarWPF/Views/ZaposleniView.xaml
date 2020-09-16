@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RentACarWPF.Views" ResizeMode="CanMinimize"
-        mc:Ignorable="d"  WindowStartupLocation="CenterScreen"
-        Title="ZaposleniView" Height="550" Width="668">
-    <Grid Background="Aquamarine" Margin="0,0,4,0">
+        xmlns:local="clr-namespace:RentACarWPF.Views" 
+        mc:Ignorable="d"  
+        Title="ZaposleniView" Height="550" Width="668" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/RentACarWPF;component/Images/logo.jpg">
+    <Grid Margin="0,0,4,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="80"></RowDefinition>
@@ -17,9 +17,10 @@
             <ColumnDefinition Width="250"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="PREGLED ZAPOSLENIH" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"></TextBlock>
-        <Button Grid.Row="1" Grid.Column="0" Margin="10" Content="Obrisi" FontSize="30" FontWeight="Bold" Command="{Binding ObrisiZaposlenogCommand}" Cursor="Hand"></Button>
-        <Button Grid.Row="1" Grid.Column="1" Margin="10" Content="Osvezi" FontSize="30" FontWeight="Bold" Cursor="Hand" Command="{Binding OsveziCommand}"></Button>
+        <Image Margin="0,2,0,-0.2"  Source="/Images/all_background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" Grid.RowSpan="4" />
+        <TextBlock  FontFamily="Segoe Print MS"  Text="PREGLED ZAPOSLENIH" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"></TextBlock>
+        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="0" Margin="10" Content="Obrisi" FontSize="30" FontWeight="Bold" Command="{Binding ObrisiZaposlenogCommand}" Cursor="Hand"></Button>
+        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="1" Margin="10" Content="Osvezi" FontSize="30" FontWeight="Bold" Cursor="Hand" Command="{Binding OsveziCommand}"></Button>
         <DataGrid Grid.Row="2" Grid.ColumnSpan="3" Margin="15,30,10,31" 
                   Foreground="Black" BorderBrush="Transparent" IsReadOnly="True"
                   SelectionMode="Single" AutoGenerateColumns="False"
@@ -30,7 +31,7 @@
                 <DataGridTextColumn Header="Ime" Width="100" Binding="{Binding Ime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Prezime" Width="120" Binding="{Binding Prezime}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Broj ugovora" Width="130" Binding="{Binding Broj_ugovora}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Uloga" Width="130" Binding="{Binding Uloga}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Uloga" Width="*" Binding="{Binding Uloga}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

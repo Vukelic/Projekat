@@ -15,6 +15,7 @@
     <EntitySet Name="Rezervacije" EntityType="Model.Store.Rezervacije" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Osiguranja" EntityType="Model.Store.Osiguranja" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Zaposleni" EntityType="Model.Store.Zaposleni" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Korisniks" EntityType="Model.Store.Korisniks" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Zaposleni_Serviser" EntityType="Model.Store.Zaposleni_Serviser" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Zaposleni_Agent" EntityType="Model.Store.Zaposleni_Agent" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="GradFilijala" Association="Model.Store.GradFilijala">
@@ -156,6 +157,14 @@
     <Property Name="Broj_ugovora" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Jmbg" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="FilijalaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Korisniks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KorisnickoIme" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Lozinka" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Zaposleni_Serviser">
     <Key>
@@ -390,6 +399,7 @@
             <End Role="Agent" EntitySet="Zaposleni" />
             <End Role="Rezervacija" EntitySet="Rezervacije" />
           </AssociationSet>
+          <EntitySet Name="Korisniks" EntityType="Model.Korisnik" />
         </EntityContainer>
         <EntityType Name="Grad">
           <Key>
@@ -654,6 +664,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Korisnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KorisnickoIme" Type="String" Nullable="false" />
+          <Property Name="Lozinka" Type="String" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -766,6 +784,15 @@
         <MappingFragment StoreEntitySet="Zaposleni_Agent">
           <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
           <ScalarProperty Name="Broj_sertifikata" ColumnName="Broj_sertifikata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Korisniks">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Korisnik)">
+        <MappingFragment StoreEntitySet="Korisniks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+          <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

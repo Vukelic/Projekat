@@ -110,5 +110,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Korisniks">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Korisnik)">
+        <MappingFragment StoreEntitySet="Korisniks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+          <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

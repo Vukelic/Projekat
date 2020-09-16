@@ -54,6 +54,7 @@
       <End Role="Agent" EntitySet="Zaposleni" />
       <End Role="Rezervacija" EntitySet="Rezervacije" />
     </AssociationSet>
+    <EntitySet Name="Korisniks" EntityType="Model.Korisnik" />
   </EntityContainer>
   <EntityType Name="Grad">
     <Key>
@@ -318,4 +319,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Korisnik">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KorisnickoIme" Type="String" Nullable="false" />
+    <Property Name="Lozinka" Type="String" Nullable="false" />
+  </EntityType>
 </Schema>

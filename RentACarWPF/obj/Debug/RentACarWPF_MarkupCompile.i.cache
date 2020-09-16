@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Andrej\Desktop\BP2Projekat\RentACarWPF\obj\Debug\
+C:\Users\HP\Desktop\BP2Projekat\RentACarWPF\obj\Debug\
 RentACarWPF
 none
 false
 DEBUG;TRACE
-C:\Users\Andrej\Desktop\BP2Projekat\RentACarWPF\App.xaml
-23-1099209533
+C:\Users\HP\Desktop\BP2Projekat\RentACarWPF\App.xaml
+261403597192
 
-69355046849
-1261452520045
-Views\AgentiView.xaml;Views\DodajIzmeniAgentaView.xaml;Views\DodajIzmeniKlijentaView.xaml;Views\DodajIzmeniOsiguranjeView.xaml;Views\DodajIzmeniServiseraView.xaml;Views\DodajIzmeniServisView.xaml;Views\DodajIzmeniVoziloView.xaml;Views\DodajIzmeniFilijaluView.xaml;Views\DodajIzmeniGradView.xaml;Views\DodajIzmeniOcenuView.xaml;Views\DodajIzmeniRezervacijuView.xaml;Views\FilijaleView.xaml;Views\FunkcijeView.xaml;Views\KlijentiView.xaml;Views\GradoviView.xaml;Views\OceneView.xaml;Views\OsiguranjaView.xaml;Views\RezervacijeView.xaml;Views\ServiseriView.xaml;Views\ServisiView.xaml;Views\StartView.xaml;Views\VozilaView.xaml;Views\ZaposleniView.xaml;
+77-752817297
+126739924328
+Views\AgentiView.xaml;Views\DodajIzmeniAgentaView.xaml;Views\DodajIzmeniKlijentaView.xaml;Views\DodajIzmeniOsiguranjeView.xaml;Views\DodajIzmeniServiseraView.xaml;Views\DodajIzmeniServisView.xaml;Views\DodajIzmeniVoziloView.xaml;Views\DodajIzmeniFilijaluView.xaml;Views\DodajIzmeniGradView.xaml;Views\DodajIzmeniOcenuView.xaml;Views\DodajIzmeniRezervacijuView.xaml;Views\FilijaleView.xaml;Views\FunkcijeView.xaml;Views\KlijentiView.xaml;Views\GradoviView.xaml;Views\LogovanjeView.xaml;Views\NalogView.xaml;Views\OceneView.xaml;Views\OsiguranjaView.xaml;Views\RegistracijaView.xaml;Views\RezervacijeView.xaml;Views\ServiseriView.xaml;Views\ServisiView.xaml;Views\StartView.xaml;Views\VozilaView.xaml;Views\ZaposleniView.xaml;
 
-True
+False
 

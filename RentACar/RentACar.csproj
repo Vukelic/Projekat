@@ -53,6 +53,7 @@
     <Compile Include="Agent.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Core\Repositories\IKorisnikRepository.cs" />
     <Compile Include="Core\Repositories\IOcenaRepository.cs" />
     <Compile Include="Core\Repositories\IOsiguranjeRepository.cs" />
     <Compile Include="Core\Repositories\IRezervacijaRepository.cs" />
@@ -65,6 +66,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Klijent.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Korisnik.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Ocena.cs">
@@ -84,6 +88,7 @@
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\IZaposleniRepository.cs" />
     <Compile Include="Persistence\Repositories\KlijentRepository.cs" />
+    <Compile Include="Persistence\Repositories\KorisnikRepository.cs" />
     <Compile Include="Persistence\Repositories\OcenaRepository.cs" />
     <Compile Include="Persistence\Repositories\OsiguranjeRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />

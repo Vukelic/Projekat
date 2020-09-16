@@ -10,6 +10,7 @@
     <EntitySet Name="Rezervacije" EntityType="Model.Store.Rezervacije" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Osiguranja" EntityType="Model.Store.Osiguranja" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Zaposleni" EntityType="Model.Store.Zaposleni" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Korisniks" EntityType="Model.Store.Korisniks" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Zaposleni_Serviser" EntityType="Model.Store.Zaposleni_Serviser" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Zaposleni_Agent" EntityType="Model.Store.Zaposleni_Agent" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="GradFilijala" Association="Model.Store.GradFilijala">
@@ -151,6 +152,14 @@
     <Property Name="Broj_ugovora" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Jmbg" Type="nvarchar" Nullable="false" MaxLength="20" />
     <Property Name="FilijalaId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Korisniks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KorisnickoIme" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Lozinka" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Zaposleni_Serviser">
     <Key>

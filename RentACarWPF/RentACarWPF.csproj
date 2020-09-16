@@ -85,6 +85,7 @@
     <Compile Include="Models\AppFilijala.cs" />
     <Compile Include="Models\AppGrad.cs" />
     <Compile Include="Models\AppKlijent.cs" />
+    <Compile Include="Models\AppKorisnik.cs" />
     <Compile Include="Models\AppOcena.cs" />
     <Compile Include="Models\AppOsiguranje.cs" />
     <Compile Include="Models\AppRezervacija.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Models\Enums\TipOsiguranja.cs" />
     <Compile Include="Models\Enums\TipStruke.cs" />
     <Compile Include="Models\Enums\TipVozila.cs" />
+    <Compile Include="Models\PasswordModel.cs" />
     <Compile Include="ViewModels\AgentiViewModel.cs" />
     <Compile Include="ViewModels\DodajIzmeniAgentaViewModel.cs" />
     <Compile Include="ViewModels\DodajizmeniFilijaluViewModel.cs" />
@@ -110,8 +112,11 @@
     <Compile Include="ViewModels\FunkcijeViewModel.cs" />
     <Compile Include="ViewModels\KlijentiViewModel.cs" />
     <Compile Include="ViewModels\GradoviViewModel.cs" />
+    <Compile Include="ViewModels\LogovanjeViewModel.cs" />
+    <Compile Include="ViewModels\NalogViewModel.cs" />
     <Compile Include="ViewModels\OceneViewModel.cs" />
     <Compile Include="ViewModels\OsiguranjaViewModel.cs" />
+    <Compile Include="ViewModels\RegistracijaViewModel.cs" />
     <Compile Include="ViewModels\RezervacijeViewModel.cs" />
     <Compile Include="ViewModels\ServiseriViewModel.cs" />
     <Compile Include="ViewModels\ServisiViewModel.cs" />
@@ -163,11 +168,20 @@
     <Compile Include="Views\GradoviView.xaml.cs">
       <DependentUpon>GradoviView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LogovanjeView.xaml.cs">
+      <DependentUpon>LogovanjeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NalogView.xaml.cs">
+      <DependentUpon>NalogView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\OceneView.xaml.cs">
       <DependentUpon>OceneView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OsiguranjaView.xaml.cs">
       <DependentUpon>OsiguranjaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegistracijaView.xaml.cs">
+      <DependentUpon>RegistracijaView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RezervacijeView.xaml.cs">
       <DependentUpon>RezervacijeView.xaml</DependentUpon>
@@ -251,11 +265,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\LogovanjeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NalogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\OceneView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\OsiguranjaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegistracijaView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -319,6 +345,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\carlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\rent_background.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\all_background.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentACarWPF.Views"
-        mc:Ignorable="d" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
-        Title="PregledLokacija" Height="550" Width="513">
-    <Grid Background="Aquamarine">
+        mc:Ignorable="d" 
+        Title="PregledLokacija" Height="550" Width="513"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/RentACarWPF;component/Images/logo.jpg">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="80"></RowDefinition>
@@ -18,14 +18,15 @@
             <ColumnDefinition Width="250"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="PREGLED GRADOVA" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"></TextBlock>
-        <Button Grid.Row="1" Grid.Column="0" Margin="10" Content="Dodaj" FontSize="30" FontWeight="Bold" Cursor="Hand"
+        <Image Margin="0,2,9,-0.2"  Source="/Images/all_background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.RowSpan="4" />
+        <TextBlock FontFamily="Segoe Print MS"  Text="PREGLED GRADOVA" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"></TextBlock>
+        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="0" Margin="10" Content="Dodaj" FontSize="30" FontWeight="Bold" Cursor="Hand"
                  Command="{Binding DodajGradCommand}"></Button>
-        <Button Grid.Row="1" Grid.Column="1" Margin="10" Content="Izmeni" FontSize="30" FontWeight="Bold" Cursor="Hand"
+        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="1" Margin="10" Content="Izmeni" FontSize="30" FontWeight="Bold" Cursor="Hand"
                  Command="{Binding IzmeniGradCommand}"></Button>
-        <Button Grid.Row="2" Grid.Column="0" Margin="10" Content="Obrisi" FontSize="30" FontWeight="Bold" Cursor="Hand"
+        <Button  FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="2" Grid.Column="0" Margin="10" Content="Obrisi" FontSize="30" FontWeight="Bold" Cursor="Hand"
                  Command="{Binding ObrisiGradCommand}"></Button>
-        <Button Grid.Row="2" Grid.Column="1" Margin="10" Content="Osvezi" FontSize="30" FontWeight="Bold" Cursor="Hand"
+        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="2" Grid.Column="1" Margin="10" Content="Osvezi" FontSize="30" FontWeight="Bold" Cursor="Hand"
                  Command="{Binding OsveziCommand}"></Button>
         <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="15,30,10,21"
                   Foreground="Black" BorderBrush="Transparent" IsReadOnly="True" 
@@ -35,7 +36,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Postanski broj" Width="120" Binding="{Binding PostanskiBroj}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Naziv" Width="120" Binding="{Binding Naziv}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Drzava" Width="120" Binding="{Binding Drzava}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Drzava" Width="*" Binding="{Binding Drzava}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/25/2020 13:12:56
--- Generated from EDMX file: C:\Users\Andrej\Desktop\BP2Projekat\RentACar\Model.edmx
+-- Date Created: 09/15/2020 20:26:46
+-- Generated from EDMX file: C:\Users\HP\Desktop\BP2Projekat\RentACar\Model.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -32,9 +32,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_VoziloRezervacija]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Rezervacije] DROP CONSTRAINT [FK_VoziloRezervacija];
 GO
-IF OBJECT_ID(N'[dbo].[FK_AgentRezervacija]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Rezervacije] DROP CONSTRAINT [FK_AgentRezervacija];
-GO
 IF OBJECT_ID(N'[dbo].[FK_KlijentOcena]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Ocene] DROP CONSTRAINT [FK_KlijentOcena];
 GO
@@ -50,11 +47,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_OsiguranjeRezervacija]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Rezervacije] DROP CONSTRAINT [FK_OsiguranjeRezervacija];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Agent_inherits_Zaposleni]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Zaposleni_Agent] DROP CONSTRAINT [FK_Agent_inherits_Zaposleni];
+IF OBJECT_ID(N'[dbo].[FK_AgentRezervacija]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Rezervacije] DROP CONSTRAINT [FK_AgentRezervacija];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Serviser_inherits_Zaposleni]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Zaposleni_Serviser] DROP CONSTRAINT [FK_Serviser_inherits_Zaposleni];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Agent_inherits_Zaposleni]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Zaposleni_Agent] DROP CONSTRAINT [FK_Agent_inherits_Zaposleni];
 GO
 
 -- --------------------------------------------------
@@ -88,11 +88,14 @@ GO
 IF OBJECT_ID(N'[dbo].[Zaposleni]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Zaposleni];
 GO
-IF OBJECT_ID(N'[dbo].[Zaposleni_Agent]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Zaposleni_Agent];
+IF OBJECT_ID(N'[dbo].[Korisniks]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Korisniks];
 GO
 IF OBJECT_ID(N'[dbo].[Zaposleni_Serviser]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Zaposleni_Serviser];
+GO
+IF OBJECT_ID(N'[dbo].[Zaposleni_Agent]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Zaposleni_Agent];
 GO
 
 -- --------------------------------------------------
@@ -186,6 +189,14 @@ CREATE TABLE [dbo].[Zaposleni] (
 );
 GO
 
+-- Creating table 'Korisniks'
+CREATE TABLE [dbo].[Korisniks] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [KorisnickoIme] nvarchar(max)  NOT NULL,
+    [Lozinka] nvarchar(max)  NOT NULL
+);
+GO
+
 -- Creating table 'Zaposleni_Serviser'
 CREATE TABLE [dbo].[Zaposleni_Serviser] (
     [Broj_licence] nvarchar(max)  NOT NULL,
@@ -257,6 +268,12 @@ GO
 ALTER TABLE [dbo].[Zaposleni]
 ADD CONSTRAINT [PK_Zaposleni]
     PRIMARY KEY CLUSTERED ([Jmbg] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Korisniks'
+ALTER TABLE [dbo].[Korisniks]
+ADD CONSTRAINT [PK_Korisniks]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Jmbg] in table 'Zaposleni_Serviser'

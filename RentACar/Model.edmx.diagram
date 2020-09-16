@@ -31,6 +31,7 @@
         <AssociationConnector Association="Model.ServisServiser" />
         <AssociationConnector Association="Model.OsiguranjeRezervacija" />
         <AssociationConnector Association="Model.AgentRezervacija" />
+        <EntityTypeShape EntityType="Model.Korisnik" Width="1.5" PointX="1.5" PointY="51.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

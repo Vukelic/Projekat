@@ -1,0 +1,24 @@
+﻿<Window x:Class="RentACarWPF.Views.LogovanjeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RentACarWPF.Views"
+        xmlns:a="clr-namespace:RentACarWPF.Models"
+        mc:Ignorable="d"
+        Title="LogovanjeWindow" Height="450" Width="480.8" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/RentACarWPF;component/Images/logo.jpg">
+    <Grid>
+        <Image Margin="0,2,0,0"  Source="/Images/background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="4" />
+        <Label Foreground="black" FontSize="10" FontFamily="Segoe Print" Background="Transparent" Content="Korisnicko ime" HorizontalAlignment="Left" Margin="89,78,0,0" VerticalAlignment="Top" Height="24" Width="91" RenderTransformOrigin="0.439,0.333"/>
+        <TextBox HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print" Height="24" Margin="185,78,0,0" TextWrapping="Wrap" Text="{Binding KorisnickoIme, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="101" RenderTransformOrigin="1.519,-0.062"/>
+        <TextBlock Text="{Binding ProveraK}" Foreground="Red" VerticalAlignment="Bottom" FontSize="5" FontWeight="Bold" Margin="185,0,188.4,303" Height="10"/>
+        <Label Content="Lozinka" Foreground="black" FontSize="10" FontFamily="Segoe Print" HorizontalAlignment="Left" Margin="89,125,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.533,-1.115" Width="66" Height="25"/>
+        <PasswordBox a:PasswordModel.EncryptedPassword="{Binding PasswordSecureString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  PasswordChanged="PasswordBox_PasswordChanged"  HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print"  Height="22" Margin="185,128,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0.818,-3.232"/>
+        <TextBlock Text="{Binding ProveraL}" Foreground="Red" VerticalAlignment="Bottom" FontSize="5" FontWeight="Bold" Margin="185,0,188.4,238" Height="15"/>
+        <Button FontSize="10" Content="Uloguj se" FontFamily="Segoe Print" BorderBrush="Transparent" Background="Transparent" Command="{Binding LogovanjeCommand}" IsDefault="True" HorizontalAlignment="Left" Margin="185,187,0,0" VerticalAlignment="Top" Width="101" Height="42" Click="Button_Click"/>
+        <Button FontSize="10"  Content="Registracija" FontFamily="Segoe Print" BorderBrush="Transparent" Background="Transparent" Command="{Binding RegistracijaCommand}" IsDefault="True" HorizontalAlignment="Left" Margin="24,348,0,0" VerticalAlignment="Top" Width="74" Height="42"/>
+        <Label Content="Jos uvek nemate nalog?" Foreground="black" FontSize="10" FontFamily="Segoe Print" HorizontalAlignment="Left" Margin="10,306,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.533,-1.115" Width="153" Height="42"/>
+        <Label Foreground="black" FontSize="16" FontFamily="Segoe Print MS" Background="Transparent" Content="&#x9;Welcome!" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="36" Width="223" RenderTransformOrigin="0.439,0.333"/>
+
+    </Grid>
+</Window>
