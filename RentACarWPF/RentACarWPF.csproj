@@ -344,9 +344,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\carlogo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\background.jpg" />
   </ItemGroup>
   <ItemGroup>
