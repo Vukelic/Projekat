@@ -45,6 +45,8 @@ namespace RentACarWPF.ViewModels
         public void onLogovanje(object parameter)
         {
                 String pass = new System.Net.NetworkCredential(string.Empty, PasswordSecureString).Password;
+                ProveraL = "";
+                ProveraK = "";
                 if (string.IsNullOrEmpty(KorisnickoIme))
                 { 
                     ProveraK = "Morate uneti korisnicko ime!";
@@ -56,15 +58,16 @@ namespace RentACarWPF.ViewModels
                 }
                 if (unitOfWork.Korisnici.Login(KorisnickoIme, pass))
                 {
-
-                    new StartView(KorisnickoIme).Show();
-                    this.Window.Close();
+                    
+                new StartView(KorisnickoIme).Show();
+               
+                this.Window.Close();
                 }        
                 else
                  {
-                  MessageBox.Show("Korisnicko ime ili lozinka je pogresno!");         
-                 }
-
+                
+                MessageBox.Show("Korisnicko ime ili lozinka je pogresno!");         
+                 }        
         }
 
         string proveraK;

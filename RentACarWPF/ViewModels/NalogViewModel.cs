@@ -55,10 +55,42 @@ namespace RentACarWPF.ViewModels
             this.Window = window;
         }
 
+        string proveraK;
+        public string ProveraK
+        {
+            get { return proveraK; }
+            set
+            {
+                proveraK = value;
+                OnPropertyChanged("ProveraK");
+            }
+        }
+
+        string proveraL;
+        public string ProveraL
+        {
+            get { return proveraL; }
+            set
+            {
+                proveraL = value;
+                OnPropertyChanged("ProveraL");
+            }
+        }
+
         public void onPromena(object parameter)
         {
             String pass = new System.Net.NetworkCredential(string.Empty, PasswordSecureString).Password;
             String pass2 = new System.Net.NetworkCredential(string.Empty, PasswordSecureString2).Password;
+            ProveraK = "";
+            ProveraL = "";
+            if (PasswordSecureString == null)
+            {
+                ProveraK = "Morate uneti staru lozinku!";
+            }
+            if (PasswordSecureString2 == null)
+            {
+                ProveraL = "Morate uneti novu lozinku!";
+            }
             if (unitOfWork.Korisnici.Login(KorisnickoIme, pass))
             {
                 Korisnik k = unitOfWork.Korisnici.ProveraPoImenu(KorisnickoIme);

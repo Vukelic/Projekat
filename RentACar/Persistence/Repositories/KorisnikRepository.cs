@@ -60,6 +60,11 @@ namespace RentACar.Persistence.Repositories
                     return true;
                 }
 
+                if(korisnickoIme == null)
+                {
+                    return true;
+                }
+
                 return false;
             }
         }

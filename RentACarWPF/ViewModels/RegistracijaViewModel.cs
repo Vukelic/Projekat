@@ -38,23 +38,52 @@ namespace RentACarWPF.ViewModels
             this.Window = window;
             RegistracijaCommand = new MyICommand(onRegistracija);
         }
+        string proveraK;
+        public string ProveraK
+        {
+            get { return proveraK; }
+            set
+            {
+                proveraK = value;
+                OnPropertyChanged("ProveraK");
+            }
+        }
 
+        string proveraL;
+        public string ProveraL
+        {
+            get { return proveraL; }
+            set
+            {
+                proveraL = value;
+                OnPropertyChanged("ProveraL");
+            }
+        }
         public void onRegistracija(object parameter)
         {
             Korisnik k = new Korisnik();
             k.KorisnickoIme = KorisnickoIme;
             k.Lozinka = new System.Net.NetworkCredential(string.Empty, PasswordSecureString).Password;
 
+            ProveraK = "";
+            ProveraL = "";
+            if (string.IsNullOrEmpty(KorisnickoIme))
+            {
+                ProveraK = "Morate uneti korisnicko ime!";
+            }
+            if (PasswordSecureString == null)
+            {
+                ProveraL = "Morate uneti lozinku!";
+            }
             if (unitOfWork.Korisnici.ProveraKorisnickogImena(KorisnickoIme))
             {
-                MessageBox.Show("Korisnicko ime vec postoji!");
-
+                MessageBox.Show("Pogresno korisnicko ime!");
             }
             else
             {
                 unitOfWork.Korisnici.Add(k);
                 unitOfWork.Korisnici.SaveChanges();
-                KorisnickoIme = String.Empty;
+               
                 this.Window.Close();
             }
 

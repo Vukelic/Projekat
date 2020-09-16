@@ -26,31 +26,31 @@
         <Image Margin="0,2,9.8,0.2"  Source="/Images/rent_background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="5" Grid.RowSpan="5" />
 
         <Image Source="/Images/logo.jpg" Grid.ColumnSpan="2" Margin="0,0,130.8,145.4" Grid.RowSpan="2"></Image>
-        <Button  Content="Filijale"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Column="3" Grid.Row="2" Margin="23.12,76.6,32.96,19.8" Cursor="Hand"
+        <Button  Content="Filijale"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Column="2" Grid.Row="3" Margin="22.52,83.2,33.88,12.8" Cursor="Hand"
                 Command="{Binding ViewFilijaleCommand}"/>
         <Button  Content="Nalog"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Column="4" Margin="33.04,10,22.36,36" Cursor="Hand"
                 Command="{Binding ViewNalogCommand}"/>
-        <Button Content="Vozila"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Row="3" Margin="20,19.2,30.4,81.8" Cursor="Hand"
-                 Command="{Binding ViewVozilaCommand}"/>
-        <Button Content="Rezervacije"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Column="1" Grid.Row="3" Margin="22.6,19.2,29.48,81.8" Cursor="Hand"
+        <Button Content="Vozila"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Row="3" Margin="22.6,26.2,27.48,74.8" Cursor="Hand"
+                 Command="{Binding ViewVozilaCommand}" Grid.Column="1"/>
+        <Button Content="Rezervacije"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Column="2" Grid.Row="3" Margin="18.52,19.2,33.88,81.8" Cursor="Hand"
                  Command="{Binding ViewRezervacijeCommand}"/>
-        <Button Content="Klijenti" FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="4" Margin="23.04,76.6,32.36,19.8" Cursor="Hand"
-                 Command="{Binding ViewKlijentiCommand}" Grid.Row="2"/>
-        <Button  Content="Ocene"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="2" Grid.Row="3" Margin="22.2,19.2,26.2,81.8" Cursor="Hand"
+        <Button Content="Klijenti" FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="4" Margin="45.04,10,10.36,86.4" Cursor="Hand"
+                 Command="{Binding ViewKlijentiCommand}" Grid.Row="1"/>
+        <Button  Content="Ocene"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="3" Grid.Row="3" Margin="21.12,19.2,26.96,81.8" Cursor="Hand"
                  Command="{Binding ViewOceneCommand}"/>
         <Button Content="Gradovi"  FontSize="10" FontFamily="Segoe Print" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="0" Grid.Row="3" Margin="20,83.2,30.4,24.8" Cursor="Hand"
                  Command="{Binding ViewGradoviCommand}"/>
-        <Button Content="Servisi" FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="3" Grid.Row="3" Margin="22.8,19.2,35.2,81.8" Cursor="Hand"
+        <Button Content="Servisi" FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="3" Grid.Row="3" Margin="29.12,88.2,27.96,12.8" Cursor="Hand"
                  Command="{Binding ViewServisiCommand}"/>
-        <Button Content="Zaposleni"  FontSize="10" FontFamily="Segoe Print" BorderBrush="Transparent" Background="Transparent" FontWeight="Bold" Grid.Column="2" Grid.Row="3" Margin="22.2,83.2,26.2,24.8" Cursor="Hand"
+        <Button Content="Zaposleni"  FontSize="10" FontFamily="Segoe Print" BorderBrush="Transparent" Background="Transparent" FontWeight="Bold" Grid.Column="4" Grid.Row="1" Margin="33.04,69,15.36,39.4" Cursor="Hand"
                  Command="{Binding ViewZaposleniCommand}"/>
-        <Button  Content="Osiguranja"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="4" Grid.Row="3" Margin="22.8,19.2,33.2,81.8" Cursor="Hand"
+        <Button  Content="Osiguranja"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="1" Grid.Row="3" Margin="22.6,80.2,32.48,20.8" Cursor="Hand"
                  Command="{Binding ViewOsiguranjaCommand}"/>
-        <Button Content="Agenti"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Column="4" Grid.Row="3" Margin="22.8,83.2,32.2,24.8" Cursor="Hand"
+        <Button Content="Agenti"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Column="4" Grid.Row="2" Margin="33.04,84.6,10.36,23.8" Cursor="Hand"
                  Command="{Binding ViewAgentiCommand}" RenderTransformOrigin="0.491,2.734"/>
-        <Button  Content="Serviseri" FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="1" Grid.Row="3" Margin="22.6,83.2,29.8,24.8" Cursor="Hand"
+        <Button  Content="Serviseri" FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="4" Grid.Row="2" Margin="33.04,26.6,10.36,80.8" Cursor="Hand"
                  Command="{Binding ViewServiseriCommand}"/>
-        <Button Content="Funkcije"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="3" Grid.Row="3" Margin="22.8,83.2,35.2,24.8" Cursor="Hand"
+        <Button Content="Funkcije"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="4" Grid.Row="3" Margin="45.04,97.2,10.36,9.8" Cursor="Hand"
                  Command="{Binding ViewFunkcijeCommand}"/>
 
     </Grid>

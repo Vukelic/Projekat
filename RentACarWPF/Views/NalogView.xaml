@@ -10,12 +10,13 @@
     <Grid>
 
         <Image Margin="0,2,0,0"  Source="/Images/background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="4" />
-       
-        <Label Content="Stara Lozinka" FontSize="10" FontFamily="Segoe Print" HorizontalAlignment="Left" Margin="96,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.533,-1.115" Width="66" Height="26"/>
-        <PasswordBox a:PasswordModel.EncryptedPassword="{Binding PasswordSecureString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  PasswordChanged="PasswordBox_PasswordChanged"  HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print"  Height="22" Margin="187,124,0,0" VerticalAlignment="Top" Width="120"/>
 
-        <Label Content="Nova Lozinka" FontSize="10" FontFamily="Segoe Print" HorizontalAlignment="Left" Margin="96,167,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.533,-1.115" Width="66" Height="26"/>
-        <PasswordBox a:PasswordModel.EncryptedPassword="{Binding PasswordSecureString2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  PasswordChanged="PasswordBox_PasswordChanged"  HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print"  Height="22" Margin="187,167,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Stara Lozinka" FontSize="10" FontFamily="Segoe Print" HorizontalAlignment="Left" Margin="96,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.533,-1.115" Width="86" Height="26"/>
+        <PasswordBox a:PasswordModel.EncryptedPassword="{Binding PasswordSecureString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  PasswordChanged="PasswordBox_PasswordChanged"  HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print"  Height="22" Margin="187,124,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Text="{Binding ProveraK}" Foreground="Red" VerticalAlignment="Bottom" FontSize="8" FontWeight="Bold" Margin="187,0,428.6,248" Height="21"/>
+        <Label Content="Nova Lozinka" FontSize="10" FontFamily="Segoe Print" HorizontalAlignment="Left" Margin="96,167,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.533,-1.115" Width="86" Height="26"/>
+        <PasswordBox a:PasswordModel.EncryptedPassword="{Binding PasswordSecureString2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  PasswordChanged="PasswordBox_PasswordChanged"  HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print"  Height="22" Margin="187,172,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Text="{Binding ProveraL}" Foreground="Red" VerticalAlignment="Bottom" FontSize="8" FontWeight="Bold" Margin="187,0,428.6,200" Height="21"/>
         <Button FontSize="10" FontFamily="Segoe Print" Content="Sacuvaj" BorderBrush="Transparent" Background="Transparent" Command="{Binding PromenaLozinkeCommand}" IsDefault="True" HorizontalAlignment="Left" Margin="187,213,0,0" VerticalAlignment="Top" Width="120" Height="34"/>
     </Grid>
 </Window>
