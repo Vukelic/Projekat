@@ -6,7 +6,7 @@
         xmlns:a="clr-namespace:RentACarWPF.Models"
         xmlns:local="clr-namespace:RentACarWPF.Views"
         mc:Ignorable="d"
-        Title="NalogView" Height="450" Width="800">
+        Title="NalogView" Height="450" Width="480.8" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/RentACarWPF;component/Images/logo.jpg">
     <Grid>
 
         <Image Margin="0,2,0,0"  Source="/Images/background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="4" />

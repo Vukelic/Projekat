@@ -12,6 +12,7 @@ namespace RentACarWPF.ViewModels
     {
         public Window Window { get; set; }
         UnitOfWork unitOfWork = new UnitOfWork(new ModelContainer());
+        ModelContainer model = new ModelContainer();
 
         AppGrad g = new AppGrad();
 
@@ -118,9 +119,10 @@ namespace RentACarWPF.ViewModels
                      grad.PostanskiBroj = G.PostanskiBroj;
                      grad.Drzava = G.Drzava;
                      grad.Filijale = new List<Filijala>();
-                     unitOfWork.Gradovi.Add(grad);
+                     //unitOfWork.Gradovi.Add(grad);
+                    var us = model.Procedure1(grad.PostanskiBroj, grad.Drzava, grad.Naziv);
 
-                     if(unitOfWork.Complete() > 0)
+                     if(us > 0)
                      {
                          Uspesno = "Uspesno ste dodali grad u bazu!";
                          G = new AppGrad();

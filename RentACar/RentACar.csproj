@@ -163,12 +163,13 @@
       <LastGenOutput>Model.cs</LastGenOutput>
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
-    <Content Include="Transact\Programmability\Functions\AvgValue.sql" />
     <Content Include="Transact\Programmability\Triggers\ServisTrigger.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Transact\Programmability\Functions\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

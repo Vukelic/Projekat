@@ -17,8 +17,8 @@ C:\Users\HP\Desktop\BP2Projekat\RentACar\bin\Debug\EntityFramework.dll
 C:\Users\HP\Desktop\BP2Projekat\RentACar\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\HP\Desktop\BP2Projekat\RentACar\bin\Debug\EntityFramework.xml
 C:\Users\HP\Desktop\BP2Projekat\RentACar\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\HP\Desktop\BP2Projekat\RentACar\obj\Debug\RentACar.csprojAssemblyReference.cache
 C:\Users\HP\Desktop\BP2Projekat\RentACar\obj\Debug\RentACar.csproj.CoreCompileInputs.cache
 C:\Users\HP\Desktop\BP2Projekat\RentACar\obj\Debug\RentACar.csproj.CopyComplete
 C:\Users\HP\Desktop\BP2Projekat\RentACar\obj\Debug\RentACar.dll
 C:\Users\HP\Desktop\BP2Projekat\RentACar\obj\Debug\RentACar.pdb
+C:\Users\HP\Desktop\BP2Projekat\RentACar\obj\Debug\RentACar.csprojAssemblyReference.cache

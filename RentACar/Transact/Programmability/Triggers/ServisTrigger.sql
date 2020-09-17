@@ -1,22 +1,21 @@
-﻿CREATE TRIGGER [ServisTrigger]
-ON [dbo].servis
+﻿CREATE TRIGGER [ServisTrigger6]
+ON [dbo].[Servisi]
 
-AFTER INSERT
+INSTEAD OF INSERT
 AS
 
 BEGIN
 	
-	DECLARE @serviserJmbg VARCHAR;
-	DECLARE @servisId INT;
-	DECLARE @cenaServisa BIGINT;
+	DECLARE @Id1 INT, @Cena1 BIGINT, @Komentar1 nvarchar(MAX), @Datum1 dateTime, @VoziloId1 INT, @ServiserJmbg1 nvarchar(MAX);
 
-	SELECT @serviserJmbg = i.serviser_jmbg from inserted i;
-	SELECT @servisId = i.servis_servisId from inserted i;
-	SELECT @cenaServisa = i.servis_cena FROM inserted i;
+	SELECT @Id1=Id, @Cena1=Cena, @Komentar1=Komentar, @Datum1=Datum, @VoziloId1=VoziloId, @ServiserJmbg1=ServiserJmbg from inserted;
 
-		if (@serviserJmbg = '02118984512' )
+		if (@Cena1 < 2 )
 			BEGIN
-				SELECT @cenaServisa = @cenaServisa * 3;
-				UPDATE servis SET cenaServisa = @cenaServisa WHERE id = @servisId
+				INSERT INTO Servisi(Id, Cena, Komentar, Datum, VoziloId, ServiserJmbg) values (@Id1, 5, @Komentar1, @Datum1, @VoziloId1, @ServiserJmbg1)
+			END
+	    else
+		BEGIN
+				INSERT INTO Servisi(Id, Cena, Komentar, Datum, VoziloId, ServiserJmbg) values (@Id1, @Cena1, @Komentar1, @Datum1, @VoziloId1, @ServiserJmbg1)
 			END
 END

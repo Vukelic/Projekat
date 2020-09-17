@@ -12,6 +12,8 @@ namespace RentACar
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ModelContainer : DbContext
     {
@@ -35,5 +37,49 @@ namespace RentACar
         public virtual DbSet<Osiguranje> Osiguranja { get; set; }
         public virtual DbSet<Zaposleni> Zaposleni { get; set; }
         public virtual DbSet<Korisnik> Korisniks { get; set; }
+    
+        public virtual int Procedure1(Nullable<int> postanskiBroj1, string drzava1, string naziv1)
+        {
+            var postanskiBroj1Parameter = postanskiBroj1.HasValue ?
+                new ObjectParameter("PostanskiBroj1", postanskiBroj1) :
+                new ObjectParameter("PostanskiBroj1", typeof(int));
+    
+            var drzava1Parameter = drzava1 != null ?
+                new ObjectParameter("Drzava1", drzava1) :
+                new ObjectParameter("Drzava1", typeof(string));
+    
+            var naziv1Parameter = naziv1 != null ?
+                new ObjectParameter("Naziv1", naziv1) :
+                new ObjectParameter("Naziv1", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Procedure1", postanskiBroj1Parameter, drzava1Parameter, naziv1Parameter);
+        }
+    
+        public virtual int Procedure2(Nullable<int> postanskiBroj1, string drzava1, string naziv1)
+        {
+            var postanskiBroj1Parameter = postanskiBroj1.HasValue ?
+                new ObjectParameter("PostanskiBroj1", postanskiBroj1) :
+                new ObjectParameter("PostanskiBroj1", typeof(int));
+    
+            var drzava1Parameter = drzava1 != null ?
+                new ObjectParameter("Drzava1", drzava1) :
+                new ObjectParameter("Drzava1", typeof(string));
+    
+            var naziv1Parameter = naziv1 != null ?
+                new ObjectParameter("Naziv1", naziv1) :
+                new ObjectParameter("Naziv1", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Procedure2", postanskiBroj1Parameter, drzava1Parameter, naziv1Parameter);
+        }
+    
+        [DbFunction("ModelContainer", "Funkcija")]
+        public virtual IQueryable<Nullable<int>> Funkcija(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<int>>("[ModelContainer].[Funkcija](@Id)", idParameter);
+        }
     }
 }

@@ -1,79 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="ModelStoreContainer">
-    <EntitySet Name="Gradovi" EntityType="Model.Store.Gradovi" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Filijale" EntityType="Model.Store.Filijale" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Vozila" EntityType="Model.Store.Vozila" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Ocene" EntityType="Model.Store.Ocene" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Servisi" EntityType="Model.Store.Servisi" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Klijenti" EntityType="Model.Store.Klijenti" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Rezervacije" EntityType="Model.Store.Rezervacije" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Osiguranja" EntityType="Model.Store.Osiguranja" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Zaposleni" EntityType="Model.Store.Zaposleni" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Korisniks" EntityType="Model.Store.Korisniks" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Zaposleni_Serviser" EntityType="Model.Store.Zaposleni_Serviser" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Zaposleni_Agent" EntityType="Model.Store.Zaposleni_Agent" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="GradFilijala" Association="Model.Store.GradFilijala">
-      <End Role="Grad" EntitySet="Gradovi" />
-      <End Role="Filijala" EntitySet="Filijale" />
-    </AssociationSet>
-    <AssociationSet Name="FilijalaVozilo" Association="Model.Store.FilijalaVozilo">
-      <End Role="Filijala" EntitySet="Filijale" />
-      <End Role="Vozilo" EntitySet="Vozila" />
-    </AssociationSet>
-    <AssociationSet Name="VoziloOcena" Association="Model.Store.VoziloOcena">
-      <End Role="Vozilo" EntitySet="Vozila" />
-      <End Role="Ocena" EntitySet="Ocene" />
-    </AssociationSet>
-    <AssociationSet Name="VoziloServis" Association="Model.Store.VoziloServis">
-      <End Role="Vozilo" EntitySet="Vozila" />
-      <End Role="Servis" EntitySet="Servisi" />
-    </AssociationSet>
-    <AssociationSet Name="VoziloRezervacija" Association="Model.Store.VoziloRezervacija">
-      <End Role="Vozilo" EntitySet="Vozila" />
-      <End Role="Rezervacija" EntitySet="Rezervacije" />
-    </AssociationSet>
-    <AssociationSet Name="KlijentOcena" Association="Model.Store.KlijentOcena">
-      <End Role="Klijent" EntitySet="Klijenti" />
-      <End Role="Ocena" EntitySet="Ocene" />
-    </AssociationSet>
-    <AssociationSet Name="KlijentRezervacija" Association="Model.Store.KlijentRezervacija">
-      <End Role="Klijent" EntitySet="Klijenti" />
-      <End Role="Rezervacija" EntitySet="Rezervacije" />
-    </AssociationSet>
-    <AssociationSet Name="FilijalaZaposleni" Association="Model.Store.FilijalaZaposleni">
-      <End Role="Filijala" EntitySet="Filijale" />
-      <End Role="Zaposleni" EntitySet="Zaposleni" />
-    </AssociationSet>
-    <AssociationSet Name="ServisServiser" Association="Model.Store.ServisServiser">
-      <End Role="Servis" EntitySet="Servisi" />
-      <End Role="Serviser" EntitySet="Zaposleni_Serviser" />
-    </AssociationSet>
-    <AssociationSet Name="OsiguranjeRezervacija" Association="Model.Store.OsiguranjeRezervacija">
-      <End Role="Osiguranje" EntitySet="Osiguranja" />
-      <End Role="Rezervacija" EntitySet="Rezervacije" />
-    </AssociationSet>
-    <AssociationSet Name="AgentRezervacija" Association="Model.Store.AgentRezervacija">
-      <End Role="Agent" EntitySet="Zaposleni_Agent" />
-      <End Role="Rezervacija" EntitySet="Rezervacije" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Serviser_inherits_Zaposleni" Association="Model.Store.FK_Serviser_inherits_Zaposleni">
-      <End Role="Zaposleni" EntitySet="Zaposleni" />
-      <End Role="Serviser" EntitySet="Zaposleni_Serviser" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Agent_inherits_Zaposleni" Association="Model.Store.FK_Agent_inherits_Zaposleni">
-      <End Role="Zaposleni" EntitySet="Zaposleni" />
-      <End Role="Agent" EntitySet="Zaposleni_Agent" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Gradovi">
-    <Key>
-      <PropertyRef Name="PostanskiBroj" />
-    </Key>
-    <Property Name="PostanskiBroj" Type="int" Nullable="false" />
-    <Property Name="Drzava" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="Naziv" Type="nvarchar" Nullable="false" MaxLength="50" />
-  </EntityType>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Filijale">
     <Key>
       <PropertyRef Name="Id" />
@@ -83,6 +9,71 @@
     <Property Name="BrojTelefona" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Adresa" Type="nvarchar(max)" Nullable="false" />
     <Property Name="GradPostanskiBroj" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gradovi">
+    <Key>
+      <PropertyRef Name="PostanskiBroj" />
+    </Key>
+    <Property Name="PostanskiBroj" Type="int" Nullable="false" />
+    <Property Name="Drzava" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Klijenti">
+    <Key>
+      <PropertyRef Name="Jmbg" />
+    </Key>
+    <Property Name="Jmbg" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Korisniks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KorisnickoIme" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Lozinka" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ocene">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="VoziloId" Type="int" Nullable="false" />
+    <Property Name="Vrednost" Type="int" Nullable="false" />
+    <Property Name="KlijentJmbg" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Osiguranja">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Broj_polise" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tip_osiguranja" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rezervacije">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Datum_rezervacije" Type="datetime" Nullable="false" />
+    <Property Name="Datum_preuzimanja" Type="datetime" Nullable="false" />
+    <Property Name="Datum_vracanja" Type="datetime" Nullable="false" />
+    <Property Name="VoziloId" Type="int" Nullable="false" />
+    <Property Name="KlijentJmbg" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="OsiguranjeId" Type="int" Nullable="false" />
+    <Property Name="AgentJmbg" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Servisi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Cena" Type="int" Nullable="false" />
+    <Property Name="Komentar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Datum" Type="datetime" Nullable="false" />
+    <Property Name="VoziloId" Type="int" Nullable="false" />
+    <Property Name="ServiserJmbg" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="Vozila">
     <Key>
@@ -94,55 +85,6 @@
     <Property Name="FilijalaId" Type="int" Nullable="false" />
     <Property Name="Tip_vozila" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Ocene">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="VoziloId" Type="int" Nullable="false" />
-    <Property Name="Vrednost" Type="int" Nullable="false" />
-    <Property Name="KlijentJmbg" Type="nvarchar" Nullable="false" MaxLength="20" />
-  </EntityType>
-  <EntityType Name="Servisi">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Cena" Type="int" Nullable="false" />
-    <Property Name="Komentar" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Datum" Type="datetime" Nullable="false" />
-    <Property Name="VoziloId" Type="int" Nullable="false" />
-    <Property Name="ServiserJmbg" Type="nvarchar" Nullable="false" MaxLength="20" />
-  </EntityType>
-  <EntityType Name="Klijenti">
-    <Key>
-      <PropertyRef Name="Jmbg" />
-    </Key>
-    <Property Name="Jmbg" Type="nvarchar" Nullable="false" MaxLength="20" />
-    <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Rezervacije">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Datum_rezervacije" Type="datetime" Nullable="false" />
-    <Property Name="Datum_preuzimanja" Type="datetime" Nullable="false" />
-    <Property Name="Datum_vracanja" Type="datetime" Nullable="false" />
-    <Property Name="VoziloId" Type="int" Nullable="false" />
-    <Property Name="KlijentJmbg" Type="nvarchar" Nullable="false" MaxLength="20" />
-    <Property Name="OsiguranjeId" Type="int" Nullable="false" />
-    <Property Name="AgentJmbg" Type="nvarchar" Nullable="false" MaxLength="20" />
-  </EntityType>
-  <EntityType Name="Osiguranja">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Broj_polise" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Tip_osiguranja" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="Zaposleni">
     <Key>
       <PropertyRef Name="Jmbg" />
@@ -150,16 +92,15 @@
     <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Broj_ugovora" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Jmbg" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Jmbg" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="FilijalaId" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Korisniks">
+  <EntityType Name="Zaposleni_Agent">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="Jmbg" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="KorisnickoIme" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Lozinka" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Broj_sertifikata" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Jmbg" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="Zaposleni_Serviser">
     <Key>
@@ -167,104 +108,51 @@
     </Key>
     <Property Name="Broj_licence" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Tip_Struke" Type="int" Nullable="false" />
-    <Property Name="Jmbg" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Jmbg" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
-  <EntityType Name="Zaposleni_Agent">
-    <Key>
-      <PropertyRef Name="Jmbg" />
-    </Key>
-    <Property Name="Broj_sertifikata" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Jmbg" Type="nvarchar" Nullable="false" MaxLength="20" />
-  </EntityType>
-  <Association Name="GradFilijala">
-    <End Role="Grad" Type="Model.Store.Gradovi" Multiplicity="1" />
-    <End Role="Filijala" Type="Model.Store.Filijale" Multiplicity="*" />
+  <Association Name="FK_Agent_inherits_Zaposleni">
+    <End Role="Zaposleni" Type="Self.Zaposleni" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Zaposleni_Agent" Type="Self.Zaposleni_Agent" Multiplicity="0..1" />
     <ReferentialConstraint>
-      <Principal Role="Grad">
-        <PropertyRef Name="PostanskiBroj" />
+      <Principal Role="Zaposleni">
+        <PropertyRef Name="Jmbg" />
       </Principal>
-      <Dependent Role="Filijala">
-        <PropertyRef Name="GradPostanskiBroj" />
+      <Dependent Role="Zaposleni_Agent">
+        <PropertyRef Name="Jmbg" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FilijalaVozilo">
-    <End Role="Filijala" Type="Model.Store.Filijale" Multiplicity="1" />
-    <End Role="Vozilo" Type="Model.Store.Vozila" Multiplicity="*" />
+  <Association Name="FK_AgentRezervacija">
+    <End Role="Zaposleni_Agent" Type="Self.Zaposleni_Agent" Multiplicity="1" />
+    <End Role="Rezervacije" Type="Self.Rezervacije" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Filijala">
+      <Principal Role="Zaposleni_Agent">
+        <PropertyRef Name="Jmbg" />
+      </Principal>
+      <Dependent Role="Rezervacije">
+        <PropertyRef Name="AgentJmbg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FilijalaVozilo">
+    <End Role="Filijale" Type="Self.Filijale" Multiplicity="1" />
+    <End Role="Vozila" Type="Self.Vozila" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filijale">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Vozilo">
+      <Dependent Role="Vozila">
         <PropertyRef Name="FilijalaId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="VoziloOcena">
-    <End Role="Vozilo" Type="Model.Store.Vozila" Multiplicity="1" />
-    <End Role="Ocena" Type="Model.Store.Ocene" Multiplicity="*" />
+  <Association Name="FK_FilijalaZaposleni">
+    <End Role="Filijale" Type="Self.Filijale" Multiplicity="1" />
+    <End Role="Zaposleni" Type="Self.Zaposleni" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Vozilo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Ocena">
-        <PropertyRef Name="VoziloId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="VoziloServis">
-    <End Role="Vozilo" Type="Model.Store.Vozila" Multiplicity="1" />
-    <End Role="Servis" Type="Model.Store.Servisi" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Vozilo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Servis">
-        <PropertyRef Name="VoziloId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="VoziloRezervacija">
-    <End Role="Vozilo" Type="Model.Store.Vozila" Multiplicity="1" />
-    <End Role="Rezervacija" Type="Model.Store.Rezervacije" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Vozilo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Rezervacija">
-        <PropertyRef Name="VoziloId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="KlijentOcena">
-    <End Role="Klijent" Type="Model.Store.Klijenti" Multiplicity="1" />
-    <End Role="Ocena" Type="Model.Store.Ocene" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Klijent">
-        <PropertyRef Name="Jmbg" />
-      </Principal>
-      <Dependent Role="Ocena">
-        <PropertyRef Name="KlijentJmbg" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="KlijentRezervacija">
-    <End Role="Klijent" Type="Model.Store.Klijenti" Multiplicity="1" />
-    <End Role="Rezervacija" Type="Model.Store.Rezervacije" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Klijent">
-        <PropertyRef Name="Jmbg" />
-      </Principal>
-      <Dependent Role="Rezervacija">
-        <PropertyRef Name="KlijentJmbg" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FilijalaZaposleni">
-    <End Role="Filijala" Type="Model.Store.Filijale" Multiplicity="1" />
-    <End Role="Zaposleni" Type="Model.Store.Zaposleni" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Filijala">
+      <Principal Role="Filijale">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Zaposleni">
@@ -272,68 +160,200 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ServisServiser">
-    <End Role="Servis" Type="Model.Store.Servisi" Multiplicity="*" />
-    <End Role="Serviser" Type="Model.Store.Zaposleni_Serviser" Multiplicity="1" />
+  <Association Name="FK_GradFilijala">
+    <End Role="Gradovi" Type="Self.Gradovi" Multiplicity="1" />
+    <End Role="Filijale" Type="Self.Filijale" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Serviser">
-        <PropertyRef Name="Jmbg" />
+      <Principal Role="Gradovi">
+        <PropertyRef Name="PostanskiBroj" />
       </Principal>
-      <Dependent Role="Servis">
-        <PropertyRef Name="ServiserJmbg" />
+      <Dependent Role="Filijale">
+        <PropertyRef Name="GradPostanskiBroj" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="OsiguranjeRezervacija">
-    <End Role="Osiguranje" Type="Model.Store.Osiguranja" Multiplicity="1" />
-    <End Role="Rezervacija" Type="Model.Store.Rezervacije" Multiplicity="*" />
+  <Association Name="FK_KlijentOcena">
+    <End Role="Klijenti" Type="Self.Klijenti" Multiplicity="1" />
+    <End Role="Ocene" Type="Self.Ocene" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Osiguranje">
+      <Principal Role="Klijenti">
+        <PropertyRef Name="Jmbg" />
+      </Principal>
+      <Dependent Role="Ocene">
+        <PropertyRef Name="KlijentJmbg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KlijentRezervacija">
+    <End Role="Klijenti" Type="Self.Klijenti" Multiplicity="1" />
+    <End Role="Rezervacije" Type="Self.Rezervacije" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klijenti">
+        <PropertyRef Name="Jmbg" />
+      </Principal>
+      <Dependent Role="Rezervacije">
+        <PropertyRef Name="KlijentJmbg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OsiguranjeRezervacija">
+    <End Role="Osiguranja" Type="Self.Osiguranja" Multiplicity="1" />
+    <End Role="Rezervacije" Type="Self.Rezervacije" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Osiguranja">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Rezervacija">
+      <Dependent Role="Rezervacije">
         <PropertyRef Name="OsiguranjeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="AgentRezervacija">
-    <End Role="Agent" Type="Model.Store.Zaposleni_Agent" Multiplicity="1" />
-    <End Role="Rezervacija" Type="Model.Store.Rezervacije" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Agent">
-        <PropertyRef Name="Jmbg" />
-      </Principal>
-      <Dependent Role="Rezervacija">
-        <PropertyRef Name="AgentJmbg" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Serviser_inherits_Zaposleni">
-    <End Role="Zaposleni" Type="Model.Store.Zaposleni" Multiplicity="1">
+    <End Role="Zaposleni" Type="Self.Zaposleni" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="Serviser" Type="Model.Store.Zaposleni_Serviser" Multiplicity="0..1" />
+    <End Role="Zaposleni_Serviser" Type="Self.Zaposleni_Serviser" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Zaposleni">
         <PropertyRef Name="Jmbg" />
       </Principal>
-      <Dependent Role="Serviser">
+      <Dependent Role="Zaposleni_Serviser">
         <PropertyRef Name="Jmbg" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Agent_inherits_Zaposleni">
-    <End Role="Zaposleni" Type="Model.Store.Zaposleni" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Agent" Type="Model.Store.Zaposleni_Agent" Multiplicity="0..1" />
+  <Association Name="FK_ServisServiser">
+    <End Role="Zaposleni_Serviser" Type="Self.Zaposleni_Serviser" Multiplicity="1" />
+    <End Role="Servisi" Type="Self.Servisi" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Zaposleni">
+      <Principal Role="Zaposleni_Serviser">
         <PropertyRef Name="Jmbg" />
       </Principal>
-      <Dependent Role="Agent">
-        <PropertyRef Name="Jmbg" />
+      <Dependent Role="Servisi">
+        <PropertyRef Name="ServiserJmbg" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_VoziloOcena">
+    <End Role="Vozila" Type="Self.Vozila" Multiplicity="1" />
+    <End Role="Ocene" Type="Self.Ocene" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vozila">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ocene">
+        <PropertyRef Name="VoziloId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VoziloRezervacija">
+    <End Role="Vozila" Type="Self.Vozila" Multiplicity="1" />
+    <End Role="Rezervacije" Type="Self.Rezervacije" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vozila">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rezervacije">
+        <PropertyRef Name="VoziloId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VoziloServis">
+    <End Role="Vozila" Type="Self.Vozila" Multiplicity="1" />
+    <End Role="Servisi" Type="Self.Servisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vozila">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Servisi">
+        <PropertyRef Name="VoziloId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Funkcija" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Id" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ocena" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="Procedure1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PostanskiBroj1" Type="int" Mode="In" />
+    <Parameter Name="Drzava1" Type="nvarchar" Mode="In" />
+    <Parameter Name="Naziv1" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="Procedure2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PostanskiBroj1" Type="int" Mode="In" />
+    <Parameter Name="Drzava1" Type="nvarchar" Mode="In" />
+    <Parameter Name="Naziv1" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Filijale" EntityType="Self.Filijale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gradovi" EntityType="Self.Gradovi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Klijenti" EntityType="Self.Klijenti" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Korisniks" EntityType="Self.Korisniks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ocene" EntityType="Self.Ocene" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Osiguranja" EntityType="Self.Osiguranja" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rezervacije" EntityType="Self.Rezervacije" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Servisi" EntityType="Self.Servisi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vozila" EntityType="Self.Vozila" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zaposleni" EntityType="Self.Zaposleni" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zaposleni_Agent" EntityType="Self.Zaposleni_Agent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zaposleni_Serviser" EntityType="Self.Zaposleni_Serviser" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Agent_inherits_Zaposleni" Association="Self.FK_Agent_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposleni" />
+      <End Role="Zaposleni_Agent" EntitySet="Zaposleni_Agent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AgentRezervacija" Association="Self.FK_AgentRezervacija">
+      <End Role="Zaposleni_Agent" EntitySet="Zaposleni_Agent" />
+      <End Role="Rezervacije" EntitySet="Rezervacije" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FilijalaVozilo" Association="Self.FK_FilijalaVozilo">
+      <End Role="Filijale" EntitySet="Filijale" />
+      <End Role="Vozila" EntitySet="Vozila" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FilijalaZaposleni" Association="Self.FK_FilijalaZaposleni">
+      <End Role="Filijale" EntitySet="Filijale" />
+      <End Role="Zaposleni" EntitySet="Zaposleni" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GradFilijala" Association="Self.FK_GradFilijala">
+      <End Role="Gradovi" EntitySet="Gradovi" />
+      <End Role="Filijale" EntitySet="Filijale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KlijentOcena" Association="Self.FK_KlijentOcena">
+      <End Role="Klijenti" EntitySet="Klijenti" />
+      <End Role="Ocene" EntitySet="Ocene" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KlijentRezervacija" Association="Self.FK_KlijentRezervacija">
+      <End Role="Klijenti" EntitySet="Klijenti" />
+      <End Role="Rezervacije" EntitySet="Rezervacije" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OsiguranjeRezervacija" Association="Self.FK_OsiguranjeRezervacija">
+      <End Role="Osiguranja" EntitySet="Osiguranja" />
+      <End Role="Rezervacije" EntitySet="Rezervacije" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Serviser_inherits_Zaposleni" Association="Self.FK_Serviser_inherits_Zaposleni">
+      <End Role="Zaposleni" EntitySet="Zaposleni" />
+      <End Role="Zaposleni_Serviser" EntitySet="Zaposleni_Serviser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServisServiser" Association="Self.FK_ServisServiser">
+      <End Role="Zaposleni_Serviser" EntitySet="Zaposleni_Serviser" />
+      <End Role="Servisi" EntitySet="Servisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VoziloOcena" Association="Self.FK_VoziloOcena">
+      <End Role="Vozila" EntitySet="Vozila" />
+      <End Role="Ocene" EntitySet="Ocene" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VoziloRezervacija" Association="Self.FK_VoziloRezervacija">
+      <End Role="Vozila" EntitySet="Vozila" />
+      <End Role="Rezervacije" EntitySet="Rezervacije" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VoziloServis" Association="Self.FK_VoziloServis">
+      <End Role="Vozila" EntitySet="Vozila" />
+      <End Role="Servisi" EntitySet="Servisi" />
+    </AssociationSet>
+  </EntityContainer>
 </Schema>

@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentACarWPF.Views"
         mc:Ignorable="d"
-        Title="FunkcijeView" Height="450" Width="800">
+        Title="FunkcijeView" Height="450" Width="714.123"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/RentACarWPF;component/Images/logo.jpg">
     <Grid>
-        
+        <Image Margin="0,2,-6.4,0"  Source="/Images/all_background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" />
+        <TextBlock FontFamily="Segoe Print MS" FontSize="14" HorizontalAlignment="Left" Height="79" Margin="10,63,0,0" TextWrapping="Wrap" Text="Izaberite za koje vozilo zelite da proverite prosecnu ocenu" VerticalAlignment="Top" Width="175" RenderTransformOrigin="0.501,0.236"/>
+        <ComboBox  FontFamily="Segoe Print MS" FontWeight="Bold"  Width="200"  IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Vozila}" SelectedItem="{Binding SelektovanoVozilo}" Height="50" Margin="207,63,0,307" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" RenderTransformOrigin="1.48,-0.848">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding Path="Marka"/>
+                                <Binding Path="Model"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Text="{Binding VoziloError}" Foreground="Red" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold" Height="41" Margin="211,0,307,245" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.1"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <Button FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Cursor="Hand" Content="Prikazi" Command="{Binding PrikaziOcenuCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" Width="200" Height="60" Margin="207,193,301,167"/>
+        <TextBlock  FontFamily="Segoe Print MS"  Text="{Binding ProsecnaOcena}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Height="78" Margin="207,253,301,89"  Width="200">
+        </TextBlock>
+        <TextBlock FontFamily="Segoe Print MS" FontSize="14" HorizontalAlignment="Left" Height="79" Margin="10,258,0,0" TextWrapping="Wrap" Text="Prosecna ocena je:" VerticalAlignment="Top" Width="175" RenderTransformOrigin="0.501,0.236"/>
     </Grid>
 </Window>
