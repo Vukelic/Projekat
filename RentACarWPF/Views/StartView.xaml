@@ -48,6 +48,8 @@
                  Command="{Binding ViewOsiguranjaCommand}"/>
         <Button Content="Agenti"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Column="3" Grid.Row="3" Margin="33.12,29.2,8.96,77.8" Cursor="Hand"
                  Command="{Binding ViewAgentiCommand}" RenderTransformOrigin="0.491,2.734"/>
+        <Button Content="Cenovnik"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Column="4" Grid.Row="3" Margin="33.04,32.2,9.36,74.8" Cursor="Hand"
+                 Command="{Binding ViewCenovnikCommand}" RenderTransformOrigin="0.491,2.734"/>
         <Button  Content="Serviseri" FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Row="3" Margin="33.12,94.2,9.96,12.8" Cursor="Hand"
                  Command="{Binding ViewServiseriCommand}" Grid.Column="3"/>
         <Button Content="Funkcije"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent"  Grid.Column="4" Grid.Row="3" Margin="45.04,97.2,10.36,9.8" Cursor="Hand"

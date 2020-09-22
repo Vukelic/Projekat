@@ -1,5 +1,6 @@
 ﻿using RentACar.Core.Repositories;
 using RentACar.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -32,6 +33,47 @@ namespace RentACar.Persistence.Repositories
         public ModelContainer ModelContainer
         {
             get { return _context as ModelContainer; }
+        }
+
+        public Rezervacija ProveraCenovnika(DateTime pocetak, DateTime kraj, int VoziloId)
+        {
+            Rezervacija r = new Rezervacija();
+             foreach (var item in ModelContainer.Cenovniks.Where(x => x.VoziloId == VoziloId))
+             {
+                if ((item.DatumPocetka <= pocetak && item.DatumKraja >= kraj) || item.DatumPocetka >= pocetak && item.DatumKraja <= kraj)
+                {
+                   
+                    r.Cenovnik = item;                    
+                    return r;
+                 }
+             }         
+            return null;
+        }
+
+        public bool Rezervisi(DateTime pocetak, DateTime kraj, int VoziloId)
+        {
+            foreach (var item in ModelContainer.Rezervacije.Where(x => x.VoziloId == VoziloId))
+            {
+                if ((item.Datum_preuzimanja <= pocetak && item.Datum_vracanja >= kraj) || item.Datum_preuzimanja >= pocetak && item.Datum_vracanja <= kraj)
+                {
+                    if(item.Rezervisano == true)
+                    {
+                        return false;
+                    }
+                    
+                }
+            }
+            return true;
+        }
+
+        public int IzracunajCenu(DateTime DatumKraja, DateTime DatumPocetka, int CenaPoDanu)
+        {
+            double cena = 0;
+
+            double dani = (DatumKraja - DatumPocetka).TotalDays + 1;
+            cena = CenaPoDanu * dani;
+
+            return Convert.ToInt32(cena);
         }
     }
 }

@@ -10,12 +10,10 @@
 namespace RentACar
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Korisnik
+    public enum TipUloga : int
     {
-        public int Id { get; set; }
-        public string KorisnickoIme { get; set; }
-        public string Lozinka { get; set; }
+        admin = 0,
+        regular = 1
     }
 }

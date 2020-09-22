@@ -22,7 +22,7 @@ namespace RentACar.DAO
             Serviseri = new ServiseriRepository (context);
             Servisi = new ServisRepository (context);
             Osiguranja = new OsiguranjeRepository(context);
-            Korisnici = new KorisnikRepository(context);
+            Cenovnici = new CenovnikRepository(context);
         }
         public IKlijentRepository Klijenti { get; set; }
         public IGradRepository Gradovi { get; set; }
@@ -35,7 +35,9 @@ namespace RentACar.DAO
         public IAgentiRepository Agenti { get; set; }
         public IServiseriRepository Serviseri { get; set; }
         public IServisRepository Servisi { get; set; }
-        public IKorisnikRepository Korisnici { get; set; }
+        
+        public ICenovnikRepository Cenovnici { get; set; }
+ 
 
         public int Complete()
         {

@@ -34,6 +34,18 @@ namespace RentACarWPF.ViewModels
             }
         }
 
+        AppKlijent k = new AppKlijent();
+
+        public AppKlijent K
+        {
+            get { return k; }
+            set
+            {
+                k = value;
+                OnPropertyChanged("K");
+            }
+        }
+
         private SecureString _password2;
         public SecureString PasswordSecureString2
         {
@@ -55,58 +67,47 @@ namespace RentACarWPF.ViewModels
             this.Window = window;
         }
 
-        string proveraK;
-        public string ProveraK
-        {
-            get { return proveraK; }
-            set
-            {
-                proveraK = value;
-                OnPropertyChanged("ProveraK");
-            }
-        }
-
-        string proveraL;
-        public string ProveraL
-        {
-            get { return proveraL; }
-            set
-            {
-                proveraL = value;
-                OnPropertyChanged("ProveraL");
-            }
-        }
+     
 
         public void onPromena(object parameter)
         {
             String pass = new System.Net.NetworkCredential(string.Empty, PasswordSecureString).Password;
             String pass2 = new System.Net.NetworkCredential(string.Empty, PasswordSecureString2).Password;
-            ProveraK = "";
-            ProveraL = "";
-            if (PasswordSecureString == null)
-            {
-                ProveraK = "Morate uneti staru lozinku!";
-            }
-            if (PasswordSecureString2 == null)
-            {
-                ProveraL = "Morate uneti novu lozinku!";
-            }
-            if (unitOfWork.Korisnici.Login(KorisnickoIme, pass))
-            {
-                Korisnik k = unitOfWork.Korisnici.ProveraPoImenu(KorisnickoIme);
-                if(k != null)
+            bool error = false;
+
+            K.Validate();
+
+            K.Lozinka = pass;           
+            K.KorisnickoIme = KorisnickoIme;
+         
+            
+                if (unitOfWork.Klijenti.Login(KorisnickoIme, pass))
                 {
-                    k.Lozinka = pass2;
-                    unitOfWork.Korisnici.Update(k);
-                    unitOfWork.Korisnici.SaveChanges();
-                    this.Window.Close();
+                    Klijent k = unitOfWork.Klijenti.ProveraPoImenu(KorisnickoIme);
+                    if (k!= null)
+                    {
+                    K.Jmbg = k.Jmbg;
+                    }
+                    else
+                    {
+                    MessageBox.Show("Ne postoji korisnicko ime!");
+                    }
+                   if (!error && K.IsValid)
+                    {
+                        k.Lozinka = pass2;
+                        k.Ime = K.Ime;
+                        k.Prezime = K.Prezime;
+                        unitOfWork.Klijenti.Update(k);
+                        unitOfWork.Klijenti.SaveChanges();
+                        this.Window.Close();
+                    }
+
                 }
-              
-            }
-            else
-            {
-                MessageBox.Show("Lozinka pogresna!");
-            }
+                else
+                {
+                    MessageBox.Show("Lozinka pogresna!");
+                }
+            
 
         }
     }

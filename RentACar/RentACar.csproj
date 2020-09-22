@@ -53,7 +53,10 @@
     <Compile Include="Agent.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Core\Repositories\IKorisnikRepository.cs" />
+    <Compile Include="Cenovnik.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Repositories\ICenovnikRepository.cs" />
     <Compile Include="Core\Repositories\IOcenaRepository.cs" />
     <Compile Include="Core\Repositories\IOsiguranjeRepository.cs" />
     <Compile Include="Core\Repositories\IRezervacijaRepository.cs" />
@@ -68,9 +71,6 @@
     <Compile Include="Klijent.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Korisnik.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Ocena.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -78,6 +78,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Persistence\Repositories\AgentiRepository.cs" />
+    <Compile Include="Persistence\Repositories\CenovnikRepository.cs" />
     <Compile Include="Persistence\Repositories\FilijalaRepository.cs" />
     <Compile Include="Persistence\Repositories\GradRepository.cs" />
     <Compile Include="Core\Repositories\IAgentiRepository.cs" />
@@ -88,7 +89,6 @@
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Core\Repositories\IZaposleniRepository.cs" />
     <Compile Include="Persistence\Repositories\KlijentRepository.cs" />
-    <Compile Include="Persistence\Repositories\KorisnikRepository.cs" />
     <Compile Include="Persistence\Repositories\OcenaRepository.cs" />
     <Compile Include="Persistence\Repositories\OsiguranjeRepository.cs" />
     <Compile Include="Persistence\Repositories\Repository.cs" />
@@ -128,6 +128,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TipStruke.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipUloga.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TipVozila.cs">

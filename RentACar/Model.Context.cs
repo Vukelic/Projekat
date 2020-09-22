@@ -36,7 +36,7 @@ namespace RentACar
         public virtual DbSet<Rezervacija> Rezervacije { get; set; }
         public virtual DbSet<Osiguranje> Osiguranja { get; set; }
         public virtual DbSet<Zaposleni> Zaposleni { get; set; }
-        public virtual DbSet<Korisnik> Korisniks { get; set; }
+        public virtual DbSet<Cenovnik> Cenovniks { get; set; }
     
         public virtual int Procedure1(Nullable<int> postanskiBroj1, string drzava1, string naziv1)
         {
@@ -80,6 +80,77 @@ namespace RentACar
                 new ObjectParameter("Id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<int>>("[ModelContainer].[Funkcija](@Id)", idParameter);
+        }
+    
+        [DbFunction("ModelContainer", "Funkcija1")]
+        public virtual IQueryable<Nullable<int>> Funkcija1(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<int>>("[ModelContainer].[Funkcija1](@Id)", idParameter);
+        }
+    
+        public virtual int Procedure11(Nullable<int> postanskiBroj1, string drzava1, string naziv1)
+        {
+            var postanskiBroj1Parameter = postanskiBroj1.HasValue ?
+                new ObjectParameter("PostanskiBroj1", postanskiBroj1) :
+                new ObjectParameter("PostanskiBroj1", typeof(int));
+    
+            var drzava1Parameter = drzava1 != null ?
+                new ObjectParameter("Drzava1", drzava1) :
+                new ObjectParameter("Drzava1", typeof(string));
+    
+            var naziv1Parameter = naziv1 != null ?
+                new ObjectParameter("Naziv1", naziv1) :
+                new ObjectParameter("Naziv1", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Procedure11", postanskiBroj1Parameter, drzava1Parameter, naziv1Parameter);
+        }
+    
+        public virtual int Procedure21(Nullable<int> postanskiBroj1, string drzava1, string naziv1)
+        {
+            var postanskiBroj1Parameter = postanskiBroj1.HasValue ?
+                new ObjectParameter("PostanskiBroj1", postanskiBroj1) :
+                new ObjectParameter("PostanskiBroj1", typeof(int));
+    
+            var drzava1Parameter = drzava1 != null ?
+                new ObjectParameter("Drzava1", drzava1) :
+                new ObjectParameter("Drzava1", typeof(string));
+    
+            var naziv1Parameter = naziv1 != null ?
+                new ObjectParameter("Naziv1", naziv1) :
+                new ObjectParameter("Naziv1", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Procedure21", postanskiBroj1Parameter, drzava1Parameter, naziv1Parameter);
+        }
+    
+        [DbFunction("ModelContainer", "Funkcija2")]
+        public virtual IQueryable<Nullable<int>> Funkcija2(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<int>>("[ModelContainer].[Funkcija2](@Id)", idParameter);
+        }
+    
+        public virtual int Procedure22(Nullable<int> postanskiBroj1, string drzava1, string naziv1)
+        {
+            var postanskiBroj1Parameter = postanskiBroj1.HasValue ?
+                new ObjectParameter("PostanskiBroj1", postanskiBroj1) :
+                new ObjectParameter("PostanskiBroj1", typeof(int));
+    
+            var drzava1Parameter = drzava1 != null ?
+                new ObjectParameter("Drzava1", drzava1) :
+                new ObjectParameter("Drzava1", typeof(string));
+    
+            var naziv1Parameter = naziv1 != null ?
+                new ObjectParameter("Naziv1", naziv1) :
+                new ObjectParameter("Naziv1", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Procedure22", postanskiBroj1Parameter, drzava1Parameter, naziv1Parameter);
         }
     }
 }

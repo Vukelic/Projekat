@@ -16,6 +16,7 @@ namespace RentACar.DAO
         IRezervacijaRepository Rezervacije { get; }
         IServiseriRepository Serviseri { get; }
         IAgentiRepository Agenti { get; }
+        ICenovnikRepository Cenovnici { get; }
 
         int Complete();
     }

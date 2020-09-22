@@ -24,6 +24,9 @@ namespace RentACar
         public string Jmbg { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
+        public string KorisnickoIme { get; set; }
+        public string Lozinka { get; set; }
+        public TipUloga Uloga { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ocena> Ocene { get; set; }

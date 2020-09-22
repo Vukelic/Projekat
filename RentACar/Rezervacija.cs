@@ -22,10 +22,14 @@ namespace RentACar
         public string KlijentJmbg { get; set; }
         public int OsiguranjeId { get; set; }
         public string AgentJmbg { get; set; }
+        public int CenovnikId { get; set; }
+        public bool Rezervisano { get; set; }
+        public int CenaRezervacije { get; set; }
     
         public virtual Vozilo Vozilo { get; set; }
         public virtual Klijent Klijent { get; set; }
         public virtual Osiguranje Osiguranje { get; set; }
         public virtual Agent Agent { get; set; }
+        public virtual Cenovnik Cenovnik { get; set; }
     }
 }

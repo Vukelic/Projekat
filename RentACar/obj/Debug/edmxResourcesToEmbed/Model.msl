@@ -60,6 +60,9 @@
           <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
           <ScalarProperty Name="Ime" ColumnName="Ime" />
           <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+          <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+          <ScalarProperty Name="Uloga" ColumnName="Uloga" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -74,6 +77,9 @@
           <ScalarProperty Name="KlijentJmbg" ColumnName="KlijentJmbg" />
           <ScalarProperty Name="OsiguranjeId" ColumnName="OsiguranjeId" />
           <ScalarProperty Name="AgentJmbg" ColumnName="AgentJmbg" />
+          <ScalarProperty Name="CenovnikId" ColumnName="CenovnikId" />
+          <ScalarProperty Name="Rezervisano" ColumnName="Rezervisano" />
+          <ScalarProperty Name="CenaRezervacije" ColumnName="CenaRezervacije" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -110,17 +116,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Korisniks">
-      <EntityTypeMapping TypeName="IsTypeOf(Model.Korisnik)">
-        <MappingFragment StoreEntitySet="Korisniks">
+    <EntitySetMapping Name="Cenovniks">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Cenovnik)">
+        <MappingFragment StoreEntitySet="Cenovniks">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
-          <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+          <ScalarProperty Name="DatumPocetka" ColumnName="DatumPocetka" />
+          <ScalarProperty Name="DatumKraja" ColumnName="DatumKraja" />
+          <ScalarProperty Name="CenaPoDanu" ColumnName="CenaPoDanu" />
+          <ScalarProperty Name="VoziloId" ColumnName="VoziloId" />
+          <ScalarProperty Name="UkupnaCena" ColumnName="UkupnaCena" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="Procedure1" FunctionName="Model.Store.Procedure1" />
-    <FunctionImportMapping FunctionImportName="Procedure2" FunctionName="Model.Store.Procedure2" />
-    <FunctionImportMapping FunctionImportName="Funkcija" FunctionName="Model.Store.Funkcija" />
+    <AssociationSetMapping Name="CenovnikVozilo" TypeName="Model.CenovnikVozilo" StoreEntitySet="Cenovniks">
+      <EndProperty Name="Vozilo">
+        <ScalarProperty Name="Id" ColumnName="Vozilo_Id" />
+      </EndProperty>
+      <EndProperty Name="Cenovnik">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="Funkcija2" FunctionName="Model.Store.Funkcija" />
+    <FunctionImportMapping FunctionImportName="Procedure22" FunctionName="Model.Store.Procedure2" />
   </EntityContainerMapping>
 </Mapping>

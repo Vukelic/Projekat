@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/16/2020 14:16:34
--- Generated from EDMX file: C:\Users\HP\Desktop\BP2Projekat\RentACar\Model.edmx
+-- Date Created: 09/22/2020 20:49:20
+-- Generated from EDMX file: C:\Users\HP\Desktop\my\Projekat\RentACar\Model.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,20 +17,26 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_GradFilijala]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Filijale] DROP CONSTRAINT [FK_GradFilijala];
+IF OBJECT_ID(N'[dbo].[FK_Agent_inherits_Zaposleni]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Zaposleni_Agent] DROP CONSTRAINT [FK_Agent_inherits_Zaposleni];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AgentRezervacija]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Rezervacije] DROP CONSTRAINT [FK_AgentRezervacija];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CenovnikRezervacija]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Rezervacije] DROP CONSTRAINT [FK_CenovnikRezervacija];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CenovnikVozilo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Cenovniks] DROP CONSTRAINT [FK_CenovnikVozilo];
 GO
 IF OBJECT_ID(N'[dbo].[FK_FilijalaVozilo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Vozila] DROP CONSTRAINT [FK_FilijalaVozilo];
 GO
-IF OBJECT_ID(N'[dbo].[FK_VoziloOcena]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Ocene] DROP CONSTRAINT [FK_VoziloOcena];
+IF OBJECT_ID(N'[dbo].[FK_FilijalaZaposleni]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Zaposleni] DROP CONSTRAINT [FK_FilijalaZaposleni];
 GO
-IF OBJECT_ID(N'[dbo].[FK_VoziloServis]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Servisi] DROP CONSTRAINT [FK_VoziloServis];
-GO
-IF OBJECT_ID(N'[dbo].[FK_VoziloRezervacija]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Rezervacije] DROP CONSTRAINT [FK_VoziloRezervacija];
+IF OBJECT_ID(N'[dbo].[FK_GradFilijala]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Filijale] DROP CONSTRAINT [FK_GradFilijala];
 GO
 IF OBJECT_ID(N'[dbo].[FK_KlijentOcena]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Ocene] DROP CONSTRAINT [FK_KlijentOcena];
@@ -38,64 +44,64 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_KlijentRezervacija]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Rezervacije] DROP CONSTRAINT [FK_KlijentRezervacija];
 GO
-IF OBJECT_ID(N'[dbo].[FK_FilijalaZaposleni]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Zaposleni] DROP CONSTRAINT [FK_FilijalaZaposleni];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ServisServiser]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Servisi] DROP CONSTRAINT [FK_ServisServiser];
-GO
 IF OBJECT_ID(N'[dbo].[FK_OsiguranjeRezervacija]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Rezervacije] DROP CONSTRAINT [FK_OsiguranjeRezervacija];
-GO
-IF OBJECT_ID(N'[dbo].[FK_AgentRezervacija]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Rezervacije] DROP CONSTRAINT [FK_AgentRezervacija];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Serviser_inherits_Zaposleni]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Zaposleni_Serviser] DROP CONSTRAINT [FK_Serviser_inherits_Zaposleni];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Agent_inherits_Zaposleni]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Zaposleni_Agent] DROP CONSTRAINT [FK_Agent_inherits_Zaposleni];
+IF OBJECT_ID(N'[dbo].[FK_ServisServiser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Servisi] DROP CONSTRAINT [FK_ServisServiser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VoziloOcena]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Ocene] DROP CONSTRAINT [FK_VoziloOcena];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VoziloRezervacija]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Rezervacije] DROP CONSTRAINT [FK_VoziloRezervacija];
+GO
+IF OBJECT_ID(N'[dbo].[FK_VoziloServis]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Servisi] DROP CONSTRAINT [FK_VoziloServis];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Gradovi]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Gradovi];
+IF OBJECT_ID(N'[dbo].[Cenovniks]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Cenovniks];
 GO
 IF OBJECT_ID(N'[dbo].[Filijale]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Filijale];
 GO
-IF OBJECT_ID(N'[dbo].[Vozila]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Vozila];
-GO
-IF OBJECT_ID(N'[dbo].[Ocene]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Ocene];
-GO
-IF OBJECT_ID(N'[dbo].[Servisi]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Servisi];
+IF OBJECT_ID(N'[dbo].[Gradovi]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Gradovi];
 GO
 IF OBJECT_ID(N'[dbo].[Klijenti]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Klijenti];
 GO
-IF OBJECT_ID(N'[dbo].[Rezervacije]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Rezervacije];
+IF OBJECT_ID(N'[dbo].[Ocene]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Ocene];
 GO
 IF OBJECT_ID(N'[dbo].[Osiguranja]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Osiguranja];
 GO
+IF OBJECT_ID(N'[dbo].[Rezervacije]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Rezervacije];
+GO
+IF OBJECT_ID(N'[dbo].[Servisi]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Servisi];
+GO
+IF OBJECT_ID(N'[dbo].[Vozila]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Vozila];
+GO
 IF OBJECT_ID(N'[dbo].[Zaposleni]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Zaposleni];
 GO
-IF OBJECT_ID(N'[dbo].[Korisniks]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Korisniks];
+IF OBJECT_ID(N'[dbo].[Zaposleni_Agent]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Zaposleni_Agent];
 GO
 IF OBJECT_ID(N'[dbo].[Zaposleni_Serviser]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Zaposleni_Serviser];
-GO
-IF OBJECT_ID(N'[dbo].[Zaposleni_Agent]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Zaposleni_Agent];
 GO
 
 -- --------------------------------------------------
@@ -154,7 +160,10 @@ GO
 CREATE TABLE [dbo].[Klijenti] (
     [Jmbg] nvarchar(20)  NOT NULL,
     [Ime] nvarchar(max)  NOT NULL,
-    [Prezime] nvarchar(max)  NOT NULL
+    [Prezime] nvarchar(max)  NOT NULL,
+    [KorisnickoIme] nvarchar(max)  NOT NULL,
+    [Lozinka] nvarchar(max)  NOT NULL,
+    [Uloga] int  NOT NULL
 );
 GO
 
@@ -167,7 +176,10 @@ CREATE TABLE [dbo].[Rezervacije] (
     [VoziloId] int  NOT NULL,
     [KlijentJmbg] nvarchar(20)  NOT NULL,
     [OsiguranjeId] int  NOT NULL,
-    [AgentJmbg] nvarchar(20)  NOT NULL
+    [AgentJmbg] nvarchar(20)  NOT NULL,
+    [CenovnikId] int  NOT NULL,
+    [Rezervisano] bit  NOT NULL,
+    [CenaRezervacije] int  NOT NULL
 );
 GO
 
@@ -189,11 +201,15 @@ CREATE TABLE [dbo].[Zaposleni] (
 );
 GO
 
--- Creating table 'Korisniks'
-CREATE TABLE [dbo].[Korisniks] (
+-- Creating table 'Cenovniks'
+CREATE TABLE [dbo].[Cenovniks] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [KorisnickoIme] nvarchar(max)  NOT NULL,
-    [Lozinka] nvarchar(max)  NOT NULL
+    [DatumPocetka] datetime  NOT NULL,
+    [DatumKraja] datetime  NOT NULL,
+    [CenaPoDanu] int  NOT NULL,
+    [VoziloId] int  NOT NULL,
+    [UkupnaCena] int  NOT NULL,
+    [Vozilo_Id] int  NOT NULL
 );
 GO
 
@@ -270,9 +286,9 @@ ADD CONSTRAINT [PK_Zaposleni]
     PRIMARY KEY CLUSTERED ([Jmbg] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Korisniks'
-ALTER TABLE [dbo].[Korisniks]
-ADD CONSTRAINT [PK_Korisniks]
+-- Creating primary key on [Id] in table 'Cenovniks'
+ALTER TABLE [dbo].[Cenovniks]
+ADD CONSTRAINT [PK_Cenovniks]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -455,6 +471,36 @@ GO
 CREATE INDEX [IX_FK_AgentRezervacija]
 ON [dbo].[Rezervacije]
     ([AgentJmbg]);
+GO
+
+-- Creating foreign key on [Vozilo_Id] in table 'Cenovniks'
+ALTER TABLE [dbo].[Cenovniks]
+ADD CONSTRAINT [FK_CenovnikVozilo]
+    FOREIGN KEY ([Vozilo_Id])
+    REFERENCES [dbo].[Vozila]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CenovnikVozilo'
+CREATE INDEX [IX_FK_CenovnikVozilo]
+ON [dbo].[Cenovniks]
+    ([Vozilo_Id]);
+GO
+
+-- Creating foreign key on [CenovnikId] in table 'Rezervacije'
+ALTER TABLE [dbo].[Rezervacije]
+ADD CONSTRAINT [FK_CenovnikRezervacija]
+    FOREIGN KEY ([CenovnikId])
+    REFERENCES [dbo].[Cenovniks]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CenovnikRezervacija'
+CREATE INDEX [IX_FK_CenovnikRezervacija]
+ON [dbo].[Rezervacije]
+    ([CenovnikId]);
 GO
 
 -- Creating foreign key on [Jmbg] in table 'Zaposleni_Serviser'

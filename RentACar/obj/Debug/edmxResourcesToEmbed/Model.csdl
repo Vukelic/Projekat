@@ -54,7 +54,6 @@
       <End Role="Agent" EntitySet="Zaposleni" />
       <End Role="Rezervacija" EntitySet="Rezervacije" />
     </AssociationSet>
-    <EntitySet Name="Korisniks" EntityType="Model.Korisnik" />
     <FunctionImport Name="Procedure1">
       <Parameter Name="PostanskiBroj1" Mode="In" Type="Int32" />
       <Parameter Name="Drzava1" Mode="In" Type="String" />
@@ -67,6 +66,36 @@
     </FunctionImport>
     <FunctionImport Name="Funkcija" IsComposable="true" ReturnType="Collection(Int32)">
       <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Cenovniks" EntityType="Model.Cenovnik" />
+    <AssociationSet Name="CenovnikVozilo" Association="Model.CenovnikVozilo">
+      <End Role="Cenovnik" EntitySet="Cenovniks" />
+      <End Role="Vozilo" EntitySet="Vozila" />
+    </AssociationSet>
+    <AssociationSet Name="CenovnikRezervacija" Association="Model.CenovnikRezervacija">
+      <End Role="Cenovnik" EntitySet="Cenovniks" />
+      <End Role="Rezervacija" EntitySet="Rezervacije" />
+    </AssociationSet>
+    <FunctionImport Name="Funkcija1" IsComposable="true" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Procedure11">
+      <Parameter Name="PostanskiBroj1" Mode="In" Type="Int32" />
+      <Parameter Name="Drzava1" Mode="In" Type="String" />
+      <Parameter Name="Naziv1" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Procedure21">
+      <Parameter Name="PostanskiBroj1" Mode="In" Type="Int32" />
+      <Parameter Name="Drzava1" Mode="In" Type="String" />
+      <Parameter Name="Naziv1" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Funkcija2" IsComposable="true" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Procedure22">
+      <Parameter Name="PostanskiBroj1" Mode="In" Type="Int32" />
+      <Parameter Name="Drzava1" Mode="In" Type="String" />
+      <Parameter Name="Naziv1" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
   <EntityType Name="Grad">
@@ -104,6 +133,7 @@
     <NavigationProperty Name="Ocene" Relationship="Model.VoziloOcena" FromRole="Vozilo" ToRole="Ocena" />
     <NavigationProperty Name="Servisi" Relationship="Model.VoziloServis" FromRole="Vozilo" ToRole="Servis" />
     <NavigationProperty Name="Rezervacije" Relationship="Model.VoziloRezervacija" FromRole="Vozilo" ToRole="Rezervacija" />
+    <NavigationProperty Name="Cenovniks" Relationship="Model.CenovnikVozilo" FromRole="Vozilo" ToRole="Cenovnik" />
   </EntityType>
   <EntityType Name="Ocena">
     <Key>
@@ -138,6 +168,9 @@
     <Property Name="Prezime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Ocene" Relationship="Model.KlijentOcena" FromRole="Klijent" ToRole="Ocena" />
     <NavigationProperty Name="Rezervacijas" Relationship="Model.KlijentRezervacija" FromRole="Klijent" ToRole="Rezervacija" />
+    <Property Name="KorisnickoIme" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Lozinka" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Uloga" Type="Model.TipUloga" Nullable="false" />
   </EntityType>
   <EntityType Name="Rezervacija">
     <Key>
@@ -155,6 +188,10 @@
     <Property Name="OsiguranjeId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Agent" Relationship="Model.AgentRezervacija" FromRole="Rezervacija" ToRole="Agent" />
     <Property Name="AgentJmbg" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Cenovnik" Relationship="Model.CenovnikRezervacija" FromRole="Rezervacija" ToRole="Cenovnik" />
+    <Property Name="CenovnikId" Type="Int32" Nullable="false" />
+    <Property Name="Rezervisano" Type="Boolean" Nullable="false" />
+    <Property Name="CenaRezervacije" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Osiguranje">
     <Key>
@@ -332,12 +369,37 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="Korisnik">
+  <EnumType Name="TipUloga">
+    <Member Name="admin" Value="0" />
+    <Member Name="regular" Value="1" />
+  </EnumType>
+  <EntityType Name="Cenovnik">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="KorisnickoIme" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-    <Property Name="Lozinka" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="DatumPocetka" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DatumKraja" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CenaPoDanu" Type="Int32" Nullable="false" />
+    <Property Name="VoziloId" Type="Int32" Nullable="false" />
+    <Property Name="UkupnaCena" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Vozilo" Relationship="Model.CenovnikVozilo" FromRole="Cenovnik" ToRole="Vozilo" />
+    <NavigationProperty Name="Rezervacijas" Relationship="Model.CenovnikRezervacija" FromRole="Cenovnik" ToRole="Rezervacija" />
   </EntityType>
+  <Association Name="CenovnikVozilo">
+    <End Type="Model.Cenovnik" Role="Cenovnik" Multiplicity="*" />
+    <End Type="Model.Vozilo" Role="Vozilo" Multiplicity="1" />
+  </Association>
+  <Association Name="CenovnikRezervacija">
+    <End Type="Model.Cenovnik" Role="Cenovnik" Multiplicity="1" />
+    <End Type="Model.Rezervacija" Role="Rezervacija" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cenovnik">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rezervacija">
+        <PropertyRef Name="CenovnikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

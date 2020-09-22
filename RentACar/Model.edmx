@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cenovniks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatumPocetka" Type="datetime" Nullable="false" />
+          <Property Name="DatumKraja" Type="datetime" Nullable="false" />
+          <Property Name="CenaPoDanu" Type="int" Nullable="false" />
+          <Property Name="VoziloId" Type="int" Nullable="false" />
+          <Property Name="UkupnaCena" Type="int" Nullable="false" />
+          <Property Name="Vozilo_Id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Filijale">
           <Key>
             <PropertyRef Name="Id" />
@@ -30,14 +42,9 @@
           <Property Name="Jmbg" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Korisniks">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KorisnickoIme" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Lozinka" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Uloga" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Ocene">
           <Key>
@@ -68,6 +75,9 @@
           <Property Name="KlijentJmbg" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="OsiguranjeId" Type="int" Nullable="false" />
           <Property Name="AgentJmbg" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CenovnikId" Type="int" Nullable="false" />
+          <Property Name="Rezervisano" Type="bit" Nullable="false" />
+          <Property Name="CenaRezervacije" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Servisi">
           <Key>
@@ -138,6 +148,30 @@
             </Principal>
             <Dependent Role="Rezervacije">
               <PropertyRef Name="AgentJmbg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CenovnikRezervacija">
+          <End Role="Cenovniks" Type="Self.Cenovniks" Multiplicity="1" />
+          <End Role="Rezervacije" Type="Self.Rezervacije" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cenovniks">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rezervacije">
+              <PropertyRef Name="CenovnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CenovnikVozilo">
+          <End Role="Vozila" Type="Self.Vozila" Multiplicity="1" />
+          <End Role="Cenovniks" Type="Self.Cenovniks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vozila">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cenovniks">
+              <PropertyRef Name="Vozilo_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -285,21 +319,16 @@
             </CollectionType>
           </ReturnType>
         </Function>
-        <Function Name="Procedure1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="PostanskiBroj1" Type="int" Mode="In" />
-          <Parameter Name="Drzava1" Type="nvarchar" Mode="In" />
-          <Parameter Name="Naziv1" Type="nvarchar" Mode="In" />
-        </Function>
         <Function Name="Procedure2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="PostanskiBroj1" Type="int" Mode="In" />
           <Parameter Name="Drzava1" Type="nvarchar" Mode="In" />
           <Parameter Name="Naziv1" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Cenovniks" EntityType="Self.Cenovniks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Filijale" EntityType="Self.Filijale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gradovi" EntityType="Self.Gradovi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Klijenti" EntityType="Self.Klijenti" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Korisniks" EntityType="Self.Korisniks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ocene" EntityType="Self.Ocene" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Osiguranja" EntityType="Self.Osiguranja" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rezervacije" EntityType="Self.Rezervacije" Schema="dbo" store:Type="Tables" />
@@ -315,6 +344,14 @@
           <AssociationSet Name="FK_AgentRezervacija" Association="Self.FK_AgentRezervacija">
             <End Role="Zaposleni_Agent" EntitySet="Zaposleni_Agent" />
             <End Role="Rezervacije" EntitySet="Rezervacije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CenovnikRezervacija" Association="Self.FK_CenovnikRezervacija">
+            <End Role="Cenovniks" EntitySet="Cenovniks" />
+            <End Role="Rezervacije" EntitySet="Rezervacije" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CenovnikVozilo" Association="Self.FK_CenovnikVozilo">
+            <End Role="Vozila" EntitySet="Vozila" />
+            <End Role="Cenovniks" EntitySet="Cenovniks" />
           </AssociationSet>
           <AssociationSet Name="FK_FilijalaVozilo" Association="Self.FK_FilijalaVozilo">
             <End Role="Filijale" EntitySet="Filijale" />
@@ -419,7 +456,6 @@
             <End Role="Agent" EntitySet="Zaposleni" />
             <End Role="Rezervacija" EntitySet="Rezervacije" />
           </AssociationSet>
-          <EntitySet Name="Korisniks" EntityType="Model.Korisnik" />
           <FunctionImport Name="Procedure1">
             <Parameter Name="PostanskiBroj1" Mode="In" Type="Int32" />
             <Parameter Name="Drzava1" Mode="In" Type="String" />
@@ -432,6 +468,36 @@
           </FunctionImport>
           <FunctionImport Name="Funkcija" IsComposable="true" ReturnType="Collection(Int32)">
             <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Cenovniks" EntityType="Model.Cenovnik" />
+          <AssociationSet Name="CenovnikVozilo" Association="Model.CenovnikVozilo">
+            <End Role="Cenovnik" EntitySet="Cenovniks" />
+            <End Role="Vozilo" EntitySet="Vozila" />
+          </AssociationSet>
+          <AssociationSet Name="CenovnikRezervacija" Association="Model.CenovnikRezervacija">
+            <End Role="Cenovnik" EntitySet="Cenovniks" />
+            <End Role="Rezervacija" EntitySet="Rezervacije" />
+          </AssociationSet>
+          <FunctionImport Name="Funkcija1" IsComposable="true" ReturnType="Collection(Int32)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Procedure11">
+            <Parameter Name="PostanskiBroj1" Mode="In" Type="Int32" />
+            <Parameter Name="Drzava1" Mode="In" Type="String" />
+            <Parameter Name="Naziv1" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Procedure21">
+            <Parameter Name="PostanskiBroj1" Mode="In" Type="Int32" />
+            <Parameter Name="Drzava1" Mode="In" Type="String" />
+            <Parameter Name="Naziv1" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Funkcija2" IsComposable="true" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Procedure22">
+            <Parameter Name="PostanskiBroj1" Mode="In" Type="Int32" />
+            <Parameter Name="Drzava1" Mode="In" Type="String" />
+            <Parameter Name="Naziv1" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Grad">
@@ -469,6 +535,7 @@
           <NavigationProperty Name="Ocene" Relationship="Model.VoziloOcena" FromRole="Vozilo" ToRole="Ocena" />
           <NavigationProperty Name="Servisi" Relationship="Model.VoziloServis" FromRole="Vozilo" ToRole="Servis" />
           <NavigationProperty Name="Rezervacije" Relationship="Model.VoziloRezervacija" FromRole="Vozilo" ToRole="Rezervacija" />
+          <NavigationProperty Name="Cenovniks" Relationship="Model.CenovnikVozilo" FromRole="Vozilo" ToRole="Cenovnik" />
         </EntityType>
         <EntityType Name="Ocena">
           <Key>
@@ -503,6 +570,9 @@
           <Property Name="Prezime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Ocene" Relationship="Model.KlijentOcena" FromRole="Klijent" ToRole="Ocena" />
           <NavigationProperty Name="Rezervacijas" Relationship="Model.KlijentRezervacija" FromRole="Klijent" ToRole="Rezervacija" />
+          <Property Name="KorisnickoIme" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Lozinka" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Uloga" Type="Model.TipUloga" Nullable="false" />
         </EntityType>
         <EntityType Name="Rezervacija">
           <Key>
@@ -520,6 +590,10 @@
           <Property Name="OsiguranjeId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Agent" Relationship="Model.AgentRezervacija" FromRole="Rezervacija" ToRole="Agent" />
           <Property Name="AgentJmbg" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Cenovnik" Relationship="Model.CenovnikRezervacija" FromRole="Rezervacija" ToRole="Cenovnik" />
+          <Property Name="CenovnikId" Type="Int32" Nullable="false" />
+          <Property Name="Rezervisano" Type="Boolean" Nullable="false" />
+          <Property Name="CenaRezervacije" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Osiguranje">
           <Key>
@@ -697,14 +771,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Korisnik">
+        <EnumType Name="TipUloga">
+          <Member Name="admin" Value="0" />
+          <Member Name="regular" Value="1" />
+        </EnumType>
+        <EntityType Name="Cenovnik">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KorisnickoIme" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Lozinka" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DatumPocetka" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DatumKraja" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CenaPoDanu" Type="Int32" Nullable="false" />
+          <Property Name="VoziloId" Type="Int32" Nullable="false" />
+          <Property Name="UkupnaCena" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Vozilo" Relationship="Model.CenovnikVozilo" FromRole="Cenovnik" ToRole="Vozilo" />
+          <NavigationProperty Name="Rezervacijas" Relationship="Model.CenovnikRezervacija" FromRole="Cenovnik" ToRole="Rezervacija" />
         </EntityType>
+        <Association Name="CenovnikVozilo">
+          <End Type="Model.Cenovnik" Role="Cenovnik" Multiplicity="*" />
+          <End Type="Model.Vozilo" Role="Vozilo" Multiplicity="1" />
+        </Association>
+        <Association Name="CenovnikRezervacija">
+          <End Type="Model.Cenovnik" Role="Cenovnik" Multiplicity="1" />
+          <End Type="Model.Rezervacija" Role="Rezervacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cenovnik">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rezervacija">
+              <PropertyRef Name="CenovnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -770,6 +869,9 @@
           <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
           <ScalarProperty Name="Ime" ColumnName="Ime" />
           <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+          <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+          <ScalarProperty Name="Uloga" ColumnName="Uloga" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -784,6 +886,9 @@
           <ScalarProperty Name="KlijentJmbg" ColumnName="KlijentJmbg" />
           <ScalarProperty Name="OsiguranjeId" ColumnName="OsiguranjeId" />
           <ScalarProperty Name="AgentJmbg" ColumnName="AgentJmbg" />
+          <ScalarProperty Name="CenovnikId" ColumnName="CenovnikId" />
+          <ScalarProperty Name="Rezervisano" ColumnName="Rezervisano" />
+          <ScalarProperty Name="CenaRezervacije" ColumnName="CenaRezervacije" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -820,18 +925,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Korisniks">
-      <EntityTypeMapping TypeName="IsTypeOf(Model.Korisnik)">
-        <MappingFragment StoreEntitySet="Korisniks">
+    <EntitySetMapping Name="Cenovniks">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Cenovnik)">
+        <MappingFragment StoreEntitySet="Cenovniks">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
-          <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+          <ScalarProperty Name="DatumPocetka" ColumnName="DatumPocetka" />
+          <ScalarProperty Name="DatumKraja" ColumnName="DatumKraja" />
+          <ScalarProperty Name="CenaPoDanu" ColumnName="CenaPoDanu" />
+          <ScalarProperty Name="VoziloId" ColumnName="VoziloId" />
+          <ScalarProperty Name="UkupnaCena" ColumnName="UkupnaCena" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="Procedure1" FunctionName="Model.Store.Procedure1" />
-          <FunctionImportMapping FunctionImportName="Procedure2" FunctionName="Model.Store.Procedure2" />
-          <FunctionImportMapping FunctionImportName="Funkcija" FunctionName="Model.Store.Funkcija" />
+    <AssociationSetMapping Name="CenovnikVozilo" TypeName="Model.CenovnikVozilo" StoreEntitySet="Cenovniks">
+      <EndProperty Name="Vozilo">
+        <ScalarProperty Name="Id" ColumnName="Vozilo_Id" />
+      </EndProperty>
+      <EndProperty Name="Cenovnik">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="Funkcija2" FunctionName="Model.Store.Funkcija" />
+          <FunctionImportMapping FunctionImportName="Procedure22" FunctionName="Model.Store.Procedure2" />
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

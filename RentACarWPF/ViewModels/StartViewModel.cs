@@ -21,6 +21,7 @@ namespace RentACarWPF.ViewModels
         public MyICommand ViewServiseriCommand { get; set; }
         public MyICommand ViewFunkcijeCommand { get; set; }
         public MyICommand ViewNalogCommand { get; set; }
+        public MyICommand ViewCenovnikCommand { get; set; }
 
         public StartViewModel(string korisnickoIme)
         {
@@ -37,12 +38,18 @@ namespace RentACarWPF.ViewModels
             ViewServiseriCommand = new MyICommand(onViewServiseri);
             ViewFunkcijeCommand = new MyICommand(onViewFunkcije);
             ViewNalogCommand = new MyICommand(onViewNalog);
+            ViewCenovnikCommand = new MyICommand(onViewCenovnik);
             KorisnickoIme = korisnickoIme;
         }
 
         public void onViewFilijale(object parameter)
         {
             new FilijaleView().ShowDialog();
+        }
+
+        public void onViewCenovnik(object parameter)
+        {
+            new CenovnikView().ShowDialog();
         }
         public void onViewNalog(object parameter)
         {

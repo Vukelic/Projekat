@@ -9,12 +9,25 @@
         Title="RegistracijaWindow"  Height="450" Width="480.8" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/RentACarWPF;component/Images/logo.jpg">
     <Grid>
         <Image Margin="0,2,0,0"  Source="/Images/background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="4" />
-        <Label Foreground="Black" FontSize="10" FontFamily="Segoe Print" Background="Transparent" Content="Korisnicko ime" HorizontalAlignment="Left" Margin="96,66,0,0" VerticalAlignment="Top" Height="24" Width="86" RenderTransformOrigin="0.439,0.333"/>
-        <TextBox HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print" Height="24" Margin="187,66,0,0" TextWrapping="Wrap" Text="{Binding KorisnickoIme, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
-        <TextBlock Text="{Binding ProveraK}" Foreground="Red" VerticalAlignment="Bottom" FontSize="8" FontWeight="Bold" Margin="187,0,148.4,301" Height="24"/>
-        <Label Content="Lozinka" FontSize="10" FontFamily="Segoe Print" HorizontalAlignment="Left" Margin="96,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.533,-1.115" Width="66" Height="26"/>
-        <PasswordBox a:PasswordModel.EncryptedPassword="{Binding PasswordSecureString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  PasswordChanged="PasswordBox_PasswordChanged"  HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print"  Height="22" Margin="187,124,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock Text="{Binding ProveraL}" Foreground="Red" VerticalAlignment="Bottom" FontSize="8" FontWeight="Bold" Margin="187,0,148.4,249" Height="20"/>
-        <Button FontSize="10" FontFamily="Segoe Print" Content="Registruj se" BorderBrush="Transparent" Background="Transparent" Command="{Binding RegistracijaCommand}" IsDefault="True" HorizontalAlignment="Left" Margin="187,184,0,0" VerticalAlignment="Top" Width="120" Height="34"/>
+        <Label Foreground="Black" FontSize="10" FontFamily="Segoe Print" Background="Transparent" Content="Korisnicko ime" HorizontalAlignment="Left" Margin="96,153,0,0" VerticalAlignment="Top" Height="24" Width="86" RenderTransformOrigin="0.439,0.333"/>
+        <TextBox HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print" Height="24" Margin="187,153,0,0" TextWrapping="Wrap" Text="{Binding K.KorisnickoIme, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Lozinka" FontSize="10" FontFamily="Segoe Print" HorizontalAlignment="Left" Margin="96,199,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.533,-1.115" Width="66" Height="26"/>
+        <PasswordBox a:PasswordModel.EncryptedPassword="{Binding PasswordSecureString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  PasswordChanged="PasswordBox_PasswordChanged"  HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print"  Height="22" Margin="187,203,0,0" VerticalAlignment="Top" Width="120"/>
+
+        <Label Foreground="Black" FontSize="10" FontFamily="Segoe Print" Background="Transparent" Content="JMBG" HorizontalAlignment="Left" Margin="104,10,0,0" VerticalAlignment="Top" Height="24" Width="86" RenderTransformOrigin="0.439,0.333"/>
+        <TextBox HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print" Height="24" Margin="187,10,0,0" TextWrapping="Wrap" Text="{Binding K.Jmbg, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Text="{Binding K.ValidationErrors[Jmbg]}" Foreground="Red" VerticalAlignment="Bottom" FontSize="8" FontWeight="Bold" Margin="187,0,129.4,370"/>
+        
+        
+        <TextBlock Text="{Binding K.ValidationErrors[Lozinka]}" Foreground="Red" VerticalAlignment="Bottom" FontSize="8" FontWeight="Bold" Margin="187,0,129.4,171"/>
+        <Label Foreground="Black" FontSize="10" FontFamily="Segoe Print" Background="Transparent" Content="Ime" HorizontalAlignment="Left" Margin="104,55,0,0" VerticalAlignment="Top" Height="24" Width="86" RenderTransformOrigin="0.439,0.333"/>
+        <TextBox HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print" Height="24" Margin="187,55,0,0" TextWrapping="Wrap" Text="{Binding K.Ime, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Text="{Binding K.ValidationErrors[Ime]}" Foreground="Red" VerticalAlignment="Bottom" FontSize="8" FontWeight="Bold" Margin="187,0,129.4,319"/>
+
+        <TextBlock Text="{Binding K.ValidationErrors[KorisnickoIme]}" Foreground="Red" VerticalAlignment="Bottom" FontSize="8" FontWeight="Bold" Margin="187,0,129.4,222"/>
+        <Label Foreground="Black" FontSize="10" FontFamily="Segoe Print" Background="Transparent" Content="Prezime" HorizontalAlignment="Left" Margin="96,105,0,0" VerticalAlignment="Top" Height="24" Width="86" RenderTransformOrigin="0.439,0.333"/>
+        <TextBox HorizontalAlignment="Left" FontSize="10" FontFamily="Segoe Print" Height="24" Margin="187,105,0,0" TextWrapping="Wrap" Text="{Binding K.Prezime, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <TextBlock Text="{Binding K.ValidationErrors[Prezime]}" Foreground="Red" VerticalAlignment="Bottom" FontSize="8" FontWeight="Bold" Margin="187,0,129.4,272"/>
+        <Button FontSize="10" FontFamily="Segoe Print" Content="Registruj se" BorderBrush="Transparent" Background="Transparent" Command="{Binding RegistracijaCommand}" IsDefault="True" HorizontalAlignment="Left" Margin="180,265,0,0" VerticalAlignment="Top" Width="120" Height="34"/>
     </Grid>
 </Window>

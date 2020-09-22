@@ -20,6 +20,7 @@ namespace RentACar
             this.Ocene = new HashSet<Ocena>();
             this.Servisi = new HashSet<Servis>();
             this.Rezervacije = new HashSet<Rezervacija>();
+            this.Cenovniks = new HashSet<Cenovnik>();
         }
     
         public int Id { get; set; }
@@ -35,5 +36,7 @@ namespace RentACar
         public virtual ICollection<Servis> Servisi { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rezervacija> Rezervacije { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cenovnik> Cenovniks { get; set; }
     }
 }

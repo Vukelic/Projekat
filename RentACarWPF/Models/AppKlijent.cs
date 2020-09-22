@@ -9,11 +9,17 @@ namespace RentACarWPF.Models
         public string Ime { get; set; }
         public string Prezime { get; set; }
 
+        public string KorisnickoIme { get; set; }
+        public string Lozinka { get; set; }
+
+
         public AppKlijent(Klijent k)
         {
             Jmbg = k.Jmbg;
             Ime = k.Ime;
             Prezime = k.Prezime;
+            KorisnickoIme = k.KorisnickoIme;
+            Lozinka = k.Lozinka;
         }
 
         public AppKlijent()
@@ -21,6 +27,8 @@ namespace RentACarWPF.Models
             Jmbg = "";
             Ime = "";
             Prezime = "";
+            KorisnickoIme = "";
+            Lozinka = "";
         }
 
         protected override void ValidateSelf()
@@ -39,8 +47,12 @@ namespace RentACarWPF.Models
             {
                 ValidationErrors["Prezime"] = "Prezime ne moze biti prazno.";
             }
-
-
+            if (string.IsNullOrWhiteSpace(KorisnickoIme))
+            {
+                ValidationErrors["KorisnickoIme"] = "KorisnickoIme ne moze biti prazno.";
+            }
+           
+            
             if (Jmbg.Length != 13)
             {
 
@@ -59,7 +71,17 @@ namespace RentACarWPF.Models
                 ValidationErrors["Prezime"] = "Prezime mora biti duzine min 3 cifre";
             }
 
-      
+            if (KorisnickoIme.Length < 3 && KorisnickoIme.Length > 0)
+            {
+
+                ValidationErrors["KorisnickoIme"] = "KorisnickoIme mora biti duzine min 3 cifre";
+            }
+
+            if (Lozinka.Length < 3 && Lozinka.Length > 0)
+            {
+
+                ValidationErrors["Lozinka"] = "Lozinka mora biti duzine min 3 cifre";
+            }          
 
             if (Ime.Length > 20)
             {

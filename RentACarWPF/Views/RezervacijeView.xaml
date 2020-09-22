@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RentACarWPF.Views"
         mc:Ignorable="d"
-        Title="PregledRezervacija" Height="550" Width="855" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/RentACarWPF;component/Images/logo.jpg">
+        Title="PregledRezervacija" Height="611.2" Width="913.1" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/RentACarWPF;component/Images/logo.jpg">
     <Grid Margin="0,0,0,-85">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
@@ -18,7 +18,7 @@
             <ColumnDefinition Width="250"></ColumnDefinition>
             <ColumnDefinition Width="250"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Image Margin="0,2,-95.4,-0.4"  Source="/Images/all_background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" Grid.RowSpan="4" />
+        <Image Margin="0,2,-152.4,86.4"  Source="/Images/all_background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" Grid.RowSpan="4" />
         <TextBlock  FontFamily="Segoe Print MS"  Text="PREGLED REZERVACIJA" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"></TextBlock>
         <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="0" Margin="10" Content="Dodaj" FontSize="30" FontWeight="Bold" Cursor="Hand"
                      Command="{Binding DodajRezervacijuCommand}"></Button>
@@ -28,7 +28,7 @@
                  Command="{Binding ObrisiRezervacijuCommand}"></Button>
         <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="2" Grid.Column="1" Margin="10" Content="Osvezi" FontSize="30" FontWeight="Bold" Cursor="Hand"
                  Command="{Binding OsveziCommand}"></Button>
-        <DataGrid Grid.Row="3"  Height="300" Grid.ColumnSpan="3" Margin="15,15,-77,15"
+        <DataGrid Grid.Row="3"  Height="300" Grid.ColumnSpan="3" Margin="0,40,-147.4,86.4"
                   Foreground="Black" BorderBrush="Transparent" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False"
                   ItemsSource="{Binding Rezervacije, UpdateSourceTrigger=PropertyChanged}"
@@ -41,7 +41,8 @@
                 <DataGridTextColumn Header="Vozilo" Width="100" Binding="{Binding Vozilo.Model}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Osiguranje" Width="100" Binding="{Binding Osiguranje.Broj_polise}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Klijent" Width="100" Binding="{Binding Klijent.Ime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Agent" Width="*" Binding="{Binding Agent.Ime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Agent" Width="100" Binding="{Binding Agent.Ime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ukupna cena:" Width="*" Binding="{Binding CenaRezervacije}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

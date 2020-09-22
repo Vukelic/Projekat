@@ -56,7 +56,7 @@ namespace RentACarWPF.ViewModels
                 {
                     ProveraL = "Morate uneti lozinku!";
                 }
-                if (unitOfWork.Korisnici.Login(KorisnickoIme, pass))
+                if (unitOfWork.Klijenti.Login(KorisnickoIme, pass))
                 {
                     
                 new StartView(KorisnickoIme).Show();

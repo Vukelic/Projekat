@@ -148,6 +148,8 @@ namespace RentACarWPF.ViewModels
             }
         }
 
+       
+
         Vozilo selektovanoVozilo;
         public Vozilo SelektovanoVozilo
         {
@@ -349,29 +351,48 @@ namespace RentACarWPF.ViewModels
 
             Rezervacija rezervacijaIzBaze = unitOfWork.Rezervacije.Get(R.Id);
 
-            if(rezervacijaIzBaze == null)
-            {
-                IdPostoji = "";
-                if (!error && R.IsValid)
-                {
-                    Rezervacija rezervacija = new Rezervacija();
-                    rezervacija.Id = R.Id;
-                    rezervacija.KlijentJmbg = SelektovanKlijent.Jmbg;
-                    rezervacija.AgentJmbg = SelektovanAgent.Jmbg;
-                    rezervacija.VoziloId = SelektovanoVozilo.Id;
-                    rezervacija.OsiguranjeId = SelektovanoOsiguranje.Id;
-                    rezervacija.Datum_vracanja = R.Datum_vracanja.Date;
-                    rezervacija.Datum_preuzimanja = R.Datum_preuzimanja.Date;
-                    rezervacija.Datum_rezervacije = DateTime.Now;
-
-                    unitOfWork.Rezervacije.Add(rezervacija);
-
-                    if (unitOfWork.Complete() > 0)
+            if (rezervacijaIzBaze == null)
+            {      
+                    IdPostoji = "";
+                    if (!error && R.IsValid)
                     {
-                        Uspesno = "Uspesno ste dodali rezervaciju u bazu!";
-                        R = new AppRezervacija();
+                    var r = unitOfWork.Rezervacije.ProveraCenovnika(R.Datum_preuzimanja.Date, R.Datum_vracanja.Date, SelektovanoVozilo.Id);
+                    if (r != null)
+                    {
+                        if(unitOfWork.Rezervacije.Rezervisi(R.Datum_preuzimanja.Date, R.Datum_vracanja.Date, SelektovanoVozilo.Id))
+                        { 
+                            Rezervacija rezervacija = new Rezervacija();
+                            rezervacija.Id = R.Id;
+                            rezervacija.KlijentJmbg = SelektovanKlijent.Jmbg;
+                            rezervacija.AgentJmbg = SelektovanAgent.Jmbg;
+                            rezervacija.VoziloId = SelektovanoVozilo.Id;
+                            rezervacija.OsiguranjeId = SelektovanoOsiguranje.Id;
+                            rezervacija.Datum_vracanja = R.Datum_vracanja.Date;
+                            rezervacija.Datum_preuzimanja = R.Datum_preuzimanja.Date;
+                            rezervacija.Datum_rezervacije = DateTime.Now;
+                            rezervacija.Cenovnik = r.Cenovnik;
+                            rezervacija.CenaRezervacije = unitOfWork.Rezervacije.IzracunajCenu(R.Datum_preuzimanja.Date, R.Datum_vracanja.Date, r.Cenovnik.CenaPoDanu);
+                            rezervacija.Rezervisano = true;
+
+                            unitOfWork.Rezervacije.Add(rezervacija);
+
+                            if (unitOfWork.Complete() > 0)
+                            {
+                                Uspesno = "Uspesno ste dodali rezervaciju u bazu!";
+                                R = new AppRezervacija();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Vozilo je vec rezervisano u tom periodu!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Rezervacija za taj period nije moguca jer nije kreiran cenovnik za nju!");
                     }
                 }
+                
             }
             else
             {
@@ -429,20 +450,28 @@ namespace RentACarWPF.ViewModels
 
             if (!error && R.IsValid)
             {
-                Rezervacija rezervacija = unitOfWork.Rezervacije.Get(R.Id);
-                rezervacija.KlijentJmbg = SelektovanKlijent.Jmbg;
-                rezervacija.AgentJmbg = SelektovanAgent.Jmbg;
-                rezervacija.VoziloId = SelektovanoVozilo.Id;
-                rezervacija.OsiguranjeId = SelektovanoOsiguranje.Id;
-                rezervacija.Datum_vracanja = R.Datum_vracanja.Date;
-                rezervacija.Datum_preuzimanja = R.Datum_preuzimanja.Date;
-
-                unitOfWork.Rezervacije.Update(rezervacija);
-
-                if (unitOfWork.Complete() > 0)
+                var r = unitOfWork.Rezervacije.ProveraCenovnika(R.Datum_preuzimanja.Date, R.Datum_vracanja.Date, SelektovanoVozilo.Id);
+                if (r != null)
                 {
-                    Uspesno = "Uspesno ste izmenili rezervaciju!";
-                    IdPostoji = "";
+                    Rezervacija rezervacija = unitOfWork.Rezervacije.Get(R.Id);
+                    rezervacija.KlijentJmbg = SelektovanKlijent.Jmbg;
+                    rezervacija.AgentJmbg = SelektovanAgent.Jmbg;
+                    rezervacija.VoziloId = SelektovanoVozilo.Id;
+                    rezervacija.OsiguranjeId = SelektovanoOsiguranje.Id;
+                    rezervacija.Datum_vracanja = R.Datum_vracanja.Date;
+                    rezervacija.Datum_preuzimanja = R.Datum_preuzimanja.Date;
+
+                    unitOfWork.Rezervacije.Update(rezervacija);
+
+                    if (unitOfWork.Complete() > 0)
+                    {
+                        Uspesno = "Uspesno ste izmenili rezervaciju!";
+                        IdPostoji = "";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Izmena rezervacije za taj period nije moguca jer nije kreiran cenovnik za nju!");
                 }
             }
         }

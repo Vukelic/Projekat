@@ -1,6 +1,7 @@
 ﻿using RentACar;
 using RentACar.DAO;
 using RentACarWPF.Helpers;
+using RentACarWPF.Models;
 using RentACarWPF.Views;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,6 @@ namespace RentACarWPF.ViewModels
     public class RegistracijaViewModel : BindableBase
     {
         public Window Window { get; set; }
-        private string korisnickoIme;
         private SecureString _password;
         public SecureString PasswordSecureString
         {
@@ -30,7 +30,17 @@ namespace RentACarWPF.ViewModels
             }
         }
 
-        public string KorisnickoIme { get => korisnickoIme; set { korisnickoIme = value; OnPropertyChanged("KorisnickoIme"); } }
+        AppKlijent k = new AppKlijent();
+
+        public AppKlijent K
+        {
+            get { return k; }
+            set
+            {
+                k = value;
+                OnPropertyChanged("K");
+            }
+        }
         public MyICommand RegistracijaCommand { get; set; }
         UnitOfWork unitOfWork = new UnitOfWork(new ModelContainer());
         public RegistracijaViewModel(RegistracijaView window)
@@ -38,51 +48,33 @@ namespace RentACarWPF.ViewModels
             this.Window = window;
             RegistracijaCommand = new MyICommand(onRegistracija);
         }
-        string proveraK;
-        public string ProveraK
-        {
-            get { return proveraK; }
-            set
-            {
-                proveraK = value;
-                OnPropertyChanged("ProveraK");
-            }
-        }
-
-        string proveraL;
-        public string ProveraL
-        {
-            get { return proveraL; }
-            set
-            {
-                proveraL = value;
-                OnPropertyChanged("ProveraL");
-            }
-        }
+           
         public void onRegistracija(object parameter)
         {
-            Korisnik k = new Korisnik();
-            k.KorisnickoIme = KorisnickoIme;
-            k.Lozinka = new System.Net.NetworkCredential(string.Empty, PasswordSecureString).Password;
-
-            ProveraK = "";
-            ProveraL = "";
-            if (string.IsNullOrEmpty(KorisnickoIme))
-            {
-                ProveraK = "Morate uneti korisnicko ime!";
-            }
-            if (PasswordSecureString == null)
-            {
-                ProveraL = "Morate uneti lozinku!";
-            }
-            if (unitOfWork.Korisnici.ProveraKorisnickogImena(KorisnickoIme))
+            K.Lozinka = new System.Net.NetworkCredential(string.Empty, PasswordSecureString).Password;
+            K.Validate();
+            bool error = false;         
+        
+            if (unitOfWork.Klijenti.ProveraKorisnickogImena(K.KorisnickoIme))
             {
                 MessageBox.Show("Pogresno korisnicko ime!");
             }
-            else
+
+            if (unitOfWork.Klijenti.ProveraJmbg(K.Jmbg))
             {
-                unitOfWork.Korisnici.Add(k);
-                unitOfWork.Korisnici.SaveChanges();
+                MessageBox.Show("Pogresan jmbg!");
+            }
+            if (!error && K.IsValid)
+            {
+                Klijent k = new Klijent();
+                k.Lozinka = new System.Net.NetworkCredential(string.Empty, PasswordSecureString).Password;
+                k.KorisnickoIme = K.KorisnickoIme;
+                k.Prezime = K.Prezime;
+                k.Ime = K.Ime;
+                k.Jmbg = K.Jmbg;
+                k.Uloga = TipUloga.regular;
+                unitOfWork.Klijenti.Add(k);
+                unitOfWork.Klijenti.SaveChanges();
                
                 this.Window.Close();
             }

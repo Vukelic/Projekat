@@ -120,7 +120,7 @@ namespace RentACarWPF.ViewModels
                      grad.Drzava = G.Drzava;
                      grad.Filijale = new List<Filijala>();
                      //unitOfWork.Gradovi.Add(grad);
-                    var us = model.Procedure1(grad.PostanskiBroj, grad.Drzava, grad.Naziv);
+                    var us = model.Procedure22(grad.PostanskiBroj, grad.Drzava, grad.Naziv);
 
                      if(us > 0)
                      {
