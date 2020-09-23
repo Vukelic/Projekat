@@ -31,15 +31,35 @@ namespace RentACarWPF.ViewModels
             }
         }
 
+        private string vidljivo { get; set; }
+        public string Vidljivo
+        {
+            get { return vidljivo; }
+            set
+            {
+                vidljivo = value;
+                OnPropertyChanged("Vidljivo");
+            }
+        }
+
         public Vozilo SelektovanoVozilo { get; set; }
 
-        public VozilaViewModel()
+        public VozilaViewModel(bool daLiJeRegular)
         {
             onOsveziInterfejs(null);
 
-            DodajVoziloCommand = new MyICommand(onDodajVozilo);
-            IzmeniVoziloCommand = new MyICommand(onIzmeniVozilo);
-            ObrisiVoziloCommand = new MyICommand(onObrisiVozilo);
+            if(daLiJeRegular == true)
+            {
+                Vidljivo = "Hidden";
+            }
+            else
+            {
+                DodajVoziloCommand = new MyICommand(onDodajVozilo);
+                IzmeniVoziloCommand = new MyICommand(onIzmeniVozilo);
+                ObrisiVoziloCommand = new MyICommand(onObrisiVozilo);
+            }
+
+            
             OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 

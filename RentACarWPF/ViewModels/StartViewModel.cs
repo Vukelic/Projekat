@@ -1,4 +1,6 @@
-﻿using RentACarWPF.Helpers;
+﻿using RentACar;
+using RentACar.DAO;
+using RentACarWPF.Helpers;
 using RentACarWPF.Views;
 using System.Windows;
 
@@ -24,7 +26,7 @@ namespace RentACarWPF.ViewModels
         public MyICommand ViewCenovnikCommand { get; set; }
 
         public StartViewModel(string korisnickoIme)
-        {
+        {          
             ViewFilijaleCommand = new MyICommand(onViewFilijale);
             ViewVozilaCommand = new MyICommand(onViewVozila);
             ViewRezervacijeCommand = new MyICommand(onViewRezervacije);
@@ -49,7 +51,7 @@ namespace RentACarWPF.ViewModels
 
         public void onViewCenovnik(object parameter)
         {
-            new CenovnikView().ShowDialog();
+            new CenovnikView(false).ShowDialog();
         }
         public void onViewNalog(object parameter)
         {
@@ -57,11 +59,11 @@ namespace RentACarWPF.ViewModels
         }
         public void onViewVozila(object parameter)
         {
-            new VozilaView().ShowDialog();
+            new VozilaView(false).ShowDialog();
         }
         public void onViewRezervacije(object parameter)
         {
-            new RezervacijeView().ShowDialog();
+            new RezervacijeView(false).ShowDialog();
         }
         public void onViewKlijenti(object parameter)
         {
@@ -69,7 +71,7 @@ namespace RentACarWPF.ViewModels
         }
         public void onViewOcene(object parameter)
         {
-            new OceneView().ShowDialog();
+            new OceneView(false).ShowDialog();
         }
         public void onViewGradovi(object parameter)
         {

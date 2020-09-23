@@ -33,13 +33,34 @@ namespace RentACarWPF.ViewModels
 
         public Rezervacija SelektovanaRezervacija { get; set; }
 
-        public RezervacijeViewModel()
+        private string vidljivo { get; set; }
+        public string Vidljivo
+        {
+            get { return vidljivo; }
+            set
+            {
+                vidljivo = value;
+                OnPropertyChanged("Vidljivo");
+            }
+        }
+
+        public RezervacijeViewModel(bool daLiJeRegular)
         {
             onOsveziInterfejs(null);
 
-            DodajRezervacijuCommand = new MyICommand(onDodajRezervaciju);
-            IzmeniRezervacijuCommand = new MyICommand(onIzmeniRezervaciju);
-            ObrisiRezervacijuCommand = new MyICommand(onObrisiRezervaciju);
+            if(daLiJeRegular == true)
+            {
+                DodajRezervacijuCommand = new MyICommand(onDodajRezervaciju);
+                Vidljivo = "Hidden";
+            }
+            else
+            {
+                DodajRezervacijuCommand = new MyICommand(onDodajRezervaciju);
+                IzmeniRezervacijuCommand = new MyICommand(onIzmeniRezervaciju);
+                ObrisiRezervacijuCommand = new MyICommand(onObrisiRezervaciju);
+            }
+
+            
             OsveziCommand = new MyICommand(onOsveziInterfejs);
         }    
          

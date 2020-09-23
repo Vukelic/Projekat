@@ -12,6 +12,11 @@ namespace RentACar.DAO
             return ModelContainer.Klijenti.Where(x => x.Jmbg == jmbg).FirstOrDefault();
         }
 
+        public Klijent GetKlijentByKorisnickoIme(string korisnickoIme)
+        {
+            return ModelContainer.Klijenti.Where(x => x.KorisnickoIme == korisnickoIme).FirstOrDefault();
+        }
+
         public bool ProveraJmbg(string jmbg)
         {
             using (var db = new ModelContainer())

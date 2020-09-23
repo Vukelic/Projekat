@@ -20,9 +20,9 @@
         </Grid.ColumnDefinitions>
         <Image Margin="0,2,0,-0.2"  Source="/Images/all_background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" Grid.RowSpan="4" />
         <TextBlock  FontFamily="Segoe Print MS"  Text="PREGLED VOZILA" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"></TextBlock>
-        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="0" Margin="10" Content="Dodaj" FontSize="30" FontWeight="Bold" Command="{Binding DodajVoziloCommand}" Cursor="Hand"></Button>
-        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="1" Margin="10" Content="Izmeni" FontSize="30" FontWeight="Bold" Command="{Binding IzmeniVoziloCommand}" Cursor="Hand"></Button>
-        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="2" Grid.Column="0" Margin="10" Content="Obrisi" FontSize="30" FontWeight="Bold" Command="{Binding ObrisiVoziloCommand}" Cursor="Hand"></Button>
+        <Button FontFamily="Segoe Print MS"  Visibility="{Binding Vidljivo}" BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="0" Margin="10" Content="Dodaj" FontSize="30" FontWeight="Bold" Command="{Binding DodajVoziloCommand}" Cursor="Hand"></Button>
+        <Button FontFamily="Segoe Print MS"  Visibility="{Binding Vidljivo}" BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="1" Margin="10" Content="Izmeni" FontSize="30" FontWeight="Bold" Command="{Binding IzmeniVoziloCommand}" Cursor="Hand"></Button>
+        <Button FontFamily="Segoe Print MS"  Visibility="{Binding Vidljivo}" BorderBrush="Transparent" Background="Transparent" Grid.Row="2" Grid.Column="0" Margin="10" Content="Obrisi" FontSize="30" FontWeight="Bold" Command="{Binding ObrisiVoziloCommand}" Cursor="Hand"></Button>
         <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="2" Grid.Column="1" Margin="10" Content="Osvezi" FontSize="30" FontWeight="Bold" Command="{Binding OsveziCommand}" Cursor="Hand"></Button>
         <DataGrid Grid.Row="3" Grid.ColumnSpan="3" Margin="15" 
                   Foreground="Black" BorderBrush="Transparent" IsReadOnly="True" 

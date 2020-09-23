@@ -27,13 +27,33 @@ namespace RentACarWPF.ViewModels
         private BindingList<Cenovnik> cenovnici { get; set; }
         private List<Cenovnik> cenovniciLista { get; set; }
 
-        public CenovnikViewModel()
+        private string vidljivo { get; set; }
+        public string Vidljivo
+        {
+            get { return vidljivo; }
+            set
+            {
+                vidljivo = value;
+                OnPropertyChanged("Vidljivo");
+            }
+        }
+
+        public CenovnikViewModel(bool daLiJeRegular)
         {
             onOsveziInterfejs(null);
 
-            DodajCenovnikCommand = new MyICommand(onDodajCenovnik);
-            IzmeniCenovnikCommand = new MyICommand(onIzmeniCenovnik);
-            ObrisiCenovnikCommand = new MyICommand(onObrisiCenovnik);
+            if(daLiJeRegular ==true)
+            {
+                Vidljivo = "Hidden";
+            }
+            else
+            {
+                DodajCenovnikCommand = new MyICommand(onDodajCenovnik);
+                IzmeniCenovnikCommand = new MyICommand(onIzmeniCenovnik);
+                ObrisiCenovnikCommand = new MyICommand(onObrisiCenovnik);
+            }
+
+          
             OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 

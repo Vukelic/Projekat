@@ -5,10 +5,10 @@ namespace RentACarWPF.Views
 {
     public partial class RezervacijeView : Window
     {
-        public RezervacijeView()
+        public RezervacijeView(bool daLiJeRegular)
         {
             InitializeComponent();
-            DataContext = new RezervacijeViewModel() { Window = this };
+            DataContext = new RezervacijeViewModel(daLiJeRegular) { Window = this };
         }
     }
 }

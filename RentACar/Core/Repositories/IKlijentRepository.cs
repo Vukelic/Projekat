@@ -3,6 +3,8 @@
     public interface IKlijentRepository : IRepository<Klijent>
     {
         Klijent GetKlijentByJmbg(string jmbg);
+
+        Klijent GetKlijentByKorisnickoIme(string korisnickoIme);
         void RemoveByJmbg(string jmbg);
 
         bool Login(string korisnickoIme, string sifra);

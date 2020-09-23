@@ -16,14 +16,15 @@ using System.Windows.Shapes;
 namespace RentACarWPF.Views
 {
     /// <summary>
-    /// Interaction logic for CenovnikView.xaml
+    /// Interaction logic for StartKorisnikView.xaml
     /// </summary>
-    public partial class CenovnikView : Window
+    public partial class StartKorisnikView : Window
     {
-        public CenovnikView(bool daLiJeRegular)
+        public StartKorisnikView(string korisnickoIme)
         {
             InitializeComponent();
-            DataContext = new CenovnikViewModel(daLiJeRegular) { Window = this };
+
+            DataContext = new StartKorisnikViewModel(korisnickoIme) { Window = this };
         }
     }
 }

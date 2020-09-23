@@ -250,3 +250,5 @@ C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\CenovnikView.g.cs
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniCenovnikView.g.cs
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\CenovnikView.baml
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniCenovnikView.baml
+C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\StartKorisnikView.g.cs
+C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\StartKorisnikView.baml

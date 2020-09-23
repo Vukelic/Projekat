@@ -58,10 +58,21 @@ namespace RentACarWPF.ViewModels
                 }
                 if (unitOfWork.Klijenti.Login(KorisnickoIme, pass))
                 {
-                    
-                new StartView(KorisnickoIme).Show();
-               
-                this.Window.Close();
+                var user = unitOfWork.Klijenti.GetKlijentByKorisnickoIme(korisnickoIme);
+                if (user.Uloga == TipUloga.regular)
+                {
+                    new StartKorisnikView(KorisnickoIme).Show();
+
+                    this.Window.Close();
+                }
+                else
+                {
+                    new StartView(KorisnickoIme).Show();
+
+                    this.Window.Close();
+                }
+
+              
                 }        
                 else
                  {

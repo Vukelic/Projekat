@@ -5,10 +5,10 @@ namespace RentACarWPF.Views
 {
     public partial class VozilaView : Window
     {
-        public VozilaView()
+        public VozilaView(bool daLiJeRegular)
         {
             InitializeComponent(); 
-            DataContext = new VozilaViewModel() { Window = this };
+            DataContext = new VozilaViewModel(daLiJeRegular) { Window = this };
         }
     }
 }

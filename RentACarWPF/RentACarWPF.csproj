@@ -122,6 +122,7 @@
     <Compile Include="ViewModels\RezervacijeViewModel.cs" />
     <Compile Include="ViewModels\ServiseriViewModel.cs" />
     <Compile Include="ViewModels\ServisiViewModel.cs" />
+    <Compile Include="ViewModels\StartKorisnikViewModel.cs" />
     <Compile Include="ViewModels\StartViewModel.cs" />
     <Compile Include="ViewModels\VozilaViewModel.cs" />
     <Compile Include="ViewModels\ZaposleniViewModel.cs" />
@@ -199,6 +200,9 @@
     </Compile>
     <Compile Include="Views\ServisiView.xaml.cs">
       <DependentUpon>ServisiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StartKorisnikView.xaml.cs">
+      <DependentUpon>StartKorisnikView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StartView.xaml.cs">
       <DependentUpon>StartView.xaml</DependentUpon>
@@ -310,6 +314,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ServisiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StartKorisnikView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

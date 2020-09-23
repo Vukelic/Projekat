@@ -34,13 +34,33 @@ namespace RentACarWPF.ViewModels
 
         public Ocena SelektovanaOcena { get; set; }
 
-        public OceneViewModel()
+        private string vidljivo { get; set; }
+        public string Vidljivo
+        {
+            get { return vidljivo; }
+            set
+            {
+                vidljivo = value;
+                OnPropertyChanged("Vidljivo");
+            }
+        }
+
+        public OceneViewModel(bool daLiJeRegular)
         {
             onOsveziInterfejs(null);
 
-            DodajOcenuCommand = new MyICommand(onDodajOcenu);
-            IzmeniOcenuCommand = new MyICommand(onIzmeniOcenu);
-            ObrisiOcenuCommand = new MyICommand(onObrisiOcenu);
+            if(daLiJeRegular == true)
+            {
+                Vidljivo = "Hidden";
+                DodajOcenuCommand = new MyICommand(onDodajOcenu);
+            }
+            else
+            {
+                DodajOcenuCommand = new MyICommand(onDodajOcenu);
+                IzmeniOcenuCommand = new MyICommand(onIzmeniOcenu);
+                ObrisiOcenuCommand = new MyICommand(onObrisiOcenu);
+            }
+         
             OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 

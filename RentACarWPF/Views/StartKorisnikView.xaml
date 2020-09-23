@@ -1,0 +1,44 @@
+﻿<Window x:Class="RentACarWPF.Views.StartKorisnikView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RentACarWPF.Views"
+        mc:Ignorable="d"
+        Title="Home" Height="582" Width="764"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/RentACarWPF;component/Images/logo.jpg">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Margin="0,2,9.8,0.2"  Source="/Images/rent_background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="5" Grid.RowSpan="5" />
+
+            <Image Source="/Images/logo.jpg" Grid.ColumnSpan="2" Margin="0,0,130.8,145.4" Grid.RowSpan="2"></Image>
+
+            <Button  Content="Nalog"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Column="4" Margin="33.04,10,22.36,36" Cursor="Hand"
+                Command="{Binding ViewNalogCommand}"/>
+            <Button Content="Vozila"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Margin="33.04,91,16.36,10.4" Cursor="Hand"
+                 Command="{Binding ViewVozilaCommand}" Grid.Column="4" RenderTransformOrigin="4.31,-4.296"/>
+            <Button Content="Rezervacije"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Column="4" Grid.Row="2" Margin="36.04,91.6,16.36,9.8" Cursor="Hand"
+                 Command="{Binding ViewRezervacijeCommand}"/>
+            <Button  Content="Ocene"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Row="2" Margin="26.04,30.6,22.36,69.8" Cursor="Hand"
+                 Command="{Binding ViewOceneCommand}" Grid.Column="4"/>
+            <Button Content="Cenovnik"  FontSize="10" FontFamily="Segoe Print MS" FontWeight="Bold"  BorderBrush="Transparent" Background="Transparent" Grid.Column="4" Grid.Row="1" Margin="26.04,10,16.36,96.4" Cursor="Hand"
+                 Command="{Binding ViewCenovnikCommand}" RenderTransformOrigin="0.491,2.734"/>
+
+        </Grid>
+    </Grid>
+</Window>

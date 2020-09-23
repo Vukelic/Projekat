@@ -5,10 +5,10 @@ namespace RentACarWPF.Views
 {
     public partial class OceneView : Window
     {
-        public OceneView()
+        public OceneView(bool daLiJeRegular)
         {
             InitializeComponent();
-            DataContext = new OceneViewModel() { Window = this };
+            DataContext = new OceneViewModel(daLiJeRegular) { Window = this };
         }
     }
 }
