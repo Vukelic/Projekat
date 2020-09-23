@@ -47,7 +47,7 @@ namespace RentACarWPF.ViewModels
 
         public void onViewRezervacije(object parameter)
         {
-            new RezervacijeView(true).ShowDialog();
+            new RezervacijeView(KorisnickoIme).ShowDialog();
         }
 
         public void onViewNalog(object parameter)

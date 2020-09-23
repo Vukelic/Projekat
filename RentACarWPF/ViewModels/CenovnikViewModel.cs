@@ -4,6 +4,7 @@ using RentACarWPF.Helpers;
 using RentACarWPF.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,10 @@ namespace RentACarWPF.ViewModels
         public MyICommand DodajCenovnikCommand { get; set; }
         public MyICommand IzmeniCenovnikCommand { get; set; }
         public MyICommand ObrisiCenovnikCommand { get; set; }
-        public MyICommand OsveziCommand { get; set; }
 
         public Cenovnik SelektovaniCenovnik { get; set; }
 
-        private BindingList<Cenovnik> cenovnici { get; set; }
-        private List<Cenovnik> cenovniciLista { get; set; }
+        private ObservableCollection<Cenovnik> cenovnici { get; set; }
 
         private string vidljivo { get; set; }
         public string Vidljivo
@@ -53,11 +52,9 @@ namespace RentACarWPF.ViewModels
                 ObrisiCenovnikCommand = new MyICommand(onObrisiCenovnik);
             }
 
-          
-            OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 
-        public BindingList<Cenovnik> Cenovnici
+        public ObservableCollection<Cenovnik> Cenovnici
         {
             get { return cenovnici; }
             set
@@ -71,6 +68,7 @@ namespace RentACarWPF.ViewModels
         public void onDodajCenovnik(object parameter)
         {
             new DodajIzmeniCenovnikView(null).ShowDialog();
+            onOsveziInterfejs(null);
         }
 
         public void onIzmeniCenovnik(object parameter)
@@ -78,6 +76,7 @@ namespace RentACarWPF.ViewModels
             if (SelektovaniCenovnik != null)
             {
                 new DodajIzmeniCenovnikView(SelektovaniCenovnik).ShowDialog();
+                onOsveziInterfejs(null);
             }
             else
             {
@@ -93,8 +92,6 @@ namespace RentACarWPF.ViewModels
                 return;
             }
 
-           // var cenovnici = unitOfWork.Cenovnici.ProveraBrisanja(SelektovaniCenovnik.Id);
-
             if (!unitOfWork.Cenovnici.ProveraBrisanja(SelektovaniCenovnik.Id))
             {
                 MessageBox.Show("Ne mozete obrisati cenovnik jer ima napravljene rezervacije! Prvo obrisite rezervacije pa probajte ponovo!");
@@ -107,15 +104,16 @@ namespace RentACarWPF.ViewModels
                 {
                     MessageBox.Show("Cenovnik uspesno obrisan!");
                 }
+
+                onOsveziInterfejs(null);
             }
         }
 
         public void onOsveziInterfejs(object parameter)
         {
-            cenovniciLista = unitOfWork.Cenovnici.GetAll();
-            Cenovnici = new BindingList<Cenovnik>();
+            Cenovnici = new ObservableCollection<Cenovnik>();
 
-            foreach (var item in cenovniciLista)
+            foreach (var item in unitOfWork.Cenovnici.GetAll())
             {
                 Cenovnici.Add(item);
             }

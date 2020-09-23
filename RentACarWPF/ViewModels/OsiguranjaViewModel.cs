@@ -3,6 +3,7 @@ using RentACar.DAO;
 using RentACarWPF.Helpers;
 using RentACarWPF.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -17,12 +18,10 @@ namespace RentACarWPF.ViewModels
         public MyICommand DodajOsiguranjeCommand { get; set; }
         public MyICommand IzmeniOsiguranjeCommand { get; set; }
         public MyICommand ObrisiOsiguranjeCommand { get; set; }
-        public MyICommand OsveziCommand { get; set; }
 
-        private BindingList<Osiguranje> osiguranja { get; set; }
-        private List<Osiguranje> osiguranjaLista { get; set; }
+        private ObservableCollection<Osiguranje> osiguranja { get; set; }
 
-        public BindingList<Osiguranje> Osiguranja
+        public ObservableCollection<Osiguranje> Osiguranja
         {
             get { return osiguranja; }
             set
@@ -41,20 +40,19 @@ namespace RentACarWPF.ViewModels
             DodajOsiguranjeCommand = new MyICommand(onDodajOsiguranje);
             IzmeniOsiguranjeCommand = new MyICommand(onIzmeniOsiguranje);
             ObrisiOsiguranjeCommand = new MyICommand(onObrisiOsiguranje);
-            OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 
         public void onDodajOsiguranje(object parameter)
         {
             new DodajIzmeniOsiguranjeView(null).ShowDialog();
+            onOsveziInterfejs(null);
         }
 
         public void onOsveziInterfejs(object parameter)
         {
-            osiguranjaLista = unitOfWork.Osiguranja.GetAll();
-            Osiguranja = new BindingList<Osiguranje>();
+            Osiguranja = new ObservableCollection<Osiguranje>();
 
-            foreach (var osiguranje in osiguranjaLista)
+            foreach (var osiguranje in unitOfWork.Osiguranja.GetAll())
             {
                 Osiguranja.Add(osiguranje);
             }
@@ -65,6 +63,7 @@ namespace RentACarWPF.ViewModels
             if (SelektovanoOsiguranje != null)
             {
                 new DodajIzmeniOsiguranjeView(SelektovanoOsiguranje).ShowDialog();
+                onOsveziInterfejs(null);
             }
             else
             {

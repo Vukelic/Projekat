@@ -3,6 +3,7 @@ using RentACar.DAO;
 using RentACarWPF.Helpers;
 using RentACarWPF.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -17,12 +18,10 @@ namespace RentACarWPF.ViewModels
         public MyICommand DodajKlijentaCommand { get; set; }
         public MyICommand IzmeniKlijentaCommand { get; set; }
         public MyICommand ObrisiKlijentaCommand { get; set; }
-        public MyICommand OsveziCommand { get; set; }
 
-        private BindingList<Klijent> klijenti { get; set; }
-        private List<Klijent> klijentiLista { get; set; }
+        private ObservableCollection<Klijent> klijenti { get; set; }
 
-        public BindingList<Klijent> Klijenti
+        public ObservableCollection<Klijent> Klijenti
         {
             get { return klijenti; }
             set
@@ -41,12 +40,12 @@ namespace RentACarWPF.ViewModels
             DodajKlijentaCommand = new MyICommand(onDodajKlijenta);
             IzmeniKlijentaCommand = new MyICommand(onIzmeniKlijenta);
             ObrisiKlijentaCommand = new MyICommand(onObrisiKlijenta);
-            OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 
         public void onDodajKlijenta(object parameter)
         {
             new DodajIzmeniKlijentaView(null).ShowDialog();
+            onOsveziInterfejs(null);
         }
 
         public void onIzmeniKlijenta(object parameter)
@@ -54,6 +53,7 @@ namespace RentACarWPF.ViewModels
             if (SelektovaniKlijent != null)
             {
                 new DodajIzmeniKlijentaView(SelektovaniKlijent).ShowDialog();
+                onOsveziInterfejs(null);
             }
             else
             {
@@ -63,10 +63,10 @@ namespace RentACarWPF.ViewModels
 
         public void onOsveziInterfejs(object parameter)
         {
-            klijentiLista = unitOfWork.Klijenti.GetAll();
-            Klijenti = new BindingList<Klijent>();
+  
+            Klijenti = new ObservableCollection<Klijent>();
 
-            foreach (var klijent in klijentiLista)
+            foreach (var klijent in unitOfWork.Klijenti.GetAll())
             {
                 Klijenti.Add(klijent);
             }

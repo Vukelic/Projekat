@@ -3,6 +3,7 @@ using RentACar.DAO;
 using RentACarWPF.Helpers;
 using RentACarWPF.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -11,18 +12,15 @@ namespace RentACarWPF.ViewModels
     public class OceneViewModel : BindableBase
     {
 
-        private readonly Repository<Ocena> ocenerepo = new Repository<Ocena>(new ModelContainer());
-
+        UnitOfWork unitOfWork = new UnitOfWork(new ModelContainer());
         public Window Window { get; set; }
         public MyICommand DodajOcenuCommand { get; set; }
         public MyICommand IzmeniOcenuCommand { get; set; }
         public MyICommand ObrisiOcenuCommand { get; set; }
-        public MyICommand OsveziCommand { get; set; }
 
-        private BindingList<Ocena> ocene { get; set; }
-        private List<Ocena> oceneLista { get; set; }
+        private ObservableCollection<Ocena> ocene { get; set; }
 
-        public BindingList<Ocena> Ocene
+        public ObservableCollection<Ocena> Ocene
         {
             get { return ocene; }
             set
@@ -61,12 +59,12 @@ namespace RentACarWPF.ViewModels
                 ObrisiOcenuCommand = new MyICommand(onObrisiOcenu);
             }
          
-            OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 
         public void onDodajOcenu(object parameter)
         {
             new DodajIzmeniOcenuView(null).ShowDialog();
+            onOsveziInterfejs(null);
         }
 
         public void onIzmeniOcenu(object parameter)
@@ -74,6 +72,7 @@ namespace RentACarWPF.ViewModels
             if (SelektovanaOcena != null)
             {
                 new DodajIzmeniOcenuView(SelektovanaOcena).ShowDialog();
+                onOsveziInterfejs(null);
             }
             else
             {
@@ -89,9 +88,9 @@ namespace RentACarWPF.ViewModels
                 return;
             }
 
-            ocenerepo.Remove(SelektovanaOcena.Id);
+            unitOfWork.Ocene.Remove(SelektovanaOcena.Id);
 
-            if (ocenerepo.SaveChanges())
+            if (unitOfWork.Ocene.SaveChanges())
             {
                 MessageBox.Show("Ocena uspesno obrisana!");
                 onOsveziInterfejs(null);
@@ -100,10 +99,9 @@ namespace RentACarWPF.ViewModels
 
         public void onOsveziInterfejs(object parameter)
         {
-            oceneLista = ocenerepo.GetAll();
-            Ocene = new BindingList<Ocena>();
+            Ocene = new ObservableCollection<Ocena>();
 
-            foreach (var ocena in oceneLista)
+            foreach (var ocena in unitOfWork.Ocene.GetAll())
             {
                 Ocene.Add(ocena);
             }

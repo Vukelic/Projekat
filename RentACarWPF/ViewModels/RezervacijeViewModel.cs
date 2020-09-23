@@ -3,6 +3,7 @@ using RentACar.DAO;
 using RentACarWPF.Helpers;
 using RentACarWPF.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -10,30 +11,20 @@ namespace RentACarWPF.ViewModels
 {
     public class RezervacijeViewModel : BindableBase
     {
+        UnitOfWork unitOfWork = new UnitOfWork(new ModelContainer());
+        private ObservableCollection<Rezervacija> rezervacije;
         public Window Window { get; set; }
-        private readonly Repository<Rezervacija> rezervacijerepo = new Repository<Rezervacija>(new ModelContainer());
 
         public MyICommand DodajRezervacijuCommand { get; set; }
         public MyICommand IzmeniRezervacijuCommand { get; set; }
         public MyICommand ObrisiRezervacijuCommand { get; set; }
-        public MyICommand OsveziCommand { get; set; }
 
-        private BindingList<Rezervacija> rezervacije { get; set; }
-        private List<Rezervacija> rezervacijeLista { get; set; }
-
-        public BindingList<Rezervacija> Rezervacije
-        {
-            get { return rezervacije; }
-            set
-            {
-                rezervacije = value;
-                OnPropertyChanged("Rezervacije");
-            }
-        }
-
+        public ObservableCollection<Rezervacija> Rezervacije { get => rezervacije; set { rezervacije = value; OnPropertyChanged("Rezervacije"); } }   
         public Rezervacija SelektovanaRezervacija { get; set; }
 
         private string vidljivo { get; set; }
+
+        private string jmbg { get; set; }
         public string Vidljivo
         {
             get { return vidljivo; }
@@ -44,29 +35,40 @@ namespace RentACarWPF.ViewModels
             }
         }
 
-        public RezervacijeViewModel(bool daLiJeRegular)
+        public RezervacijeViewModel(string Jmbg)
         {
-            onOsveziInterfejs(null);
-
-            if(daLiJeRegular == true)
+            jmbg = Jmbg;
+            var korisnik = unitOfWork.Klijenti.GetKlijentByJmbg(Jmbg);
+            if(korisnik.Uloga == TipUloga.regular)
             {
                 DodajRezervacijuCommand = new MyICommand(onDodajRezervaciju);
                 Vidljivo = "Hidden";
+                onOsveziInterfejs(Jmbg);
             }
             else
             {
                 DodajRezervacijuCommand = new MyICommand(onDodajRezervaciju);
                 IzmeniRezervacijuCommand = new MyICommand(onIzmeniRezervaciju);
                 ObrisiRezervacijuCommand = new MyICommand(onObrisiRezervaciju);
+                onOsveziInterfejs(null);
             }
 
             
-            OsveziCommand = new MyICommand(onOsveziInterfejs);
         }    
          
         public void onDodajRezervaciju(object parameter)
         {
-            new DodajIzmeniRezervacijuView(null).ShowDialog();
+            if(jmbg != null)
+            {
+                new DodajIzmeniRezervacijuView(null).ShowDialog();
+                onOsveziInterfejs(jmbg);
+            }
+            else
+            {
+                new DodajIzmeniRezervacijuView(null).ShowDialog();
+                onOsveziInterfejs(null);
+            }
+           
         }
 
         public void onIzmeniRezervaciju(object parameter)
@@ -74,6 +76,7 @@ namespace RentACarWPF.ViewModels
             if (SelektovanaRezervacija != null)
             {
                 new DodajIzmeniRezervacijuView(SelektovanaRezervacija).ShowDialog();
+                onOsveziInterfejs(null);
             }
             else
             {
@@ -89,24 +92,33 @@ namespace RentACarWPF.ViewModels
                 return;
             }
 
-            rezervacijerepo.Remove(SelektovanaRezervacija.Id);
+            unitOfWork.Rezervacije.Remove(SelektovanaRezervacija.Id);
 
-            if (rezervacijerepo.SaveChanges())
+            if (unitOfWork.Rezervacije.SaveChanges())
             {
                 MessageBox.Show("Rezervacija uspesno obrisana!");
                 onOsveziInterfejs(null);
             }
         }
 
-        public void onOsveziInterfejs(object parameter)
+        public void onOsveziInterfejs(object parametar)
         {
-            rezervacijeLista = rezervacijerepo.GetAll();
-            Rezervacije = new BindingList<Rezervacija>();
-
-            foreach (var rezervacija in rezervacijeLista)
+            Rezervacije = new ObservableCollection<Rezervacija>();
+            if (parametar != null)
             {
-                Rezervacije.Add(rezervacija);
+                foreach (var rezervacija in unitOfWork.Rezervacije.RezervacijeOdKlijenta(parametar.ToString()))
+                {
+                    Rezervacije.Add(rezervacija);
+                }
             }
+            else
+            {
+                foreach (var rezervacija in unitOfWork.Rezervacije.GetAll())
+                {
+                    Rezervacije.Add(rezervacija);
+                }
+            }
+                      
         }
     }
 }

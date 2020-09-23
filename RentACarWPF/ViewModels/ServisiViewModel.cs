@@ -3,6 +3,7 @@ using RentACar.DAO;
 using RentACarWPF.Helpers;
 using RentACarWPF.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -10,18 +11,16 @@ namespace RentACarWPF.ViewModels
 {
     public class ServisiViewModel : BindableBase
     {
-        private readonly Repository<Servis> servisirepo = new Repository<Servis>(new ModelContainer());
+        UnitOfWork unitOfWork = new UnitOfWork(new ModelContainer());
 
         public Window Window { get; set; }
         public MyICommand DodajServisCommand { get; set; }
         public MyICommand IzmeniServisCommand { get; set; }
         public MyICommand ObrisiServisCommand { get; set; }
-        public MyICommand OsveziCommand { get; set; }
 
-        private BindingList<Servis> servisi { get; set; }
-        private List<Servis> servisiLista { get; set; }
+        private ObservableCollection<Servis> servisi { get; set; }
 
-        public BindingList<Servis> Servisi
+        public ObservableCollection<Servis> Servisi
         {
             get { return servisi; }
             set
@@ -40,12 +39,12 @@ namespace RentACarWPF.ViewModels
             DodajServisCommand = new MyICommand(onDodajServis);
             IzmeniServisCommand = new MyICommand(onIzmeniServis);
             ObrisiServisCommand = new MyICommand(onObrisiServis);
-            OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 
         public void onDodajServis(object parameter)
         {
             new DodajIzmeniServisView(null).ShowDialog();
+            onOsveziInterfejs(null);
         }
 
         public void onIzmeniServis(object parameter)
@@ -53,6 +52,7 @@ namespace RentACarWPF.ViewModels
             if (SelektovaniServis != null)
             {
                 new DodajIzmeniServisView(SelektovaniServis).ShowDialog();
+                onOsveziInterfejs(null);
             }
             else
             {
@@ -68,9 +68,9 @@ namespace RentACarWPF.ViewModels
                 return;
             }
 
-            servisirepo.Remove(SelektovaniServis.Id);
+            unitOfWork.Servisi.Remove(SelektovaniServis.Id);
 
-            if (servisirepo.SaveChanges())
+            if (unitOfWork.Servisi.SaveChanges())
             {
                 MessageBox.Show("Servis uspesno obrisan!");
                 onOsveziInterfejs(null);
@@ -79,10 +79,9 @@ namespace RentACarWPF.ViewModels
 
         public void onOsveziInterfejs(object parameter)
         {
-            servisiLista = servisirepo.GetAll();
-            Servisi = new BindingList<Servis>();
+            Servisi = new ObservableCollection<Servis>();
 
-            foreach (var servis in servisiLista)
+            foreach (var servis in unitOfWork.Servisi.GetAll())
             {
                 Servisi.Add(servis);
             }

@@ -26,17 +26,17 @@
                  Command="{Binding IzmeniKlijentaCommand}"></Button>
         <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="2" Grid.Column="0" Margin="10" Content="Obrisi" FontSize="30" FontWeight="Bold" Cursor="Hand"
                  Command="{Binding ObrisiKlijentaCommand}"></Button>
-        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="2" Grid.Column="1" Margin="10" Content="Osvezi" FontSize="30" FontWeight="Bold" Cursor="Hand"
-                 Command="{Binding OsveziCommand}"></Button>
         <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="15,15,10,21" 
                   Foreground="Black" BorderBrush="Transparent" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False"
                   ItemsSource="{Binding Klijenti, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelektovaniKlijent}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Jmbg" Width="150" Binding="{Binding Jmbg}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Ime" Width="150"  Binding="{Binding Ime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Prezime" Width="*"  Binding="{Binding Prezime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Jmbg" Width="100" Binding="{Binding Jmbg}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Ime" Width="100"  Binding="{Binding Ime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Prezime" Width="100"  Binding="{Binding Prezime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Korisnicko ime" Width="100"  Binding="{Binding KorisnickoIme}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Uloga" Width="100"  Binding="{Binding Uloga}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

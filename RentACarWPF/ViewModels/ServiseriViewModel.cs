@@ -3,6 +3,7 @@ using RentACar.DAO;
 using RentACarWPF.Helpers;
 using RentACarWPF.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -16,12 +17,10 @@ namespace RentACarWPF.ViewModels
         public MyICommand DodajServiseraCommand { get; set; }
         public MyICommand IzmeniServiseraCommand { get; set; }
         public MyICommand ObrisiServiseraCommand { get; set; }
-        public MyICommand OsveziCommand { get; set; }
 
-        private BindingList<Serviser> serviseri { get; set; }
-        private List<Serviser> serviseriLista { get; set; }
+        private ObservableCollection<Serviser> serviseri { get; set; }
 
-        public BindingList<Serviser> Serviseri
+        public ObservableCollection<Serviser> Serviseri
         {
             get { return serviseri; }
             set
@@ -40,12 +39,12 @@ namespace RentACarWPF.ViewModels
             DodajServiseraCommand = new MyICommand(onDodajServisera);
             IzmeniServiseraCommand = new MyICommand(onIzmeniServisera);
             ObrisiServiseraCommand = new MyICommand(onObrisiServisera);
-            OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 
         public void onDodajServisera(object parameter)
         {
             new DodajIzmeniServiseraView(null).ShowDialog();
+            onOsveziInterfejs(null);
         }
 
         public void onIzmeniServisera(object parameter)
@@ -53,6 +52,7 @@ namespace RentACarWPF.ViewModels
             if (SelektovaniServiser != null)
             {
                 new DodajIzmeniServiseraView(SelektovaniServiser).ShowDialog();
+                onOsveziInterfejs(null);
             }
             else
             {
@@ -88,10 +88,9 @@ namespace RentACarWPF.ViewModels
 
         public void onOsveziInterfejs(object parameter)
         {
-            serviseriLista = unitOfWork.Serviseri.GetAll();
-            Serviseri = new BindingList<Serviser>();
+            Serviseri = new ObservableCollection<Serviser>();
 
-            foreach (var serviser in serviseriLista)
+            foreach (var serviser in unitOfWork.Serviseri.GetAll())
             {
                 Serviseri.Add(serviser);
             }

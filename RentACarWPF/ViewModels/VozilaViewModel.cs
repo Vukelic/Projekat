@@ -3,6 +3,7 @@ using RentACar.DAO;
 using RentACarWPF.Helpers;
 using RentACarWPF.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -16,12 +17,10 @@ namespace RentACarWPF.ViewModels
         public MyICommand DodajVoziloCommand { get; set; }
         public MyICommand IzmeniVoziloCommand { get; set; }
         public MyICommand ObrisiVoziloCommand { get; set; }
-        public MyICommand OsveziCommand { get; set; }
 
-        private BindingList<Vozilo> vozila { get; set; }
-        private List<Vozilo> vozilaLista { get; set; }
+        private ObservableCollection<Vozilo> vozila { get; set; }
 
-        public BindingList<Vozilo> Vozila
+        public ObservableCollection<Vozilo> Vozila
         {
             get { return vozila; }
             set
@@ -58,14 +57,12 @@ namespace RentACarWPF.ViewModels
                 IzmeniVoziloCommand = new MyICommand(onIzmeniVozilo);
                 ObrisiVoziloCommand = new MyICommand(onObrisiVozilo);
             }
-
-            
-            OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 
         public void onDodajVozilo(object parameter)
         {
             new DodajIzmeniVoziloView(null).ShowDialog();
+            onOsveziInterfejs(null);
         }
 
         public void onIzmeniVozilo(object parameter)
@@ -73,6 +70,7 @@ namespace RentACarWPF.ViewModels
             if (SelektovanoVozilo != null)
             {
                 new DodajIzmeniVoziloView(SelektovanoVozilo).ShowDialog();
+                onOsveziInterfejs(null);
             }
             else
             {
@@ -121,10 +119,9 @@ namespace RentACarWPF.ViewModels
 
         public void onOsveziInterfejs(object parameter)
         {
-            vozilaLista = unitOfWork.Vozila.GetAll();
-            Vozila = new BindingList<Vozilo>();
+            Vozila = new ObservableCollection<Vozilo>();
 
-            foreach (var vozilo in vozilaLista)
+            foreach (var vozilo in unitOfWork.Vozila.GetAll())
             {
                 Vozila.Add(vozilo);
             }

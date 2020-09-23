@@ -3,6 +3,7 @@ using RentACar.DAO;
 using RentACarWPF.Helpers;
 using RentACarWPF.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -16,12 +17,10 @@ namespace RentACarWPF.ViewModels
         public MyICommand DodajAgentaCommand { get; set; }
         public MyICommand IzmeniAgentaCommand { get; set; }
         public MyICommand ObrisiAgentaCommand { get; set; }
-        public MyICommand OsveziCommand { get; set; }
 
-        private BindingList<Agent> agenti { get; set; }
-        private List<Agent> agentiLista { get; set; }
+        private ObservableCollection<Agent> agenti { get; set; }
 
-        public BindingList<Agent> Agenti
+        public ObservableCollection<Agent> Agenti
         {
             get { return agenti; }
             set
@@ -40,12 +39,13 @@ namespace RentACarWPF.ViewModels
             DodajAgentaCommand = new MyICommand(onDodajAgenta);
             IzmeniAgentaCommand = new MyICommand(onIzmeniAgenta);
             ObrisiAgentaCommand = new MyICommand(onObrisiAgenta);
-            OsveziCommand = new MyICommand(onOsveziInterfejs);
+            
         }
 
         public void onDodajAgenta(object parameter)
         {
             new DodajIzmeniAgentaView(null).ShowDialog();
+            onOsveziInterfejs(null);
         }
 
         public void onIzmeniAgenta(object parameter)
@@ -53,6 +53,7 @@ namespace RentACarWPF.ViewModels
             if (SelektovaniAgent != null)
             {
                 new DodajIzmeniAgentaView(SelektovaniAgent).ShowDialog();
+                onOsveziInterfejs(null);
             }
             else
             {
@@ -82,15 +83,15 @@ namespace RentACarWPF.ViewModels
                 {
                     MessageBox.Show("Agent uspesno obrisan!");
                 }
+                onOsveziInterfejs(null);
             }
         }
 
         public void onOsveziInterfejs(object parameter)
         {
-            agentiLista = unitOfWork.Agenti.GetAll();
-            Agenti = new BindingList<Agent>();
+            Agenti = new ObservableCollection<Agent>();
 
-            foreach (var agent in agentiLista)
+            foreach (var agent in unitOfWork.Agenti.GetAll())
             {
                 Agenti.Add(agent);
             }

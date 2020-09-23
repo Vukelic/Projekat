@@ -3,6 +3,7 @@ using RentACar.DAO;
 using RentACarWPF.Helpers;
 using RentACarWPF.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -17,12 +18,10 @@ namespace RentACarWPF.ViewModels
         public MyICommand DodajFilijaluCommand { get; set; }
         public MyICommand IzmeniFilijaluCommand { get; set; }
         public MyICommand ObrisiFilijaluCommand { get; set; }
-        public MyICommand OsveziCommand { get; set; }
 
-        private BindingList<Filijala> filijale { get; set; }
-        private List<Filijala> filijaleLista { get; set; }
+        private ObservableCollection<Filijala> filijale { get; set; }
 
-        public BindingList<Filijala> Filijale
+        public ObservableCollection<Filijala> Filijale
         {
             get { return filijale; }
             set
@@ -41,12 +40,12 @@ namespace RentACarWPF.ViewModels
             DodajFilijaluCommand = new MyICommand(onDodajFilijalu);
             IzmeniFilijaluCommand = new MyICommand(onIzmeniFilijalu);
             ObrisiFilijaluCommand = new MyICommand(onObrisiFilijalu);
-            OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 
         public void onDodajFilijalu(object parameter)
         {
             new DodajIzmeniFilijaluView(null).ShowDialog();
+            onOsveziInterfejs(null);
         }
 
         public void onIzmeniFilijalu(object parameter)
@@ -54,6 +53,7 @@ namespace RentACarWPF.ViewModels
             if (SelektovanaFilijala != null)
             {
                 new DodajIzmeniFilijaluView(SelektovanaFilijala).ShowDialog();
+                onOsveziInterfejs(null);
             }
             else
             {
@@ -63,10 +63,9 @@ namespace RentACarWPF.ViewModels
           
         public void onOsveziInterfejs(object parameter)
         {
-            filijaleLista = unitOfWork.Filijale.GetAll();
-            Filijale = new BindingList<Filijala>();
+            Filijale = new ObservableCollection<Filijala>();
 
-            foreach (var filijala in filijaleLista)
+            foreach (var filijala in unitOfWork.Filijale.GetAll())
             {
                 Filijale.Add(filijala);
             }
@@ -106,6 +105,8 @@ namespace RentACarWPF.ViewModels
                     MessageBox.Show("Filijala uspesno obrisana!");
                     onOsveziInterfejs(null);
                 }
+
+                onOsveziInterfejs(null);
             }
         }
     }

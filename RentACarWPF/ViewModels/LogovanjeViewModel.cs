@@ -61,13 +61,13 @@ namespace RentACarWPF.ViewModels
                 var user = unitOfWork.Klijenti.GetKlijentByKorisnickoIme(korisnickoIme);
                 if (user.Uloga == TipUloga.regular)
                 {
-                    new StartKorisnikView(KorisnickoIme).Show();
+                    new StartKorisnikView(user.Jmbg).Show();
 
                     this.Window.Close();
                 }
                 else
                 {
-                    new StartView(KorisnickoIme).Show();
+                    new StartView(user.Jmbg).Show();
 
                     this.Window.Close();
                 }

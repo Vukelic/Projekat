@@ -4,6 +4,7 @@ using RentACarWPF.Helpers;
 using RentACarWPF.Models;
 using RentACarWPF.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -14,10 +15,9 @@ namespace RentACarWPF.ViewModels
         UnitOfWork unitOfWork = new UnitOfWork(new ModelContainer());
         public Window Window { get; set; }
         public MyICommand ObrisiZaposlenogCommand { get; set; }
-        public MyICommand OsveziCommand { get; set; }
-        private BindingList<AppZaposleni> zaposleni { get; set; }
+        private ObservableCollection<AppZaposleni> zaposleni { get; set; }
 
-        public BindingList<AppZaposleni> Zaposleni
+        public ObservableCollection<AppZaposleni> Zaposleni
         {
             get { return zaposleni; }
             set
@@ -34,14 +34,13 @@ namespace RentACarWPF.ViewModels
             onOsveziInterfejs(null);
 
             ObrisiZaposlenogCommand = new MyICommand(onObrisiZaposlenog);
-            OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 
         public void onOsveziInterfejs(object parameter)
         {
             var agenti = unitOfWork.Agenti.GetAll();
             var serviseri = unitOfWork.Serviseri.GetAll();
-            Zaposleni = new BindingList<AppZaposleni>();
+            Zaposleni = new ObservableCollection<AppZaposleni>();
 
             foreach (var agent in agenti)
             {

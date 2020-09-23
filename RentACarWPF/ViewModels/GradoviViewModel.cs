@@ -3,6 +3,7 @@ using RentACar.DAO;
 using RentACarWPF.Helpers;
 using RentACarWPF.Views;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 
@@ -17,10 +18,9 @@ namespace RentACarWPF.ViewModels
         public MyICommand ObrisiGradCommand { get; set; }
         public MyICommand OsveziCommand { get; set; }
 
-        private BindingList<Grad> gradovi { get; set; }
-        private List<Grad> gradoviLista { get; set; }
+        private ObservableCollection<Grad> gradovi { get; set; }
 
-        public BindingList<Grad> Gradovi
+        public ObservableCollection<Grad> Gradovi
         {
             get { return gradovi; }
             set
@@ -39,12 +39,12 @@ namespace RentACarWPF.ViewModels
             DodajGradCommand = new MyICommand(onDodajGrad);
             IzmeniGradCommand = new MyICommand(onIzmeniGrad);
             ObrisiGradCommand = new MyICommand(onObrisiGrad);
-            OsveziCommand = new MyICommand(onOsveziInterfejs);
         }
 
         public void onDodajGrad(object parameter)
         {
             new DodajIzmeniGradView(null).ShowDialog();
+            onOsveziInterfejs(null);
         }
 
         public void onIzmeniGrad(object parameter)
@@ -52,7 +52,8 @@ namespace RentACarWPF.ViewModels
            if(SelektovaniGrad != null)
            {
                 new DodajIzmeniGradView(SelektovaniGrad).ShowDialog();
-           }
+                onOsveziInterfejs(null);
+            }
            else
            {
                 MessageBox.Show("Morate prvo izabrati grad!");
@@ -60,11 +61,10 @@ namespace RentACarWPF.ViewModels
         }
 
         public void onOsveziInterfejs(object parameter)  
-        {
-            gradoviLista = unitOfWork.Gradovi.GetAll();
-            Gradovi = new BindingList<Grad>();
+        {      
+            Gradovi = new ObservableCollection<Grad>();
 
-            foreach(var grad in gradoviLista)
+            foreach(var grad in unitOfWork.Gradovi.GetAll())
             {
                 Gradovi.Add(grad);
             }

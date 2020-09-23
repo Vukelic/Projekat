@@ -26,8 +26,7 @@
                  Command="{Binding IzmeniServisCommand}"></Button>
         <Button  FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent"  Grid.Row="1" Grid.Column="2" Margin="10" Content="Obrisi" FontSize="30" FontWeight="Bold" Cursor="Hand"
                  Command="{Binding ObrisiServisCommand}"></Button>
-        <Button  FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent"  Grid.Row="2" Grid.Column="1" Margin="10" Content="Osvezi" FontSize="30" FontWeight="Bold" Cursor="Hand"
-                 Command="{Binding OsveziCommand}"></Button>
+       
         <DataGrid Grid.Row="3"  Height="300" Grid.ColumnSpan="3" Margin="15" 
                   Foreground="Black" BorderBrush="Transparent" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False"
