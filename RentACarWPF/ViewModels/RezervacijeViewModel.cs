@@ -43,14 +43,14 @@ namespace RentACarWPF.ViewModels
             {
                 DodajRezervacijuCommand = new MyICommand(onDodajRezervaciju);
                 Vidljivo = "Hidden";
-                onOsveziInterfejs(Jmbg);
+                onOsveziInterfejs(true,jmbg);
             }
             else
             {
                 DodajRezervacijuCommand = new MyICommand(onDodajRezervaciju);
                 IzmeniRezervacijuCommand = new MyICommand(onIzmeniRezervaciju);
                 ObrisiRezervacijuCommand = new MyICommand(onObrisiRezervaciju);
-                onOsveziInterfejs(null);
+                onOsveziInterfejs(false,jmbg);
             }
 
             
@@ -58,15 +58,16 @@ namespace RentACarWPF.ViewModels
          
         public void onDodajRezervaciju(object parameter)
         {
-            if(jmbg != null)
+            var korisnik = unitOfWork.Klijenti.GetKlijentByJmbg(jmbg);
+            if (korisnik.Uloga == TipUloga.regular)
             {
-                new DodajIzmeniRezervacijuView(null).ShowDialog();
-                onOsveziInterfejs(jmbg);
+                new DodajIzmeniRezervacijuView(null,jmbg).ShowDialog();
+                onOsveziInterfejs(true,jmbg);
             }
             else
             {
-                new DodajIzmeniRezervacijuView(null).ShowDialog();
-                onOsveziInterfejs(null);
+                new DodajIzmeniRezervacijuView(null,jmbg).ShowDialog();
+                onOsveziInterfejs(false,jmbg);
             }
            
         }
@@ -75,8 +76,8 @@ namespace RentACarWPF.ViewModels
         {
             if (SelektovanaRezervacija != null)
             {
-                new DodajIzmeniRezervacijuView(SelektovanaRezervacija).ShowDialog();
-                onOsveziInterfejs(null);
+                new DodajIzmeniRezervacijuView(SelektovanaRezervacija,jmbg).ShowDialog();
+                onOsveziInterfejs(false,jmbg);
             }
             else
             {
@@ -97,16 +98,16 @@ namespace RentACarWPF.ViewModels
             if (unitOfWork.Rezervacije.SaveChanges())
             {
                 MessageBox.Show("Rezervacija uspesno obrisana!");
-                onOsveziInterfejs(null);
+                onOsveziInterfejs(false,jmbg);
             }
         }
 
-        public void onOsveziInterfejs(object parametar)
+        public void onOsveziInterfejs(bool daLiJeRegular, string jmbg)
         {
             Rezervacije = new ObservableCollection<Rezervacija>();
-            if (parametar != null)
+            if (daLiJeRegular == true)
             {
-                foreach (var rezervacija in unitOfWork.Rezervacije.RezervacijeOdKlijenta(parametar.ToString()))
+                foreach (var rezervacija in unitOfWork.Rezervacije.RezervacijeOdKlijenta(jmbg))
                 {
                     Rezervacije.Add(rezervacija);
                 }

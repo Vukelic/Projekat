@@ -99,6 +99,7 @@
           <Property Name="Marka" Type="nvarchar(max)" Nullable="false" />
           <Property Name="FilijalaId" Type="int" Nullable="false" />
           <Property Name="Tip_vozila" Type="int" Nullable="false" />
+          <Property Name="ProsecnaOcena" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Zaposleni">
           <Key>
@@ -499,6 +500,14 @@
             <Parameter Name="Drzava1" Mode="In" Type="String" />
             <Parameter Name="Naziv1" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Funkcija3" IsComposable="true" ReturnType="Collection(Int32)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Procedure23">
+            <Parameter Name="PostanskiBroj1" Mode="In" Type="Int32" />
+            <Parameter Name="Drzava1" Mode="In" Type="String" />
+            <Parameter Name="Naziv1" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Grad">
           <Key>
@@ -536,6 +545,7 @@
           <NavigationProperty Name="Servisi" Relationship="Model.VoziloServis" FromRole="Vozilo" ToRole="Servis" />
           <NavigationProperty Name="Rezervacije" Relationship="Model.VoziloRezervacija" FromRole="Vozilo" ToRole="Rezervacija" />
           <NavigationProperty Name="Cenovniks" Relationship="Model.CenovnikVozilo" FromRole="Vozilo" ToRole="Cenovnik" />
+          <Property Name="ProsecnaOcena" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="Ocena">
           <Key>
@@ -838,6 +848,7 @@
           <ScalarProperty Name="Marka" ColumnName="Marka" />
           <ScalarProperty Name="FilijalaId" ColumnName="FilijalaId" />
           <ScalarProperty Name="Tip_vozila" ColumnName="Tip_vozila" />
+          <ScalarProperty Name="ProsecnaOcena" ColumnName="ProsecnaOcena" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -945,8 +956,8 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="Funkcija2" FunctionName="Model.Store.Funkcija" />
-          <FunctionImportMapping FunctionImportName="Procedure22" FunctionName="Model.Store.Procedure2" />
+          <FunctionImportMapping FunctionImportName="Funkcija3" FunctionName="Model.Store.Funkcija" />
+          <FunctionImportMapping FunctionImportName="Procedure23" FunctionName="Model.Store.Procedure2" />
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

@@ -66,7 +66,7 @@ namespace RentACar.Persistence.Repositories
             return true;
         }
 
-        public int IzracunajCenu(DateTime DatumKraja, DateTime DatumPocetka, int CenaPoDanu)
+        public int IzracunajCenu(DateTime DatumPocetka, DateTime DatumKraja, int CenaPoDanu)
         {
             double cena = 0;
 

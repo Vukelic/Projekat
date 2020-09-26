@@ -102,7 +102,6 @@
     <Compile Include="ViewModels\DodajIzmeniAgentaViewModel.cs" />
     <Compile Include="ViewModels\DodajIzmeniCenovnikViewModel.cs" />
     <Compile Include="ViewModels\DodajizmeniFilijaluViewModel.cs" />
-    <Compile Include="ViewModels\DodajIzmeniKlijentaViewModel.cs" />
     <Compile Include="ViewModels\DodajIzmeniGradViewModel.cs" />
     <Compile Include="ViewModels\DodajIzmeniOcenuViewModel.cs" />
     <Compile Include="ViewModels\DodajIzmeniOsiguranjeViewModel.cs" />
@@ -111,7 +110,6 @@
     <Compile Include="ViewModels\DodajIzmeniServisViewModel.cs" />
     <Compile Include="ViewModels\DodajIzmeniVoziloViewModel.cs" />
     <Compile Include="ViewModels\FilijaleViewModel.cs" />
-    <Compile Include="ViewModels\FunkcijeViewModel.cs" />
     <Compile Include="ViewModels\KlijentiViewModel.cs" />
     <Compile Include="ViewModels\GradoviViewModel.cs" />
     <Compile Include="ViewModels\LogovanjeViewModel.cs" />
@@ -137,9 +135,6 @@
     </Compile>
     <Compile Include="Views\DodajIzmeniCenovnikView.xaml.cs">
       <DependentUpon>DodajIzmeniCenovnikView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DodajIzmeniKlijentaView.xaml.cs">
-      <DependentUpon>DodajIzmeniKlijentaView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DodajIzmeniOsiguranjeView.xaml.cs">
       <DependentUpon>DodajIzmeniOsiguranjeView.xaml</DependentUpon>
@@ -167,9 +162,6 @@
     </Compile>
     <Compile Include="Views\FilijaleView.xaml.cs">
       <DependentUpon>FilijaleView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FunkcijeView.xaml.cs">
-      <DependentUpon>FunkcijeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\KlijentiView.xaml.cs">
       <DependentUpon>KlijentiView.xaml</DependentUpon>
@@ -233,10 +225,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DodajIzmeniKlijentaView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\DodajIzmeniOsiguranjeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -270,10 +258,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\FilijaleView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\FunkcijeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

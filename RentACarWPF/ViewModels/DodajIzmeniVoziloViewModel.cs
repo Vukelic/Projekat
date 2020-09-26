@@ -238,6 +238,7 @@ namespace RentACarWPF.ViewModels
                     vozilo.Marka = V.Marka;
                     vozilo.Model = V.Model;
                     vozilo.FilijalaId = SelektovanaFilijala.Id;
+                    vozilo.ProsecnaOcena = "0";
 
                     if(SelektovanTip.ToLower() == "automobil")
                     {
@@ -251,6 +252,8 @@ namespace RentACarWPF.ViewModels
                     {
                         vozilo.Tip_vozila = TipVozila.Autobus;
                     }
+
+                    
 
                     unitOfWork.Vozila.Add(vozilo);
 

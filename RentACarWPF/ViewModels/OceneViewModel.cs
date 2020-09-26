@@ -13,6 +13,7 @@ namespace RentACarWPF.ViewModels
     {
 
         UnitOfWork unitOfWork = new UnitOfWork(new ModelContainer());
+        ModelContainer model = new ModelContainer();
         public Window Window { get; set; }
         public MyICommand DodajOcenuCommand { get; set; }
         public MyICommand IzmeniOcenuCommand { get; set; }
@@ -88,6 +89,8 @@ namespace RentACarWPF.ViewModels
                 return;
             }
 
+            
+            var vozilo = unitOfWork.Vozila.Get(SelektovanaOcena.VoziloId);
             unitOfWork.Ocene.Remove(SelektovanaOcena.Id);
 
             if (unitOfWork.Ocene.SaveChanges())
@@ -95,6 +98,15 @@ namespace RentACarWPF.ViewModels
                 MessageBox.Show("Ocena uspesno obrisana!");
                 onOsveziInterfejs(null);
             }
+            var avgNum = model.Funkcija3(vozilo.Id);
+            foreach (var item2 in avgNum)
+            {
+                vozilo.ProsecnaOcena = item2.ToString();
+            }
+            unitOfWork.Vozila.Update(vozilo);
+            unitOfWork.Complete();
+
+            
         }
 
         public void onOsveziInterfejs(object parameter)

@@ -29,6 +29,7 @@
           <ScalarProperty Name="Marka" ColumnName="Marka" />
           <ScalarProperty Name="FilijalaId" ColumnName="FilijalaId" />
           <ScalarProperty Name="Tip_vozila" ColumnName="Tip_vozila" />
+          <ScalarProperty Name="ProsecnaOcena" ColumnName="ProsecnaOcena" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -136,7 +137,7 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <FunctionImportMapping FunctionImportName="Funkcija2" FunctionName="Model.Store.Funkcija" />
-    <FunctionImportMapping FunctionImportName="Procedure22" FunctionName="Model.Store.Procedure2" />
+    <FunctionImportMapping FunctionImportName="Funkcija3" FunctionName="Model.Store.Funkcija" />
+    <FunctionImportMapping FunctionImportName="Procedure23" FunctionName="Model.Store.Procedure2" />
   </EntityContainerMapping>
 </Mapping>

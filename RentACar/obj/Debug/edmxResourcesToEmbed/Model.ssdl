@@ -94,6 +94,7 @@
     <Property Name="Marka" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FilijalaId" Type="int" Nullable="false" />
     <Property Name="Tip_vozila" Type="int" Nullable="false" />
+    <Property Name="ProsecnaOcena" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="Zaposleni">
     <Key>

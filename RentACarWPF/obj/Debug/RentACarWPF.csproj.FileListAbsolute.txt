@@ -185,7 +185,6 @@ C:\Users\HP\Desktop\my\Projekat\RentACarWPF\bin\Debug\GalaSoft.MvvmLight.Platfor
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\RentACarWPF.csprojAssemblyReference.cache
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\AgentiView.g.cs
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniAgentaView.g.cs
-C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniKlijentaView.g.cs
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniOsiguranjeView.g.cs
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniServiseraView.g.cs
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniServisView.g.cs
@@ -195,7 +194,6 @@ C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniGradView.
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniOcenuView.g.cs
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniRezervacijuView.g.cs
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\FilijaleView.g.cs
-C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\FunkcijeView.g.cs
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\KlijentiView.g.cs
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\GradoviView.g.cs
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\LogovanjeView.g.cs
@@ -215,7 +213,6 @@ C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\RentACarWPF_MarkupCompile.
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\RentACarWPF_MarkupCompile.lref
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\AgentiView.baml
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniAgentaView.baml
-C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniKlijentaView.baml
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniOsiguranjeView.baml
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniServiseraView.baml
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniServisView.baml
@@ -225,7 +222,6 @@ C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniGradView.
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniOcenuView.baml
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\DodajIzmeniRezervacijuView.baml
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\FilijaleView.baml
-C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\FunkcijeView.baml
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\KlijentiView.baml
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\GradoviView.baml
 C:\Users\HP\Desktop\my\Projekat\RentACarWPF\obj\Debug\Views\LogovanjeView.baml

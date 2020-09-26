@@ -12,6 +12,7 @@ namespace RentACarWPF.ViewModels
     {
         public Window Window { get; set; }
         UnitOfWork unitOfWork = new UnitOfWork(new ModelContainer());
+        ModelContainer model = new ModelContainer();
 
         AppOcena o = new AppOcena();
 
@@ -233,12 +234,19 @@ namespace RentACarWPF.ViewModels
                     ocena.Id = O.Id;
 
                     unitOfWork.Ocene.Add(ocena);
-
+            
                     if (unitOfWork.Complete() > 0)
                     {
                         Uspesno = "Uspesno ste dodali ocenu u bazu!";
                         O = new AppOcena();
                     }
+                    var avgNum = model.Funkcija3(SelektovanoVozilo.Id);
+                    foreach (var item2 in avgNum)
+                    {
+                        SelektovanoVozilo.ProsecnaOcena = item2.ToString();
+                    }
+                    unitOfWork.Vozila.Update(selektovanoVozilo);
+                    unitOfWork.Complete();
 
                 }
 
@@ -290,6 +298,14 @@ namespace RentACarWPF.ViewModels
                     Uspesno = "Uspesno ste izmenili ocenu!";
                     IdPostoji = "";
                 }
+
+                var avgNum = model.Funkcija3(SelektovanoVozilo.Id);
+                foreach (var item2 in avgNum)
+                {
+                    SelektovanoVozilo.ProsecnaOcena = item2.ToString();
+                }
+                unitOfWork.Vozila.Update(selektovanoVozilo);
+                unitOfWork.Complete();
 
             }
         }

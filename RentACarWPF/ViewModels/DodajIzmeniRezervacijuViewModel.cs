@@ -14,6 +14,7 @@ namespace RentACarWPF.ViewModels
     {
         public Window Window { get; set; }
         UnitOfWork unitOfWork = new UnitOfWork(new ModelContainer());
+        private string Jmbg { get; set; }
 
         AppRezervacija r = new AppRezervacija();
         public AppRezervacija R
@@ -47,7 +48,7 @@ namespace RentACarWPF.ViewModels
                 uspesno = value;
                 OnPropertyChanged("Uspesno");
             }
-        }
+        }     
 
         string idPostoji;
         public string IdPostoji
@@ -248,8 +249,9 @@ namespace RentACarWPF.ViewModels
 
         public MyICommand DodajIzmeniRezervacijuCommand { get; set; }
 
-        public DodajIzmeniRezervacijuViewModel(Rezervacija rezervacija = null)
+        public DodajIzmeniRezervacijuViewModel(Rezervacija rezervacija,string jmbg)
         {
+            Jmbg = jmbg;
             osiguranjaLista = unitOfWork.Osiguranja.GetAll();
             agentiLista = unitOfWork.Agenti.GetAll();
             klijentiLista = unitOfWork.Klijenti.GetAll();
@@ -259,7 +261,7 @@ namespace RentACarWPF.ViewModels
             Agenti = new BindingList<Agent>();
             Klijenti = new BindingList<Klijent>();
             Vozila = new BindingList<Vozilo>();
-
+            
             foreach (var osiguranje in osiguranjaLista)
             {
                 Osiguranja.Add(osiguranje);
@@ -268,24 +270,39 @@ namespace RentACarWPF.ViewModels
             foreach (var agent in agentiLista)
             {
                 Agenti.Add(agent);
-            }
-
-            foreach (var klijent in klijentiLista)
-            {
-                Klijenti.Add(klijent);
-            }
+            }            
 
             foreach (var vozilo in vozilaLista)
             {
                 Vozila.Add(vozilo);
             }
-
+            var user = unitOfWork.Klijenti.GetKlijentByJmbg(jmbg);
             if (rezervacija == null)
-            {
-                TextBoxEnabled = true;
-                TitleContent = "Dodaj rezervaciju";
-                ButtonContent = "Dodaj";
-                DodajIzmeniRezervacijuCommand = new MyICommand(onDodajRezervaciju);
+            {     
+                if(user.Uloga == TipUloga.regular)
+                {
+                    TextBoxEnabled = true;
+                    TitleContent = "Dodaj rezervaciju";
+                    ButtonContent = "Dodaj";
+
+                    SelektovanKlijent = user;
+                    Klijenti.Add(selektovanKlijent);
+                    DodajIzmeniRezervacijuCommand = new MyICommand(onDodajRezervaciju);
+                }
+                else
+                {
+                    TextBoxEnabled = true;
+                    TitleContent = "Dodaj rezervaciju";
+                    ButtonContent = "Dodaj";
+
+                    SelektovanKlijent = unitOfWork.Klijenti.GetKlijentByJmbg(jmbg);
+                    foreach (var klijent in klijentiLista)
+                    {
+                      Klijenti.Add(klijent);
+                    }
+                    DodajIzmeniRezervacijuCommand = new MyICommand(onDodajRezervaciju);
+                }
+                                     
             }
             else
             {
@@ -297,11 +314,12 @@ namespace RentACarWPF.ViewModels
                 SelektovanKlijent = unitOfWork.Klijenti.GetKlijentByJmbg(rezervacija.KlijentJmbg);
                 SelektovanoOsiguranje = unitOfWork.Osiguranja.Get(rezervacija.OsiguranjeId);
                 SelektovanoVozilo = unitOfWork.Vozila.Get(rezervacija.VoziloId);
-
+                Klijenti.Add(selektovanKlijent);
                 DodajIzmeniRezervacijuCommand = new MyICommand(onIzmeniRezervaciju);
             }
         }
 
+        
         public void onDodajRezervaciju(object parameter)
         {
             bool error = false;

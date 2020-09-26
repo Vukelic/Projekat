@@ -21,7 +21,6 @@ namespace RentACarWPF.ViewModels
         public MyICommand ViewOsiguranjaCommand { get; set; }
         public MyICommand ViewAgentiCommand { get; set; }
         public MyICommand ViewServiseriCommand { get; set; }
-        public MyICommand ViewFunkcijeCommand { get; set; }
         public MyICommand ViewNalogCommand { get; set; }
         public MyICommand ViewCenovnikCommand { get; set; }
 
@@ -38,7 +37,6 @@ namespace RentACarWPF.ViewModels
             ViewOsiguranjaCommand = new MyICommand(onViewOsiguranja);
             ViewAgentiCommand = new MyICommand(onViewAgenti);
             ViewServiseriCommand = new MyICommand(onViewServiseri);
-            ViewFunkcijeCommand = new MyICommand(onViewFunkcije);
             ViewNalogCommand = new MyICommand(onViewNalog);
             ViewCenovnikCommand = new MyICommand(onViewCenovnik);
             KorisnickoIme = korisnickoIme;
@@ -102,9 +100,6 @@ namespace RentACarWPF.ViewModels
             new ServiseriView().ShowDialog();
         }
 
-        public void onViewFunkcije(object parameter)
-        {
-            new FunkcijeView().ShowDialog();
-        }
+       
     }
 }

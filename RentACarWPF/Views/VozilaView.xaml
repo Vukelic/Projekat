@@ -30,10 +30,11 @@
                   SelectedItem="{Binding SelektovanoVozilo}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Marka" Width="120" Binding="{Binding Marka}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Model" Width="120" Binding="{Binding Model}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Filijala" Width="120" Binding="{Binding Filijala.Naziv}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Tip" Width="*" Binding="{Binding Tip_vozila}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Marka" Width="80" Binding="{Binding Marka}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Model" Width="80" Binding="{Binding Model}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Filijala" Width="80" Binding="{Binding Filijala.Naziv}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Tip" Width="80" Binding="{Binding Tip_vozila}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Prosecna ocena:" Width="*" Binding="{Binding ProsecnaOcena}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

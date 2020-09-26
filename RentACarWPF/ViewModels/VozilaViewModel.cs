@@ -47,7 +47,9 @@ namespace RentACarWPF.ViewModels
         {
             onOsveziInterfejs(null);
 
-            if(daLiJeRegular == true)
+            
+
+            if (daLiJeRegular == true)
             {
                 Vidljivo = "Hidden";
             }

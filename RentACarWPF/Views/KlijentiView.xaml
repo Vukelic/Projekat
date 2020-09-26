@@ -20,12 +20,10 @@
         </Grid.ColumnDefinitions>
         <Image Margin="0,2,0.2,-0.2"  Source="/Images/all_background.jpg" Stretch="Fill" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3" Grid.RowSpan="4" />
         <TextBlock FontFamily="Segoe Print MS" Text="PREGLED KLIJENATA" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontWeight="Bold"></TextBlock>
-        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="0" Margin="10" Content="Dodaj" FontSize="30" FontWeight="Bold" Cursor="Hand"
-                 Command="{Binding DodajKlijentaCommand}"></Button>
-        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="1" Margin="10" Content="Izmeni" FontSize="30" FontWeight="Bold" Cursor="Hand"
-                 Command="{Binding IzmeniKlijentaCommand}"></Button>
-        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="2" Grid.Column="0" Margin="10" Content="Obrisi" FontSize="30" FontWeight="Bold" Cursor="Hand"
-                 Command="{Binding ObrisiKlijentaCommand}"></Button>
+
+
+        <Button FontFamily="Segoe Print MS"  BorderBrush="Transparent" Background="Transparent" Grid.Row="1" Grid.Column="0" Margin="115,10,155,10" Content="Obrisi" FontSize="30" FontWeight="Bold" Cursor="Hand"
+                 Command="{Binding ObrisiKlijentaCommand}" Grid.ColumnSpan="2"></Button>
         <DataGrid Grid.Row="3" Grid.ColumnSpan="2" Margin="15,15,10,21" 
                   Foreground="Black" BorderBrush="Transparent" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False"

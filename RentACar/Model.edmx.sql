@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/22/2020 20:49:20
+-- Date Created: 09/26/2020 01:13:36
 -- Generated from EDMX file: C:\Users\HP\Desktop\my\Projekat\RentACar\Model.edmx
 -- --------------------------------------------------
 
@@ -132,7 +132,8 @@ CREATE TABLE [dbo].[Vozila] (
     [Model] nvarchar(max)  NOT NULL,
     [Marka] nvarchar(max)  NOT NULL,
     [FilijalaId] int  NOT NULL,
-    [Tip_vozila] int  NOT NULL
+    [Tip_vozila] int  NOT NULL,
+    [ProsecnaOcena] nvarchar(max)  NOT NULL
 );
 GO
 

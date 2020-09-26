@@ -97,6 +97,14 @@
       <Parameter Name="Drzava1" Mode="In" Type="String" />
       <Parameter Name="Naziv1" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="Funkcija3" IsComposable="true" ReturnType="Collection(Int32)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Procedure23">
+      <Parameter Name="PostanskiBroj1" Mode="In" Type="Int32" />
+      <Parameter Name="Drzava1" Mode="In" Type="String" />
+      <Parameter Name="Naziv1" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Grad">
     <Key>
@@ -134,6 +142,7 @@
     <NavigationProperty Name="Servisi" Relationship="Model.VoziloServis" FromRole="Vozilo" ToRole="Servis" />
     <NavigationProperty Name="Rezervacije" Relationship="Model.VoziloRezervacija" FromRole="Vozilo" ToRole="Rezervacija" />
     <NavigationProperty Name="Cenovniks" Relationship="Model.CenovnikVozilo" FromRole="Vozilo" ToRole="Cenovnik" />
+    <Property Name="ProsecnaOcena" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
   </EntityType>
   <EntityType Name="Ocena">
     <Key>

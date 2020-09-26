@@ -15,8 +15,7 @@ namespace RentACarWPF.ViewModels
 
         UnitOfWork unitOfWork = new UnitOfWork(new ModelContainer());
 
-        public MyICommand DodajKlijentaCommand { get; set; }
-        public MyICommand IzmeniKlijentaCommand { get; set; }
+       
         public MyICommand ObrisiKlijentaCommand { get; set; }
 
         private ObservableCollection<Klijent> klijenti { get; set; }
@@ -36,30 +35,11 @@ namespace RentACarWPF.ViewModels
         public KlijentiViewModel()
         {
             onOsveziInterfejs(null);
-
-            DodajKlijentaCommand = new MyICommand(onDodajKlijenta);
-            IzmeniKlijentaCommand = new MyICommand(onIzmeniKlijenta);
+          
             ObrisiKlijentaCommand = new MyICommand(onObrisiKlijenta);
         }
 
-        public void onDodajKlijenta(object parameter)
-        {
-            new DodajIzmeniKlijentaView(null).ShowDialog();
-            onOsveziInterfejs(null);
-        }
-
-        public void onIzmeniKlijenta(object parameter)
-        {
-            if (SelektovaniKlijent != null)
-            {
-                new DodajIzmeniKlijentaView(SelektovaniKlijent).ShowDialog();
-                onOsveziInterfejs(null);
-            }
-            else
-            {
-                MessageBox.Show("Morate prvo izabrati klijenta!");
-            }
-        }
+            
 
         public void onOsveziInterfejs(object parameter)
         {

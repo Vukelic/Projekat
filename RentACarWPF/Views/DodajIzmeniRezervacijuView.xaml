@@ -33,7 +33,7 @@
         <TextBlock Text="Osiguranje:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
         <TextBlock Text="Agent:" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
 
-        <TextBox FontFamily="Segoe Print MS" FontWeight="Bold"  Width="200" Text="{Binding R.Id}"  IsEnabled="{Binding TextBoxEnabled}" Height="50" Grid.Row="1" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22"></TextBox>
+        <TextBox  FontFamily="Segoe Print MS" FontWeight="Bold"  Width="200" Text="{Binding R.Id}"  IsEnabled="{Binding TextBoxEnabled}" Height="50" Grid.Row="1" Margin="10 0 0 0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22"></TextBox>
         <TextBlock Text="{Binding R.ValidationErrors[Id]}" Foreground="Red" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
         <TextBlock Text="{Binding IdPostoji}" Foreground="Red" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" FontSize="14" FontWeight="Bold"></TextBlock>
 

@@ -152,5 +152,32 @@ namespace RentACar
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Procedure22", postanskiBroj1Parameter, drzava1Parameter, naziv1Parameter);
         }
+    
+        [DbFunction("ModelContainer", "Funkcija3")]
+        public virtual IQueryable<Nullable<int>> Funkcija3(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<int>>("[ModelContainer].[Funkcija3](@Id)", idParameter);
+        }
+    
+        public virtual int Procedure23(Nullable<int> postanskiBroj1, string drzava1, string naziv1)
+        {
+            var postanskiBroj1Parameter = postanskiBroj1.HasValue ?
+                new ObjectParameter("PostanskiBroj1", postanskiBroj1) :
+                new ObjectParameter("PostanskiBroj1", typeof(int));
+    
+            var drzava1Parameter = drzava1 != null ?
+                new ObjectParameter("Drzava1", drzava1) :
+                new ObjectParameter("Drzava1", typeof(string));
+    
+            var naziv1Parameter = naziv1 != null ?
+                new ObjectParameter("Naziv1", naziv1) :
+                new ObjectParameter("Naziv1", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Procedure23", postanskiBroj1Parameter, drzava1Parameter, naziv1Parameter);
+        }
     }
 }

@@ -28,6 +28,7 @@ namespace RentACar
         public string Marka { get; set; }
         public int FilijalaId { get; set; }
         public TipVozila Tip_vozila { get; set; }
+        public string ProsecnaOcena { get; set; }
     
         public virtual Filijala Filijala { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
